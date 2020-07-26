@@ -2,7 +2,7 @@
 layout: post
 title: "Investigating Duplicate HTML Requests on a Page Load"
 date: 2020-07-10 00:00:00 -0500
-img: 
+img: /assets/img/blog/body_background_url.jpg
 ---
 _**Why it occurs, and what is the impact on web performance?**_
 
@@ -11,19 +11,19 @@ Ever see a web page load an embedded object that is really the same HTML as the 
 
 Two of the most recent ones I’ve seen made the same mistake. Can you spot the error?
 
-![Incorrectly set background URL](https://dev-to-uploads.s3.amazonaws.com/i/wdhhi62sbie03rzufmni.png)
+![Incorrectly set background URL](/assets/img/blog/body_background_url.jpg)
 
 The body was styled with the CSS `background` property, which is shorthand for `background-color`, `background-url`, and others (this is explained better [here](https://css-tricks.com/almanac/properties/b/background/)). In this example, the developer probably wanted to use `background: none` to give a blank background color, but used an empty URL instead. The `url()` function attempts to load a background image, and it takes a string as an argument. Since an empty string is a valid string this doesn’t trigger an error in the console. It simply results in a relative request to the base URL.
 
 I created a simple test page to demonstrate this. In the WebPageTest waterfall below you can clearly see the extra page request.  
 
-![Duplicate HTML Example](https://dev-to-uploads.s3.amazonaws.com/i/qjgfidvz8xlaaz1mj8g3.png)
+![Duplicate HTML Example](/assets/img/blog/wpt_waterfall_duplicate_requests.png)
 
 
 In Chrome DevTools, you would see the duplicate request show up with an initiator of the main document. In the console there is no indication or an error. This may not be a technical error, but it certainly is unintentional and comes with a performance penalty.
 
 
-![Using Chrome DevTools to find the initiator of duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/pjnuayqmvwi9wgc7hbk6.png)
+![Using Chrome DevTools to find the initiator of duplicate HTML](/assets/img/blog/chrome_devtools_duplicate_requests.png)
 
 In this article we are going to explore why this is a performance issue, how duplicate requests for HTML can be inadvertently triggered, and how you can avoid them.
 
@@ -65,24 +65,24 @@ The table below lists the full summary of the tests I ran across Chrome, Safari 
 
 |                | Chrome       | Safari.      | Firefox      |
 | :------------- | :----------: | -----------: | -----------: |
-|  `<img src="#" />` | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<img src=" " />` |   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<img src="?" />` | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<script src="#" />` |    | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<script src=" " />` |    | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<script src="?" />` | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<iframe src="#" />` | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<iframe src=" " />` |   |  |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<iframe src="?" />` | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)  |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<video src="#" />` |  | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |  
-|  `<video src=" " />` |    | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |
-|  `<video src="?" />` |  | ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<body style="background: url()">` |  ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<body style="background: url('')">` |  ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<body style="background: url(' ')">` |  ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<div style="background: url()">` |  ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<div style="background: url('')">` |  ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
-|  `<div style="background: url(' ')">` |  ![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png)   | |![Duplicate HTML](https://dev-to-uploads.s3.amazonaws.com/i/05xoj5meuc8fs27dzm7e.png) | 
+|  `<img src="#" />` | ![Duplicate HTML](/assets/img/blog/warning_icon.png)   |![Duplicate HTML](/assets/img/blog/warning_icon.png) |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<img src=" " />` |   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<img src="?" />` | ![Duplicate HTML](/assets/img/blog/warning_icon.png)   |![Duplicate HTML](/assets/img/blog/warning_icon.png) |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<script src="#" />` |    | |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<script src=" " />` |    | |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<script src="?" />` | ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<iframe src="#" />` | ![Duplicate HTML](/assets/img/blog/warning_icon.png)   |![Duplicate HTML](/assets/img/blog/warning_icon.png) |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<iframe src=" " />` |   |  |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<iframe src="?" />` | ![Duplicate HTML](/assets/img/blog/warning_icon.png)  |![Duplicate HTML](/assets/img/blog/warning_icon.png) |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<video src="#" />` |  | ![Duplicate HTML](/assets/img/blog/warning_icon.png) |![Duplicate HTML](/assets/img/blog/warning_icon.png) |  
+|  `<video src=" " />` |    | |![Duplicate HTML](/assets/img/blog/warning_icon.png) |
+|  `<video src="?" />` |  | ![Duplicate HTML](/assets/img/blog/warning_icon.png) |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<body style="background: url()">` |  ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<body style="background: url('')">` |  ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<body style="background: url(' ')">` |  ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<div style="background: url()">` |  ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<div style="background: url('')">` |  ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
+|  `<div style="background: url(' ')">` |  ![Duplicate HTML](/assets/img/blog/warning_icon.png)   | |![Duplicate HTML](/assets/img/blog/warning_icon.png) | 
 
 _* iFrames with src=”?” and “#” resulted in 3-4 HTML requests for the same page._
 
@@ -91,14 +91,14 @@ Creating a separate cache layer via a service worker is a great way to preload y
 
 Here's an example of a site doing exactly that. Even worse, the HTML was not cacheable... 
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/2v2bf8yqoppw7cl31wcx.png)
+![Alt Text](/assets/img/blog/service_worker_duplicate_html.png)
 
 If you are going to use a service worker to cache a resource, make sure that resource is cacheable!
 
 **`display:none`**
 While this example is not specifically about HTML, it occurs enough that it's worth mentioning.  As @dougsillars says "display:none does not mean download:none".   
 
-
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Your periodic reminder that using &quot;display:none&quot; in your CSS does not also mean &quot;download:none&quot; <a href="https://t.co/eZZNnrQ3OS">pic.twitter.com/eZZNnrQ3OS</a></p>&mdash; Doug Sillars 🇬🇧 (@dougsillars) <a href="https://twitter.com/dougsillars/status/1261888005364756480?ref_src=twsrc%5Etfw">May 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 In this example, the developer referenced video content that used a media query to hide the video for certain screen sizes. The end result was downloading both the desktop and mobile videos, while hiding one of them. That's a lot of wasted bytes!
 
@@ -109,11 +109,11 @@ There aren't any tools or audits I know of that look for this, as it does tend t
 
 Probably the easiest way to spot this is by looking at the CPU processing overlay in WebPageTest. If you see JS execution for a request before the request is loaded, then it was likely a duplicate.
 
-![WebPageTest Example](https://dev-to-uploads.s3.amazonaws.com/i/3j50ktp615emy6a8uqkp.png)
+![WebPageTest Example](/assets/img/blog/duplicate-html-finding-in-wpt.jpg)
 
 In DevTools, you can also filter by your domain name using `domain:www.example.com`. Filtering and sorting by name, makes these easier to spot. If you see the same URL with a type of both document and text/html, then you are loading a duplicate HTML page.
 
-![DevTools Example](https://dev-to-uploads.s3.amazonaws.com/i/n1rw11zs3fgkepee6wj0.png)
+![DevTools Example](/assets/img/blog/duplicate-html-finding-in-devtools.jpg)
 
 Clicking on the initiator can help find what caused the duplicate HTML to load.
 

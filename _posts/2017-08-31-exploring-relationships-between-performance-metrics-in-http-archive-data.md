@@ -46,7 +46,7 @@ And for the metrics that only exist in the HAR files, I was able to use a query 
 
 This worked, and produced a histogram output such as:
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/ha_examplehistogram.jpg" alt="" width="367" height="500" class="alignnone size-full wp-image-292" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_examplehistogram.jpg 367w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_examplehistogram-220x300.jpg 220w" sizes="(max-width: 367px) 100vw, 367px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_examplehistogram.jpg" alt="" width="367" height="500" class="alignnone size-full wp-image-292" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_examplehistogram.jpg 367w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_examplehistogram-220x300.jpg 220w" sizes="(max-width: 367px) 100vw, 367px" /> 
 
 However, running this for multiple metrics would have required lots of queries and manual post processing work. I decided to collect the output from queries like the ones above in a UNION, add a “metric” column to describe what each query contained, and then summarized all them. The output is similar to what you might expect if you ran each of these queries, dumped them into Excel and created a pivot table. It’s just a lot less manual work…
 
@@ -127,7 +127,7 @@ However, running this for multiple metrics would have required lots of queries a
 
 When we graph this data, it looks like this:
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics.jpg" alt="" width="690" height="369" class="alignnone size-full wp-image-293" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics-300x160.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_comparison_of_page_metrics.jpg" alt="" width="690" height="369" class="alignnone size-full wp-image-293" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics-300x160.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
 
 Based on this data there are some interesting observations (which we’ll test below to prove/disprove)
 
@@ -205,7 +205,7 @@ In order to determine this, I decided to modify the above query to create histog
 
 I created a histogram for each test case below &#8211;
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_histogram.jpg" alt="" width="690" height="351" class="alignnone size-full wp-image-294" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_histogram.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_histogram-300x153.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_histogram.jpg" alt="" width="690" height="351" class="alignnone size-full wp-image-294" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_histogram.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_histogram-300x153.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
 
 The results are quite interesting. What we can tell here is:
 
@@ -216,11 +216,11 @@ The results are quite interesting. What we can tell here is:
 
 **What About Mobile?** These metrics can be extracted from the mobile pages in the HTTP Archive as well. The same patterns exist, albeit with slower response times.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram.jpg" alt="" width="589" height="500" class="alignnone size-full wp-image-295" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram.jpg 589w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram-300x255.jpg 300w" sizes="(max-width: 589px) 100vw, 589px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram.jpg" alt="" width="589" height="500" class="alignnone size-full wp-image-295" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram.jpg 589w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram-300x255.jpg 300w" sizes="(max-width: 589px) 100vw, 589px" /> 
 
 However if you look closely at the Time to Interactive vs Fully Loaded graphs on Desktop and Mobile,you’ll see that the gap is smaller for mobile. I thought this was particularly interesting &#8211; and you can see it clearly in the graph below &#8211;
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile.jpg" alt="" width="457" height="874" class="alignnone size-full wp-image-296" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile.jpg 457w, http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile-157x300.jpg 157w, http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile-366x700.jpg 366w" sizes="(max-width: 457px) 100vw, 457px" /> 
+<img src="/assets/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile.jpg" alt="" width="457" height="874" class="alignnone size-full wp-image-296" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile.jpg 457w, http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile-157x300.jpg 157w, http://paulcalvano.com/wp-content/uploads/2018/03/fullyloaded_vs_TTI_desktop_mobile-366x700.jpg 366w" sizes="(max-width: 457px) 100vw, 457px" /> 
 
 Since we know that the Time to Interactive metric is related to CPU utilization, I thought it would be interesting to take another look at the breakdown of CPU time on Desktop vs Mobile pages. The following query will create histograms that show us this information using the same techniques discussed above:
 
@@ -260,7 +260,7 @@ Since we know that the Time to Interactive metric is related to CPU utilization,
 
 The results of this query show that overall, CPU busy time is much higher on Desktop compared to Mobile. This seems to contradict what many of us see every day with mobile performance on websites though &#8211; so I wonder if it could be a result of mobile CPU emulation.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/desktop_vs_mobile_cpu_time.jpg" alt="" width="690" height="351" class="alignnone size-full wp-image-297" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/desktop_vs_mobile_cpu_time.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/desktop_vs_mobile_cpu_time-300x153.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/desktop_vs_mobile_cpu_time.jpg" alt="" width="690" height="351" class="alignnone size-full wp-image-297" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/desktop_vs_mobile_cpu_time.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/desktop_vs_mobile_cpu_time-300x153.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
 
 There’s definitely some interesting insights to be obtained from digging into the metrics across so many different sites, and I hope that others find this as interesting as I did!
 

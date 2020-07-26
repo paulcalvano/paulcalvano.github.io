@@ -8,7 +8,7 @@ Over the past few weeks the topic of security related HTTP headers has come up i
 
 Looking at this data through the lens of the HTTP Archive, I thought it would be interesting to see if we could give the web a scorecard for security headers. I&#8217;ll dive deeper into how each of these headers are implemented below, but let&#8217;s start off by looking at the percentage of sites that are using these security headers. As I suspected, adoption is quite low. Furthermore, it seems that adoption is marginally higher for some of the most popular sites &#8211; but not by much.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/security_headers.jpg" alt="" width="918" height="620" class="alignnone size-full wp-image-275" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/security_headers.jpg 918w, http://paulcalvano.com/wp-content/uploads/2018/03/security_headers-300x203.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/security_headers-768x519.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/security_headers-700x473.jpg 700w" sizes="(max-width: 918px) 100vw, 918px" /> 
+<img src="/assets/wp-content/uploads/2018/03/security_headers.jpg" alt="" width="918" height="620" class="alignnone size-full wp-image-275" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/security_headers.jpg 918w, http://paulcalvano.com/wp-content/uploads/2018/03/security_headers-300x203.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/security_headers-768x519.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/security_headers-700x473.jpg 700w" sizes="(max-width: 918px) 100vw, 918px" /> 
 
 <!--more-->
 
@@ -41,7 +41,7 @@ So let&#8217;s dig into what these headers do, and how they are being used&#8230
 
 I found 44,003 sites that include an HSTS header on their homepage and all of them contained a max-age header (which is required). However not all of the max-age headers were defined correctly or long enough to matter. Almost 2,300 sites configured their max-age to 0 seconds &#8211; which effectively withdraws their sites from HSTS. Some sites had typos in the directives, garbled text and even some negative values. Overall, 84% of sites using HSTS are setting the max-age directive for at least 1 week.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/hsts.jpg" alt="" width="653" height="221" class="alignnone size-full wp-image-274" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/hsts.jpg 653w, http://paulcalvano.com/wp-content/uploads/2018/03/hsts-300x102.jpg 300w" sizes="(max-width: 653px) 100vw, 653px" /> 
+<img src="/assets/wp-content/uploads/2018/03/hsts.jpg" alt="" width="653" height="221" class="alignnone size-full wp-image-274" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/hsts.jpg 653w, http://paulcalvano.com/wp-content/uploads/2018/03/hsts-300x102.jpg 300w" sizes="(max-width: 653px) 100vw, 653px" /> 
 
 Additionally, 35% of sites using HSTS are using the includeSubdomains directive. And 18% had the preload directive included.
 
@@ -51,7 +51,7 @@ At the start of this post, we learned that only 2.9% of sites in the HttpArchive
 
 So which CSP directives are in use today? The below table summarizes the popular directives used on sites, as well as an example of some invalid CSP headers.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/csp.jpg" alt="" width="904" height="421" class="alignnone size-full wp-image-273" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/csp.jpg 904w, http://paulcalvano.com/wp-content/uploads/2018/03/csp-300x140.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/csp-768x358.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/csp-700x326.jpg 700w" sizes="(max-width: 904px) 100vw, 904px" /> 
+<img src="/assets/wp-content/uploads/2018/03/csp.jpg" alt="" width="904" height="421" class="alignnone size-full wp-image-273" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/csp.jpg 904w, http://paulcalvano.com/wp-content/uploads/2018/03/csp-300x140.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/csp-768x358.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/csp-700x326.jpg 700w" sizes="(max-width: 904px) 100vw, 904px" /> 
 
 You&#8217;ll probably notice some typos in the invalid CSP Headers table. However the 34 sites using `reflected-xss-block` are rather interesting. It seems this was part of an early draft of CSP, but was deprecated in favor of X-XSS-Protection. More details on that here &#8211; <https://bugs.chromium.org/p/chromium/issues/detail?id=657737>
 
@@ -59,7 +59,7 @@ You&#8217;ll probably notice some typos in the invalid CSP Headers table. Howeve
 
 In the table below you can see that 98% of the time this is configured correctly. 87% of sites that include it are using `X-Frame-Options: SameOrigin`. 10% use the `X-Frame-Options: Deny` header. And 1% are specifically allowing domains via `X-Frame-Options: Allow-From`. There are a small % of sites that are using incorrect directives, even 70 sites that are using `X-Frame-Options: GOFORIT`.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions.jpg" alt="" width="1133" height="399" class="alignnone size-full wp-image-272" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions.jpg 1133w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-300x106.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-768x270.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-1024x361.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-700x247.jpg 700w" sizes="(max-width: 1133px) 100vw, 1133px" /> 
+<img src="/assets/wp-content/uploads/2018/03/xframeoptions.jpg" alt="" width="1133" height="399" class="alignnone size-full wp-image-272" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions.jpg 1133w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-300x106.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-768x270.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-1024x361.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/03/xframeoptions-700x247.jpg 700w" sizes="(max-width: 1133px) 100vw, 1133px" /> 
 
 A quick Google search for the GOFORIT example revealed a [StackOverflow post](https://stackoverflow.com/questions/6666423/overcoming-display-forbidden-by-x-frame-options) where someone recommended using this to invalidate X-Frame-Options and force the browser to fail-open. One can only hope that those implementing it on their sites understand that they are effectively disabling this security feature&#8230;
 
@@ -67,7 +67,7 @@ A quick Google search for the GOFORIT example revealed a [StackOverflow post](ht
 
 So how are we doing? Out of 48,009 sites that are using this header, 91% are configuring it to block the loading of their sites during XSS attacks. In fact the most common way of setting it is `1; mode=block`. However there are 1206 sites that set it to `` which effectively removes protection. Even more concerning are the 145 sites that set it to `0; mode=block` since the browser will not block the attack because of the 0 setting&#8230;
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection.jpg" alt="" width="1294" height="261" class="alignnone size-full wp-image-271" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection.jpg 1294w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-300x61.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-768x155.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-1024x207.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-700x141.jpg 700w" sizes="(max-width: 1294px) 100vw, 1294px" /> 
+<img src="/assets/wp-content/uploads/2018/03/xssprotection.jpg" alt="" width="1294" height="261" class="alignnone size-full wp-image-271" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection.jpg 1294w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-300x61.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-768x155.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-1024x207.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/03/xssprotection-700x141.jpg 700w" sizes="(max-width: 1294px) 100vw, 1294px" /> 
 
 **X-Content-Type-Options**
 
@@ -81,7 +81,7 @@ The Referrer-Policy HTTP header governs which referrer information, if any, shou
 
 Most browsers default to no-referrer-when-downgrade, which means that the referrer is included on HTTP requests when the protocol security stays the same (ie, an HTTPS->HTTPS). The table below summarizes how they are configured across other websites. These add up to 97%, as another 3% have incorrectly configured their Referrer-Policy headers.
 
-<img src="http://paulcalvano.com/wp-content/uploads/2018/03/referrerpolicy.jpg" alt="" width="531" height="201" class="alignnone size-full wp-image-270" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/referrerpolicy.jpg 531w, http://paulcalvano.com/wp-content/uploads/2018/03/referrerpolicy-300x114.jpg 300w" sizes="(max-width: 531px) 100vw, 531px" /> 
+<img src="/assets/wp-content/uploads/2018/03/referrerpolicy.jpg" alt="" width="531" height="201" class="alignnone size-full wp-image-270" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/referrerpolicy.jpg 531w, http://paulcalvano.com/wp-content/uploads/2018/03/referrerpolicy-300x114.jpg 300w" sizes="(max-width: 531px) 100vw, 531px" /> 
 
 **Conclusion**
 
