@@ -45,15 +45,15 @@ Here’s the query :
 
 When viewed on a line chart, it’s interesting to note that on May 1, 2017 the average page weight increased considerably, while the median, 75th percentile and even 85th percentile dropped. The 95th percentile continued to rise, indicating that the recent surge over 3MB was largely a result of 5% of the largest pages.
 
-<img src="/assets/wp-content/uploads/2018/03/ha_pageweight.jpg" alt="" width="690" height="274" class="alignnone size-full wp-image-287" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight-300x119.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_pageweight.jpg" alt="" width="690" height="274" class="alignnone size-full wp-image-287"  /> 
 
 To explore this deeper I decided to graph the rate of change for each of these metrics from 2016 until now. While change in page weight over time is very gradual, there have been a few noticeable dates where the average page weight increased. For example, in May 2016 there was an interesting jump in page weight for ~ half of the pages. The jump on May 1st, 2017 continues to be of interest because it seems to have been triggered by an increased in the largest pages.
 
-<img src="/assets/wp-content/uploads/2018/03/ha_pageweight_rate_of_change.jpg" alt="" width="690" height="323" class="alignnone size-full wp-image-286" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight_rate_of_change.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight_rate_of_change-300x140.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_pageweight_rate_of_change.jpg" alt="" width="690" height="323" class="alignnone size-full wp-image-286" /> 
 
 If we step back and look at this as a yearly trend, it seems that since 2016 the page weight growth across some websites has increased at a much slower rate. In fact 50% of sites may have actually managed to reduce their page weight slightly. This is fantastic for those sites &#8211; and further investigation can be done to see how they are slowing growth (hint: let’s discuss below!). Another ~35% of sites are still showing a slowdown in the rate that their page weights increase. And then there’s the 15%&#8217;ers…
 
-<img src="/assets/wp-content/uploads/2018/03/ha_pageweight_yearlytrend.jpg" alt="" width="690" height="104" class="alignnone size-full wp-image-285" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight_yearlytrend.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight_yearlytrend-300x45.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_pageweight_yearlytrend.jpg" alt="" width="690" height="104" class="alignnone size-full wp-image-285" /> 
 
 There’s so much more that can be done to analyze this data. Let’s continue the discussion in the HTTP Archive discussion forum linked below. We can go beyond the average page weight and extract some deeper insight from this data!
 

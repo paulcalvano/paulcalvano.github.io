@@ -6,7 +6,7 @@ layout: post
 ---
 For years Real User Measurement (RUM) has been the gold standard for how to measure the performance of web applications. And the reason for it is quite simple: there is no better measure for how users are experiencing your site, than the users’ actual experiences themselves.
 
-<img src="/assets/wp-content/uploads/2018/04/mpulse.jpg" alt="" width="752" height="436" class="alignnone size-full wp-image-370" srcset="http://paulcalvano.com/wp-content/uploads/2018/04/mpulse.jpg 752w, http://paulcalvano.com/wp-content/uploads/2018/04/mpulse-300x174.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/04/mpulse-700x406.jpg 700w" sizes="(max-width: 752px) 100vw, 752px" /> 
+<img src="/assets/wp-content/uploads/2018/04/mpulse.jpg" alt="" width="752" height="436" class="alignnone size-full wp-image-370" /> 
 
 <!--more-->
 
@@ -31,7 +31,7 @@ The CrUX data is made available to query via BigQuery and is also included in Pa
 
 In my work at Akamai, I often meet with customers to help them understand and optimize their website’s performance. Sometimes I find myself working with folks that have not used RUM data before. Recently I’ve started creating graphs from Google’s CrUX to show them what RUM data looks like for their sites. For example, the graph below shows the Desktop and Mobile load times for an ecommerce website during March 2018.
 
-<img src="/assets/wp-content/uploads/2018/04/crux_desktop_mobile.jpg" alt="" width="1058" height="272" class="alignnone size-full wp-image-372" srcset="http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile.jpg 1058w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile-300x77.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile-768x197.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile-1024x263.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile-700x180.jpg 700w" sizes="(max-width: 1058px) 100vw, 1058px" /> 
+<img src="/assets/wp-content/uploads/2018/04/crux_desktop_mobile.jpg" alt="" width="1058" height="272" class="alignnone size-full wp-image-372" /> 
 
 CrUX data is specific to Google Chrome browsers &#8211; and is reported only from Chrome users who have opted-in to syncing their browsing history and have usage statistic reporting enabled. It’s also a very high level snapshot of 1 month’s data across all pages on the site. But it’s an excellent starting point that you can use to see how your site performs, and compare it to stats that you are using to evaluate your performance. If you decide that RUM data would be beneficial to you then Akamai mPulse has a [Lite version](https://www.soasta.com/performance-monitoring/mpulse-lite/) that is available for free.
 
@@ -46,11 +46,11 @@ The histograms I’ve been creating with CrUX are based on the queries used in o
 
 I created a similar % histogram for mPulse and layered them on top of each other. The results are very close.
 
-<img src="/assets/wp-content/uploads/2018/04/crux_mpulse_comparison.jpg" alt="" width="997" height="594" class="alignnone size-full wp-image-369" srcset="http://paulcalvano.com/wp-content/uploads/2018/04/crux_mpulse_comparison.jpg 997w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_mpulse_comparison-300x179.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_mpulse_comparison-768x458.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_mpulse_comparison-700x417.jpg 700w" sizes="(max-width: 997px) 100vw, 997px" /> 
+<img src="/assets/wp-content/uploads/2018/04/crux_mpulse_comparison.jpg" alt="" width="997" height="594" class="alignnone size-full wp-image-369"  /> 
 
 If we look at the performance for this site across other popular browsers, you can see some variations &#8211;
 
-<img src="/assets/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile.jpg" alt="" width="1254" height="335" class="alignnone size-full wp-image-371" srcset="http://paulcalvano.com/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile.jpg 1254w, http://paulcalvano.com/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile-300x80.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile-768x205.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile-1024x274.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile-700x187.jpg 700w" sizes="(max-width: 1254px) 100vw, 1254px" /> 
+<img src="/assets/wp-content/uploads/2018/04/mpulse_browsers_desktop_mobile.jpg" alt="" width="1254" height="335" class="alignnone size-full wp-image-371"  /> 
 
 This is just 1 example, but I’ve run this comparison across a number of different sites and can confirm that the CrUX data is accurate when compared to Chrome browsers from RUM data.
 
@@ -60,11 +60,11 @@ One area that has always been lacking in RUM is the ability to see a competitive
 
 Akamai is working on incorporating CrUX data into mPulse so that customers can easily compare their site’s performance to others. For example, in the graphs below I’ve compared 4 different sites within the same industry. The height of the histograms provides an indications of the distribution of Desktop vs Mobile traffic, and the data aligned to the X axis indicates how their performance compared.
 
-<img src="/assets/wp-content/uploads/2018/04/crux_desktop_mobile_competitors.jpg" alt="" width="1336" height="337" class="alignnone size-full wp-image-373" srcset="http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile_competitors.jpg 1336w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile_competitors-300x76.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile_competitors-768x194.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile_competitors-1024x258.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_desktop_mobile_competitors-700x177.jpg 700w" sizes="(max-width: 1336px) 100vw, 1336px" /> 
+<img src="/assets/wp-content/uploads/2018/04/crux_desktop_mobile_competitors.jpg" alt="" width="1336" height="337" class="alignnone size-full wp-image-373" /> 
 
 Since CrUX contains dimensions for form\_factor and effective\_connection_type, we can also compare the relative densities to see the distribution of connection and device types across multiple sites.
 
-<img src="/assets/wp-content/uploads/2018/04/crux_distribution_table.jpg" alt="" width="495" height="285" class="alignnone size-full wp-image-368" srcset="http://paulcalvano.com/wp-content/uploads/2018/04/crux_distribution_table.jpg 495w, http://paulcalvano.com/wp-content/uploads/2018/04/crux_distribution_table-300x173.jpg 300w" sizes="(max-width: 495px) 100vw, 495px" /> 
+<img src="/assets/wp-content/uploads/2018/04/crux_distribution_table.jpg" alt="" width="495" height="285" class="alignnone size-full wp-image-368"  /> 
 
 I’m really excited to be partnering with Google on this &#8211; as it continues to increase the value that mPulse is able to provide our customers.
 

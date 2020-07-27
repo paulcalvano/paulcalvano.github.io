@@ -8,7 +8,7 @@ Have you ever wondered why WebPageTest can sometimes show that a repeat view loa
 
 If you have not run into this issue before, then examine the screenshot below to see an example:
 
-<img src="/assets/wp-content/uploads/2018/03/webpagettest_missing_cc_expires.jpg" alt="" width="1753" height="970" class="alignnone size-full wp-image-315" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires.jpg 1753w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires-300x166.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires-768x425.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires-1024x567.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires-700x387.jpg 700w" sizes="(max-width: 1753px) 100vw, 1753px" /> 
+<img src="/assets/wp-content/uploads/2018/03/webpagettest_missing_cc_expires.jpg" alt="" width="1753" height="970" class="alignnone size-full wp-image-315"  /> 
 
 <!--more-->
 
@@ -43,7 +43,7 @@ Etags are useful for providing unique identifiers to a cached item, but they do 
 
 If we examine a request where this is happening you can see that the site is sending a Last-Modified header, but there are no Cache-Control or Expires headers. The absence of these two headers is why WebPageTest has flagged this as an issue with caching static content.
 
-<img src="/assets/wp-content/uploads/2018/03/webpagettest_missing_cc_expires_example.jpg" alt="" width="955" height="443" class="alignnone size-full wp-image-319" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires_example.jpg 955w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires_example-300x139.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires_example-768x356.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/webpagettest_missing_cc_expires_example-700x325.jpg 700w" sizes="(max-width: 955px) 100vw, 955px" /> 
+<img src="/assets/wp-content/uploads/2018/03/webpagettest_missing_cc_expires_example.jpg" alt="" width="955" height="443" class="alignnone size-full wp-image-319"  /> 
 
 This object was last modified on October 27th, 2017 but The browser does not know how long to cache it for, which puts us in the unpredictable realm of &#8220;Heuristic Freshness&#8221;. This can be simplified as _&#8220;So this is cacheable, but you won&#8217;t tell me for how long? I&#8217;ll have to guess a TTL and use that&#8221;_.
 
@@ -53,17 +53,17 @@ This is not to say that there is anything wrong with heuristic freshness. It was
 
 So we know that there are problems with this request, and we also know that the cache TTLs may be assigned heuristically based on the Last-Modified date &#8211; but why does Firefox&#8217;s about:cache show that this resource is cacheable for 1 week instead of 10% of 136 days?
 
-<img src="/assets/wp-content/uploads/2018/03/firefox_cache_entry.jpg" alt="" width="597" height="219" class="alignnone size-full wp-image-322" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/firefox_cache_entry.jpg 597w, http://paulcalvano.com/wp-content/uploads/2018/03/firefox_cache_entry-300x110.jpg 300w" sizes="(max-width: 597px) 100vw, 597px" /> 
+<img src="/assets/wp-content/uploads/2018/03/firefox_cache_entry.jpg" alt="" width="597" height="219" class="alignnone size-full wp-image-322" /> 
 
 Chrome&#8217;s cache internals do not show the expiration for a cached resource, so it&#8217;s expiration is not easy to determine. Is it 1 week as well? Or 10% of 136 days? Or something else?
 
 Since Firefox, Chrome and WebKit are open source, we can actually dig into the code and see how the spec is implemented. In the [Chromium source](https://cs.chromium.org/chromium/src/net/http/http_response_headers.cc?sq=package:chromium&dr=C&l=1009) as well as the [Webkit source](https://opensource.apple.com/source/WebCore/WebCore-7604.1.38.1.6/platform/network/CacheValidation.cpp.auto.html), we can see that the lifetimes.freshness variable is set to 10% of the time since the object was last modified (provided that a Last-Modified header was returned). The 10% since last modified heuristic is the same as the suggestion from the RFC. When we look at the [Firefox source code](https://dxr.mozilla.org/mozilla-central/source/netwerk/protocol/http/nsHttpResponseHead.cpp#743), we can see that the same calculation is used, however Firefox uses the `std:min()` C++ function to select the less of the 10% calculation or 1 week. This explains why we only saw the resource cached for 7 days in Firefox. It would likely have been cached for 13 or 14 days in Chrome.
 
-<img src="/assets/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox.jpg" alt="" width="1920" height="440" class="alignnone size-full wp-image-335" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox.jpg 1920w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox-300x69.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox-768x176.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox-1024x235.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox-700x160.jpg 700w" sizes="(max-width: 1920px) 100vw, 1920px" /> 
+<img src="/assets/wp-content/uploads/2018/03/heuristic_browser_code_chrome_webkit_firefox.jpg" alt="" width="1920" height="440" class="alignnone size-full wp-image-335"  /> 
 
 With Internet Explorer 11, we can look at the Temporary Internet Files to see how the browser handles heuristic freshness. This is similar to the about:cache investigation we did for Firefox, but it&#8217;s the only visibility we have to work with. To do this, clear your browser cache, then open a page where objects are being heuristically cached. Then view the files in `C:\Users\<username>\AppData\Local\Microsoft\Windows\Temporary Internet Files`. The screenshot below shows that there is no expiration for the resources cached, although it&#8217;s not clear whether a heuristic is used.
 
-<img src="/assets/wp-content/uploads/2018/03/heuristic_browser_caching_ie11.jpg" alt="" width="920" height="219" class="alignnone size-full wp-image-327" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_caching_ie11.jpg 920w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_caching_ie11-300x71.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_caching_ie11-768x183.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/03/heuristic_browser_caching_ie11-700x167.jpg 700w" sizes="(max-width: 920px) 100vw, 920px" /> 
+<img src="/assets/wp-content/uploads/2018/03/heuristic_browser_caching_ie11.jpg" alt="" width="920" height="219" class="alignnone size-full wp-image-327"  /> 
 
 This appears to have been configurable in [earlier versions of IE](https://blogs.msdn.microsoft.com/ie/2010/07/14/caching-improvements-in-internet-explorer-9/). I&#8217;m not sure how heuristic caching is implemented in Edge yet &#8211; but will update this when I find out.
 
@@ -73,6 +73,6 @@ Many content owners incorrectly believe that omitting Cache-Control and Expires 
 
 If you want to ensure that freshness lifetimes are explicitly stated in your HTTP responses, the best way to do this would be to always include a `Cache-Control` header. At a minimum, you should be including `no-store` to prevent caching or `max-age=<seconds>` to indicate how long content should be considered fresh.
 
-If you are an Akamai customer, it&#8217;s easy to create a downstream caching behavior that will automatically update your Cache-Control and Expires headers based on either a static time value or the remaining freshness of the object on the CDN.<img src="/assets/wp-content/uploads/2018/03/downstream_cacheability_akamai.jpg" alt="" width="571" height="234" class="alignnone size-full wp-image-330" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/downstream_cacheability_akamai.jpg 571w, http://paulcalvano.com/wp-content/uploads/2018/03/downstream_cacheability_akamai-300x123.jpg 300w" sizes="(max-width: 571px) 100vw, 571px" /> 
+If you are an Akamai customer, it&#8217;s easy to create a downstream caching behavior that will automatically update your Cache-Control and Expires headers based on either a static time value or the remaining freshness of the object on the CDN.<img src="/assets/wp-content/uploads/2018/03/downstream_cacheability_akamai.jpg" alt="" width="571" height="234" class="alignnone size-full wp-image-330" /> 
 
 Many thanks to [Yoav Weiss](https://twitter.com/yoavweiss) and [Mark Nottingham](https://twitter.com/mnot) for reviewing this and providing feedback.

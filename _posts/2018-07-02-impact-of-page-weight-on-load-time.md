@@ -6,7 +6,7 @@ layout: post
 ---
 Over the years it has been fun to track website page weight by comparing it to milestones such as the size of a floppy disk (1.44MB), the size of the original install size of DOOM (2.39MB) and when it hit 3MB last summer.
 
-[<img src="/assets/wp-content/uploads/2018/05/avg_page_weight_floppy_doom_.jpg" alt="" width="646" height="336" class="alignnone size-full wp-image-460" srcset="http://paulcalvano.com/wp-content/uploads/2018/05/avg_page_weight_floppy_doom_.jpg 646w, http://paulcalvano.com/wp-content/uploads/2018/05/avg_page_weight_floppy_doom_-300x156.jpg 300w" sizes="(max-width: 646px) 100vw, 646px" />](http://paulcalvano.com/wp-content/uploads/2018/05/avg_page_weight_floppy_doom_.jpg)
+[<img src="/assets/wp-content/uploads/2018/05/avg_page_weight_floppy_doom_.jpg" alt="" width="646" height="336" class="alignnone size-full wp-image-460" />
 
 <!--more-->
 
@@ -14,15 +14,15 @@ When we talk about page weight, we are often talking about high resolution image
 
 I recently did some research to show that [sites with more 3rd party content are more likely to be slower](https://discuss.httparchive.org/t/analyzing-3rd-party-performance-via-http-archive-crux/1359). And then a few days later [USAToday showed us an extreme example](https://twitter.com/paulcalvano/status/1000094333524201473) by publishing a GDPR friendly version of their site for EU visitors. The EU version has no 3rd party content, substantially less page weight and is blazing fast compared to the US version.
 
-[<img src="/assets/wp-content/uploads/2018/05/usatoday_eu_us.jpg" alt="" width="1200" height="731" class="alignnone size-full wp-image-447" srcset="http://paulcalvano.com/wp-content/uploads/2018/05/usatoday_eu_us.jpg 1200w, http://paulcalvano.com/wp-content/uploads/2018/05/usatoday_eu_us-300x183.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/05/usatoday_eu_us-768x468.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/05/usatoday_eu_us-1024x624.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/05/usatoday_eu_us-700x426.jpg 700w" sizes="(max-width: 1200px) 100vw, 1200px" />](http://paulcalvano.com/wp-content/uploads/2018/05/usatoday_eu_us.jpg)
+[<img src="/assets/wp-content/uploads/2018/05/usatoday_eu_us.jpg" alt="" width="1200" height="731" class="alignnone size-full wp-image-447" />
 
 Shortly after the 3MB average page weight milestone was reached last summer, I did some [analysis](https://discuss.httparchive.org/t/tracking-page-weight-over-time/1049) to try and understand the sudden jump in page weight. It turns out that the largest 5% of pages were influencing the average, which is a perfect example of averages misleading us.
 
-<img src="/assets/wp-content/uploads/2018/03/ha_pageweight.jpg" alt="" width="690" height="274" class="alignnone size-full wp-image-287" srcset="http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight.jpg 690w, http://paulcalvano.com/wp-content/uploads/2018/03/ha_pageweight-300x119.jpg 300w" sizes="(max-width: 690px) 100vw, 690px" /> 
+<img src="/assets/wp-content/uploads/2018/03/ha_pageweight.jpg" alt="" width="690" height="274" class="alignnone size-full wp-image-287" />
 
 These days we focus more on percentiles, histograms and statistical distributions to represent page weight. For example, in the image below you can see how this is being represented [in the recently redesigned HTTP Archive reports](https://httparchive.org/reports/state-of-the-web#bytesTotal).
 
-[<img src="/assets/wp-content/uploads/2018/05/page-weight-new-http-archive.jpg" alt="" width="1165" height="837" class="alignnone size-full wp-image-463" srcset="http://paulcalvano.com/wp-content/uploads/2018/05/page-weight-new-http-archive.jpg 1165w, http://paulcalvano.com/wp-content/uploads/2018/05/page-weight-new-http-archive-300x216.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/05/page-weight-new-http-archive-768x552.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/05/page-weight-new-http-archive-1024x736.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/05/page-weight-new-http-archive-700x503.jpg 700w" sizes="(max-width: 1165px) 100vw, 1165px" />](http://paulcalvano.com/wp-content/uploads/2018/05/page-weight-new-http-archive.jpg)
+[<img src="/assets/wp-content/uploads/2018/05/page-weight-new-http-archive.jpg" alt="" width="1165" height="837" class="alignnone size-full wp-image-463" />
 
 **_Is page weight still something we should care about in 2018?_**
 
@@ -32,11 +32,11 @@ _Note: If you are not familiar with CrUX, it is Real User Measurement data colle
 
 By leveraging CrUX and the HTTP Archive together, we can analyze performance across many websites and look for trends. For example, below you can see how often the Alexa top 10 sites are able to load pages in less than 2 seconds, 2-4 seconds, 4-6 seconds and greater than 6 seconds. It&#8217;s easy to glance that this chart and see which sites have a large percentage of slower pages. I wrote a another post about how we can use CrUX data like this to [compare yourself to competitors](https://paulcalvano.com/index.php/2018/04/26/using-googles-crux-to-compare-your-sites-rum-data-w-competitors/).
 
-[<img src="/assets/wp-content/uploads/2018/07/alexa-10.jpg" alt="" width="1111" height="372" class="alignnone size-full wp-image-472" srcset="http://paulcalvano.com/wp-content/uploads/2018/07/alexa-10.jpg 1111w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-10-300x100.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-10-768x257.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-10-1024x343.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-10-700x234.jpg 700w" sizes="(max-width: 1111px) 100vw, 1111px" />](http://paulcalvano.com/wp-content/uploads/2018/07/alexa-10.jpg)
+[<img src="/assets/wp-content/uploads/2018/07/alexa-10.jpg" alt="" width="1111" height="372" class="alignnone size-full wp-image-472" />
 
 But what happens if we look at the real user performance for 1,000 popular sites this way? The results are oddly symmetrical, with almost as many fast sites as slow ones. In the graph below I sorted the onLoad metrics from fast (left) to slow (right). There are 1000 tiny bars &#8211; each representing a summary of a single website&#8217;s real user experiences on Chrome browsers. The most consistently fast site in this list is the webcomic XKCD &#8211; with an impressive 93.5% of users loading pages in < 2 seconds. Some other sites in the &#8220;extremely fast&#8221; category are Google, Bing, CraigsList, Gov.uk, etc. Many of the slow sites (far right of this graph) have large page weights, videos, advertisements and numerous 3rd parties. Where do you think your site&#8217;s performance stacks up?
 
-[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-onload_may2018.jpg" alt="" width="1218" height="568" class="alignnone size-full wp-image-490" srcset="http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload_may2018.jpg 1218w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload_may2018-300x140.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload_may2018-768x358.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload_may2018-1024x478.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload_may2018-700x326.jpg 700w" sizes="(max-width: 1218px) 100vw, 1218px" />](http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload_may2018.jpg)
+[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-onload_may2018.jpg" alt="" width="1218" height="568" class="alignnone size-full wp-image-490" />
 
 Since we&#8217;re interested in investigating the relationship of page weight to performance, let&#8217;s look at the top 1000 pages that are less than 1MB and the top 1000 pages that are greater than 3MB. The pattern in load times is quite revealing. A few notable observations:
 
@@ -45,7 +45,7 @@ Since we&#8217;re interested in investigating the relationship of page weight to
   * There are far more slow >3MB pages compared to fast ones.
   * The fact that there are still some fast >3MB pages and slow <1MB pages proves that page weight isn&#8217;t everything, and it is possible to optimize rich experiences for performance.
 
-[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-small-vs-large.jpg" alt="" width="1534" height="762" class="alignnone size-full wp-image-478" srcset="http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-small-vs-large.jpg 1534w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-small-vs-large-300x149.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-small-vs-large-768x381.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-small-vs-large-1024x509.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-small-vs-large-700x348.jpg 700w" sizes="(max-width: 1534px) 100vw, 1534px" />](http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-small-vs-large.jpg)
+[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-small-vs-large.jpg" alt="" width="1534" height="762" class="alignnone size-full wp-image-478" />
 
 _Note: I&#8217;ve also applied the same logic to the top 10,000 sites, and the pattern was identical._
 
@@ -53,7 +53,7 @@ _Note: I&#8217;ve also applied the same logic to the top 10,000 sites, and the p
 
 Since CrUX contains additional metrics, I also looked at the relationship of page weight to DOM Content Loaded and First Contentful Paint. The set of graphs below compare the fastest range (<2s for onLoad, <1s for FCP and DCL) for the top 1000 sites. Across these three metrics, we see the highest correlation of load times to page weight with the onLoad metric.
 
-[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl.jpg" alt="" width="1333" height="735" class="alignnone size-full wp-image-480" srcset="http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl.jpg 1333w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl-300x165.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl-768x423.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl-1024x565.jpg 1024w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl-700x386.jpg 700w" sizes="(max-width: 1333px) 100vw, 1333px" />](http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl.jpg) _(Note: the higher %s mean that more pages experienced faster load times. So higher=better in these graphs.)_
+[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-onload-fcp-dcl.jpg" alt="" width="1333" height="735" class="alignnone size-full wp-image-480" /> _(Note: the higher %s mean that more pages experienced faster load times. So higher=better in these graphs.)_
 
 **What Aspects of Page Weight Impacts Performance the Most?**
 
@@ -61,7 +61,7 @@ We’ve seen a strong correlation of performance to page weight, and we’ve lea
 
 If we examine the Top 1000 sites again and pull some of the page weight statistics from the HTTP Archive, we can once again compare HTTP Archive data w/ CrUX. The graphs below summarize the percentage of pages with onLoad times less than 2 seconds. The Y axis is the median number of bytes, and the X axis represents the percentage of sites with fast page loads.
 
-[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js.jpg" alt="" width="880" height="549" class="alignnone size-full wp-image-481" srcset="http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js.jpg 880w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js-300x187.jpg 300w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js-768x479.jpg 768w, http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js-700x437.jpg 700w" sizes="(max-width: 880px) 100vw, 880px" />](http://paulcalvano.com/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js.jpg)
+[<img src="/assets/wp-content/uploads/2018/07/alexa-1000-bloat_images_css_js.jpg" alt="" width="880" height="549" class="alignnone size-full wp-image-481" />
 
 In the top left graph, page weight shows a strong correlation, and the sites with less fast pages tended to have larger page weights. The remaining 3 graphs show how JavaScript, CSS and Images contribute to page weight and performance. Based on these graphs, Images and JavaScript are the most significant contributors to the page weights that affect load time. And for some slow sites, the amount of compressed JavaScript actually exceeds the number of image bytes!
 
