@@ -8,7 +8,7 @@ Back in 2017 the maximum validity lifetime for an HTTPS certificate was [set to 
 
 Information is still trickling in, but it seems that Safari is planning to enforce a max validity lifetime of 398 days effective September 1st, 2020.
 
-
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today&#39;s big news: One year max public TLS certs are coming, starting 1 Sept 2020, if you want to be trusted in Safari.</p>&mdash; Dean Coclin (@chosensecurity) <a href="https://twitter.com/chosensecurity/status/1230253348236013570?ref_src=twsrc%5Etfw">February 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Let’s take a look at the state of certificate validity ranges today, so we can track how this evolves over the next few months. The data for this comes from the [HTTP Archive](https://httparchive.org), which is an open source project that tracks how the web is built. 
 
@@ -18,15 +18,15 @@ The HTTP Archive requests table contains certificate details for every HTTPS req
 
 Certificate validity dates are widely distributed, but there seems to be a few popular ranges. THe most common validity date is 90 days, likely to the popularity of LetsEncrypt Overall 55% of certificates have a validity date of less than 364 days, which I’ve highlighted in green below. An additional 20% of certificates have a validity between 365 and 398 days, which will meet Safari’s requirements. The remaining 25% have a validity range of more than 398 days.
 
-![|624x181](https://lh6.googleusercontent.com/AOBjFo3j8o70P2yGzR0HGLyJ28q1MxwwsLCW3HkDU9_5lCdxPLyRjioJfnKCHGr4sgLQNTS9MDJwQxKb9kcQtDBztwXX1CpIjdvrP_K3fHsKr-3KOeukfoMaWSbmKWll1fkBMM2E)
+![624x181](/assets/img/blog/certificate-validity-dates/1.jpg)
 
 Looking at this by certificate authority is also quite interesting. The graph below shows the top 15 certificate authorities. LetsEncrypt accounts for 38.4% of all certificates -
 
-![|624x227](https://lh6.googleusercontent.com/tmVhJjeDtjJatp4JQ2G030Xqy4zar5WP3oOq-oXmSNau8yg1uUJLXMpNwTntspj_9myJGGYZ0pwe96YYS47aZBP99TQl7Y00m1WC-YHlOnGIw0BvbMEPjCpnEkFCMBtq5nRQ3xiF)
+![624x227](/assets/img/blog/certificate-validity-dates/2.jpg)
 
 When we look at certificate validity date ranges for these certificate authorities, we can see that there’s a mix. Certificates issued by LetsEncrypt, Cloudflare, cPanel and Amazon meet the 398 day requirement already. However, Sectigo, GoDaddy, DigiCert, Comodo and RapidSSL have a very large percentage of certificates that exceed 398 days. 
 
-![|624x284](https://lh6.googleusercontent.com/tNsRLp4kNsUJ55xIHvynO_7-pxNKooBth07BFajaVIODH1vZvlvswd_gA72N3rAvj8Ke4Z_DxW6ogi7Sworl4V8SRN0e4MePBE5xsV_nvC8fho0dyKM96GBgh_9R7puv5KE_j0up)
+![624x284](/assets/img/blog/certificate-validity-dates/3.jpg)
 
 [DigiCert released a public statement](https://www.digicert.com/position-on-1-year-certificates/) yesterday, which confirms that existing certificates with a validity range >398 days will continue to be trusted by Safari, but that certificates issued after August 30th won’t be able to exceed 398 days.
 
