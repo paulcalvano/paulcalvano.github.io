@@ -6,7 +6,15 @@ layout: post
 ---
 <img src="/assets/wp-content/uploads/2017/07/custom-web-font-was-used-to-style-a-very-small-piece-of-text.jpg" alt="" width="823" height="521" class="alignnone size-full wp-image-213" />
 
-You may not think about it much, but fonts play a critical role in how quickly a web page renders. Custom font usage has increased steadily over the past six years, and as of this writing, 68% of sites in the HTTP Archive use at least one custom font.<img src="/assets/wp-content/uploads/2017/07/sites-custom-fonts.png.jpg" alt="" width="600" height="300" class="alignnone size-full wp-image-203"  /> <!--more--> Why use custom fonts? Many companies use a custom font for branding, to exercise control and familiarity with their brand. However, custom fonts come with a performance cost, as they often delay the rendering of text until the font is downloaded.
+You may not think about it much, but fonts play a critical role in how quickly a web page renders. Custom font usage has increased steadily over the past six years, and as of this writing, 68% of sites in the HTTP Archive use at least one custom font. 
+
+<p></p>
+
+<img src="/assets/wp-content/uploads/2017/07/sites-custom-fonts.png.jpg" alt="" width="600" height="300" class="alignnone size-full wp-image-203"  /> 
+
+<p></p>
+
+Why use custom fonts? Many companies use a custom font for branding, to exercise control and familiarity with their brand. However, custom fonts come with a performance cost, as they often delay the rendering of text until the font is downloaded.
 
 Unlike some third-party content, which can be delayed without the user noticing, fonts need to be prioritized and loaded quickly to ensure an optimal user experience. There are a few performance techniques to get web fonts to load fast, but before delving into that you might simply ask the question of whether a custom font is actually worth the performance cost, based on how it is used on a page.
 

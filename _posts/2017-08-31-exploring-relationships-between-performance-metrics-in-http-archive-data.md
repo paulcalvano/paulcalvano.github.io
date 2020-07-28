@@ -138,7 +138,9 @@ Based on this data there are some interesting observations (which we’ll test b
   * The Visually Complete metric appears to track slightly faster than the onload metric.
   * The Time to Interactive metric appears to track close to the Fully Loaded metric, but is slightly slower.
 
-**Graph’s Don’t Lie, Or Do They?** So now we have a few observations &#8211; but keep in mind that we are comparing histograms to each other and not individual sites’ performance. This allows us to observe some interesting patterns and it is tempting to draw conclusions, but it is important to validate the assumptions. For example, how likely is it that a particular site is going to have a First Paint time that tracks very close to Render Start, a Visually Complete time close to onLoad, a Time To Interactive that is etc?
+**Graph’s Don’t Lie, Or Do They?** 
+
+So now we have a few observations &#8211; but keep in mind that we are comparing histograms to each other and not individual sites’ performance. This allows us to observe some interesting patterns and it is tempting to draw conclusions, but it is important to validate the assumptions. For example, how likely is it that a particular site is going to have a First Paint time that tracks very close to Render Start, a Visually Complete time close to onLoad, a Time To Interactive that is etc?
 
 In order to determine this, I decided to modify the above query to create histograms of the % difference between pairs of metrics we analyzed above for each site. The following query will be used to validate each of the 4 bullet points above. Note that I trimmed the data to look at only +/- 100% difference.
 
@@ -216,7 +218,9 @@ The results are quite interesting. What we can tell here is:
   * Visually Complete and onLoad are also not closely related either, except for ~32% of sites that fall within 10% of each other…
   * There is a strong correlation between Fully Loaded and Time to Interactive. 13% of the sites measured have a TTI within 10% of Fully Loaded time. 73% of sites had a TTI that ranged from 15% to 45% slower than the Fully Loaded Time
 
-**What About Mobile?** These metrics can be extracted from the mobile pages in the HTTP Archive as well. The same patterns exist, albeit with slower response times.
+**What About Mobile?** 
+
+These metrics can be extracted from the mobile pages in the HTTP Archive as well. The same patterns exist, albeit with slower response times.
 
 <img src="/assets/wp-content/uploads/2018/03/ha_comparison_of_page_metrics_mobile_histogram.jpg" alt="" width="589" height="500" class="alignnone size-full wp-image-295" /> 
 
