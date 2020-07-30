@@ -96,6 +96,20 @@ In this episode of The State of the Web, Rick speaks with Paul Calvano, a Senior
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hqTtkdNwYwk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+**3 Tips to Increasing Mobile App Performance**
+
+Sr. Web Performance Architect, Paul Calvano and Sr. Strategist Eric Mingorance share their experience and insights to help you make your Mobile Apps faster. Theyll demo techniques to help identify problems and youll learn how to solve them with Akamai.
+
+This session covers these 3 important areas:
+- How to capitalize on the benefits of serving API traffic through Akamai
+- Analyzing Mobile Applications for performance issues
+- Advanced Offload/Optimization Techniques for Mobile Applications
+
+<iframe src="http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+Presented at:
+- 2016-July: [Akamai Edge Conference](http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4) (Las Vegas, NV)
+
 **Advanced Caching Concepts**
 
 The caching ecosystem has evolved over the years  what, where, and how long you cache your web assets are now important considerations for anyone doing business on the internet. Browser cache, html5 application cache, sophisticated reverse proxies like Varnish, and the evolution of CDNs have all elevated caching as the single most effective tool for creating high performing and scalable web applications.
