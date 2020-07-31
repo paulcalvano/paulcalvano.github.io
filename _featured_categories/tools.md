@@ -17,3 +17,31 @@ description: >
 ---
 
 
+
+**WebPageTest Cookies Script**
+
+When running a [WebPageTest](https://webpagetest.org)  measurement as a return visitor, sometimes the page might be rendered differently based on the cookies that the end user has recieved.  Sometimes the sheer size of the cookies can also [impact TTFB](/2020-07-13-an-analysis-of-cookie-sizes-on-the-web/).  And sometimes you just want to test a website behind a login. In order to test all of these scenarios, you would need to include cookies on your initial request. Fortunately, this is something that you can easily do with the WebPageTest [script](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/scripting#TOC-setCookie) `setCookie`.
+
+While adding this script step is fairly simple, sometimes the page you are trying to test has a large number of cookies. This can become cumbersome. This  utility parses HTTP request headers to generate a WebPageTest script that includes all of the requested cookies. It can parse both HTTP/1.1 and HTTP/2 request headers (the main differences are case sensitivity in header names and use of `:authority` and `:path` for HTTP/2 instead of `Host` and the the path from the `GET`line in HTTP/1.1)
+
+[![](/assets/img/blog/tools/wpt-cookies.jpg)](http://htmlpreview.github.io/?https://github.com/paulcalvano/requestHeaders-to-WPT-script/blob/master/request-headers-to-wpt-script.html)
+
+You can find the tool [here](http://htmlpreview.github.io/?https://github.com/paulcalvano/requestHeaders-to-WPT-script/blob/master/request-headers-to-wpt-script.html)
+
+
+**Gzip/Brotli Compression Estimator** 
+
+Ever wonder how effective your web server or CDN is at compressing your text based assets?  While it's easy to confirm that a response was compressed (by looking at 	`Content-Encoding` headers, the compression level that was used is not indicated anywhere in the response. This tool attempts to download both gzip and brotli compressed resources from your server, and estimates their compression levels.  It also compresses the file at each level of gzip and brotli compression so that you can see what the potential savings are. I wrote a blog post about this [here](http://127.0.0.1:4000/2018-07-25-brotli-compression-how-much-will-it-reduce-your-content/)
+[![](/assets/wp-content/uploads/2018/07/compression_estimator_jquery.jpg)](https://tools.paulcalvano.com/compression.php)
+
+You can find this tool [here](https://tools.paulcalvano.com/compression.php).
+
+**webfont usage analyzer**
+
+Custom web font usage has grown considerably over the past few years, and now almost every site you visit has them. But how often are they used on a page?  This tool will help you visualize where a font stack is used on a page. This can help technical teams and designers collaborate on the balance between typography and web performance. I wrote more about custom web font usage, and this tool [here](/2017-07-25-performance-and-usage-implications-of-custom-fonts/).
+
+[![](/assets/wp-content/uploads/2017/07/developer_akamai_example.jpg)](https://github.com/paulcalvano/webfont-usage-analyzer)
+
+You can find this tool [here](https://github.com/paulcalvano/webfont-usage-analyzer).
+
+

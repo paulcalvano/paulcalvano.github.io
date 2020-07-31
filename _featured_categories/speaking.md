@@ -115,8 +115,7 @@ Presented at:
 The caching ecosystem has evolved over the years  what, where, and how long you cache your web assets are now important considerations for anyone doing business on the internet. Browser cache, html5 application cache, sophisticated reverse proxies like Varnish, and the evolution of CDNs have all elevated caching as the single most effective tool for creating high performing and scalable web applications.
 
 Using live demos, we will dive into some advance caching concepts that will enable you to squeeze the most benefits from this caching ecosystem.
-
-
+<p></p>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/9jRfREH8SF8h3r" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 Presented at: 
