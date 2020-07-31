@@ -4,7 +4,7 @@ date: 2018-03-05T01:18:08+00:00
 author: Paul Calvano
 layout: post
 related_posts:
-	- _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
+  - _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
   - _posts/2020-02-20-certificate-validity-dates.markdown
   - _posts/2020-02-17-san-certificates-how-many-alt-names-are-too-many.md
 ---
