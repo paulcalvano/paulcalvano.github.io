@@ -4,7 +4,7 @@
 # IMPORTANT: Set the URL of your site.
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
-url: https://paulcalvano.github.io
+url: https://paulcalvano.com
 
 # IMPORTANT: Set The "base URL" of your site.
 # When your site sits in a subdirectory, set to /<name of directory>
@@ -31,7 +31,7 @@ description:           >
   Paul Calvano is a Web Performance Architect at Akamai Technologies, where he helps businesses improve the performance of their websites.
 
 # A shorter description for the sidebar.
-tagline:               Hi! I'm a web performance architect, and have been making websites fast for the past 20 years!
+tagline:               Hi! I'm a web performance architect, and have been making websites load faster for the past 20 years!
 
 # A list of keywords for your blog
 keywords:              [web performance, webperf, optimization, html, javascript, http archive, bigquery]
@@ -47,7 +47,7 @@ author:
   name:                Paul Calvano
   email:               paulcalvano@yahoo.com
   # # Used by `jekyll-seo-tag`:
-  # twitter:             paulcalvano
+  twitter:             paulcalvano
 
 # Add links to the sidebar.
 menu:
@@ -333,7 +333,7 @@ plugins:
 
 # Used for twitter cards
 # twitter:
-#   username:            <username>
+#   username:            paulcalvano
 
 # Used for facebook open graph
 # facebook:
