@@ -3,6 +3,10 @@ title: "Analyzing 3rd Party Performance via HTTP Archive + CrUX"
 date: 2018-05-15T00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
+  - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
+  - _posts/2017-09-17-which-3rd-party-content-loads-before-render-start.md
 ---
 
 During a discussion about correlating 3rd party content to performance I decided to have some fun combining both the HTTP Archive and Chome User Experience Report data sets to see what we can learn. The results were pretty conclusive that there is a strong correlation between the % of 3rd party content on a site and the load times (measured via the onLoad metric). 
@@ -39,7 +43,7 @@ LIMIT 10000
 
 The results from this look like:
 
-![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/1.png)
+![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/1.png){:loading="lazy"}
 
 **Add CrUX Data to the Query** 
 
@@ -82,19 +86,19 @@ LIMIT 10000
 ```
 
 The output of this query looks like this:
-![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/2.png)
+![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/2.png){:loading="lazy"}
 
 **Step 3: Export to Google Sheets and Graph**
 
 In the Google Sheet, I created a Pivot table that used the percent_third_party column as the rows.   Then I aggregate the SUM of each metric to include the full densitiy for each of the 10,000 sites into the results.    And finally I chose a Stacked % Area Graph to represent the results - 
 
-![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/3.png)
+![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/3.png){:loading="lazy"}
 
 **So What Does this Tell Us?**
 
 If you examine the relationship of very fast experiences to slow ones, you'll notice that the percentage of <2 second response times drops from 50% w/ no 3rd parties down to 25% (with 40% third parties).   And as the number of third parties increase, the % of >6 second response times increases as well.
 
-![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/4.png)
+![](/assets/img/blog/analyzing-3rd-party-performance-via-http-archive-crux/4.png){:loading="lazy"}
 
 
 _Originally published at <https://discuss.httparchive.org/t/analyzing-3rd-party-performance-via-http-archive-crux/1359>_

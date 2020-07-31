@@ -3,6 +3,8 @@ title: "Using Wappalyzer to Analyze CPU Times Across JS Frameworks"
 date: 2018-08-21T00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+- 
 ---
 
 Last month [WebPageTest added support ](https://github.com/WPO-Foundation/wptagent/issues/86) for [Wappalyzer](https://www.wappalyzer.com/), which makes it super easy to uncover technologies used on websites. And now a month later the data from it is available in the HTTP Archive! 
@@ -55,7 +57,7 @@ ORDER BY freq DESC
 
 When we run this, we can see that JQuery is by far the most frequently used JS framework.   There are also lot of different versions, so some of the other frameworks might be buried under the noise of all the versions numbers.
 
-![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/1.png)
+![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/1.png){:loading="lazy"}
 
 I wanted to summarize this without the version numbers, so I used a simple regular expression to strip them out. In the example below, I removed spaces, periods, and numbers from the list of Frameworks
 
@@ -72,7 +74,7 @@ ORDER BY freq DESC
 
 I was actually really suprised to see that React was so much more commonly used compared to Angular.  Also, there appear to be more sites using jQuery than there are sites not using any Framework at all !!!
 
-![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/2.png)
+![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/2.png){:loading="lazy"}
 
 
 **Analyzing CPU Time Patterns Across JS Frameworks**
@@ -112,7 +114,7 @@ ORDER BY freq DESC
 ```
 And now we can see not only the counts of websites using each Framework - but also the median CPU times.  
 
-![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/3.png)
+![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/3.png){:loading="lazy"}
 
 From a quick glance at the table above, the CPU eval costs for React seem to be higher than the others.  But to be sure, let's add a few more percentiles to the query.  Below I've added the 75th percentile and 95th percentile CPU timings to the query - 
 ```
@@ -150,7 +152,7 @@ A few observations from this table:
 * The CPU Eval times for sites using React and JQuery together do not appear to be much higher than using just React
 * The wide range between the median and 75th percentile CPU timings is very interesting, and makes me wonder if examples of how to use these frameworks in more (or less) performant ways are buried in the details (hint: this can also be queried via the HTTP Archive by expanding on this example more )
 
-![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/4.png)
+![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/4.png){:loading="lazy"}
 
 **What About Mobile?**
 
@@ -159,7 +161,7 @@ https://twitter.com/paulcalvano/status/928751141843808256
 
 To query this data for mobile, simply replace `desktop` with `mobile` in all the queries above (ie, `httparchive.pages.2018_04_01_mobile`).  When we run the previous query against the mobile dataset, we can see similar stats - although the numbers are much higher (as expected).  The HTTP Archive stats for mobile are using a [single emulated Android device using the Chrome browser](https://httparchive.org/faq#how-is-the-data-gathered). But based on the device fragmentation map above I would expect the below results to vary greatly by device type as well.
 
-![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/5.png)
+![](/assets/img/blog/using-wappalyzer-to-analyze-cpu-times-across-js-frameworks/5.png){:loading="lazy"}
 
 Based on this analysis it definitely seems that the choice of JavaScript framework will have a significant impact on CPU execution times, which will ultimately impact your end user's experience. However the rather large range of CPU times between the median and 75th percentile give hope that some of these frameworks can be tuned further or that the way that they are being used can be adjusted to limit their impact on the end user.
 

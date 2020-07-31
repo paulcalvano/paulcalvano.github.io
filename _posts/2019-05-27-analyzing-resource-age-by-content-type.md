@@ -3,6 +3,11 @@ title: "Analyzing Resource Age by Content Type"
 date: 2019-05-27T00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
+  - _posts/2018-03-14-http-heuristic-caching-missing-cache-control-and-expires-headers-explained.md
+  - _posts/2018-01-07-cache-control-immutable-a-year-later.md
+  
 ---
 
 Have you ever wondered how old web content is? One could probably assume that HTML is going to be newer than images or JavaScript, but is that really true?  How does resource age vary by content type or by first or third party content? And why does this matter?
@@ -18,7 +23,7 @@ SELECT ROUND(SUM(IF(resp_date <> "",1,0)) / count(*),2) date_pct,
        count(*) requests
 FROM `httparchive.summary_requests.2019_04_01_mobile` r
 ```
-![377x55](/assets/img/blog/analyzing-resource-age-by-content-type/1.png) 
+![377x55](/assets/img/blog/analyzing-resource-age-by-content-type/1.png){:loading="lazy"}
 
 The query below groups [resources by 1st or 3rd party](https://discuss.httparchive.org/t/what-is-the-distribution-of-1st-party-vs-3rd-party-resources/100), content type and the relative age of the resource in weeks. A user defined function converts the timestamp to epoch seconds and throws out any timestamps after the year 2050 in order to prevent int64 overflows from erroneous timestamps in the data. And finally, we subtract the time value of Last-Modified from Date and calculate the age in weeks.
 
@@ -46,7 +51,7 @@ GROUP BY type, party, age_weeks`
 ```
 
 Graphically, these results look like this. Note that because there are 55 bars in this stacked chart, there is some overlap in the legend. I used a 10 color palette to display this, so that you can distinguish the week based on it's position in the chart.  For example, the yellow bars to the left are resources < 1 week old.  The orange bar all the way to the right is > 2 years old. 
-![690x366](/assets/img/blog/analyzing-resource-age-by-content-type/2.jpeg) 
+![690x366](/assets/img/blog/analyzing-resource-age-by-content-type/2.jpeg){:loading="lazy"} 
 
 There are some interesting observations in this data:
 * With the exception of HTML, third party content has a smaller resource age compared to first party content. One can only hope that HTML is being cached somewhere... 
@@ -56,7 +61,7 @@ There are some interesting observations in this data:
 
 Since a question about scripts was what led me down this path, I thought it would be interesting to expand the bar charts for 1st vs 3rd party scripts.  35% of third party script resources and  8% of first party scripts are less than 1 week old. This explains why 3rd party script resources are less likely to be cached for long periods.   
 
-![690x404](/assets/img/blog/analyzing-resource-age-by-content-type/3.jpg) 
+![690x404](/assets/img/blog/analyzing-resource-age-by-content-type/3.jpg){:loading="lazy"} 
 
 Resource age is an important heuristic in developing a good caching strategy.  How frequently do certain resources change? How sensitive is your application to these changes. Would you be able to cache longer if you serve a third party resource as a first party? And how much non-cacheable third party content should your users have to load?  Answering these questions about your own site's data will help you tweak your caching policies, achieve higher offload and faster page load times.
 

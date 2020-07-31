@@ -3,12 +3,16 @@ title: Adoption of HTTP Security Headers on the Web
 date: 2018-03-05T01:18:08+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+	- _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
+  - _posts/2020-02-20-certificate-validity-dates.markdown
+  - _posts/2020-02-17-san-certificates-how-many-alt-names-are-too-many.md
 ---
 Over the past few weeks the topic of security related HTTP headers has come up in numerous discussions &#8211; both with customers I work with as well as other colleagues that are trying to help improve the security posture of their customers. I&#8217;ve often felt that these headers were underutilized, and a quick test on [Scott Helme&#8217;s excellent securityheaders.io](https://securityheaders.io/) site usually proves this to be true. I decided to take a deeper look at how these headers are being used on a large scale.
 
 Looking at this data through the lens of the HTTP Archive, I thought it would be interesting to see if we could give the web a scorecard for security headers. I&#8217;ll dive deeper into how each of these headers are implemented below, but let&#8217;s start off by looking at the percentage of sites that are using these security headers. As I suspected, adoption is quite low. Furthermore, it seems that adoption is marginally higher for some of the most popular sites &#8211; but not by much.
 
-<img src="/assets/wp-content/uploads/2018/03/security_headers.jpg" alt="" width="918" height="620" class="alignnone size-full wp-image-275" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/03/security_headers.jpg" alt="" width="918" height="620" class="alignnone size-full wp-image-275" /> 
 
 The HTTP Archive query behind the data in the table is below, and you can see the full query [here](https://bigquery.cloud.google.com/savedquery/264421607889:b52c5600d8174dd3b13173b05cc18403).
 
@@ -41,7 +45,7 @@ Strict Transport Security (HSTS) tells the browser that the current page should 
 
 I found 44,003 sites that include an HSTS header on their homepage and all of them contained a max-age header (which is required). However not all of the max-age headers were defined correctly or long enough to matter. Almost 2,300 sites configured their max-age to 0 seconds &#8211; which effectively withdraws their sites from HSTS. Some sites had typos in the directives, garbled text and even some negative values. Overall, 84% of sites using HSTS are setting the max-age directive for at least 1 week.
 
-<img src="/assets/wp-content/uploads/2018/03/hsts.jpg" alt="" width="653" height="221" class="alignnone size-full wp-image-274"  /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/03/hsts.jpg" alt="" width="653" height="221" class="alignnone size-full wp-image-274"  /> 
 
 Additionally, 35% of sites using HSTS are using the includeSubdomains directive. And 18% had the preload directive included.
 
@@ -53,7 +57,7 @@ At the start of this post, we learned that only 2.9% of sites in the HttpArchive
 
 So which CSP directives are in use today? The below table summarizes the popular directives used on sites, as well as an example of some invalid CSP headers.
 
-<img src="/assets/wp-content/uploads/2018/03/csp.jpg" alt="" width="904" height="421" class="alignnone size-full wp-image-273" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/03/csp.jpg" alt="" width="904" height="421" class="alignnone size-full wp-image-273" /> 
 
 You&#8217;ll probably notice some typos in the invalid CSP Headers table. However the 34 sites using `reflected-xss-block` are rather interesting. It seems this was part of an early draft of CSP, but was deprecated in favor of X-XSS-Protection. More details on that here &#8211; <https://bugs.chromium.org/p/chromium/issues/detail?id=657737>
 
@@ -63,7 +67,7 @@ The X-Frame-Options header allows you to indicate whether or not a browser shoul
 
 In the table below you can see that 98% of the time this is configured correctly. 87% of sites that include it are using `X-Frame-Options: SameOrigin`. 10% use the `X-Frame-Options: Deny` header. And 1% are specifically allowing domains via `X-Frame-Options: Allow-From`. There are a small % of sites that are using incorrect directives, even 70 sites that are using `X-Frame-Options: GOFORIT`.
 
-<img src="/assets/wp-content/uploads/2018/03/xframeoptions.jpg" alt="" width="1133" height="399" class="alignnone size-full wp-image-272" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/03/xframeoptions.jpg" alt="" width="1133" height="399" class="alignnone size-full wp-image-272" /> 
 
 A quick Google search for the GOFORIT example revealed a [StackOverflow post](https://stackoverflow.com/questions/6666423/overcoming-display-forbidden-by-x-frame-options) where someone recommended using this to invalidate X-Frame-Options and force the browser to fail-open. One can only hope that those implementing it on their sites understand that they are effectively disabling this security feature&#8230;
 
@@ -73,7 +77,7 @@ The X-XSS-Protection header stops pages from loading when they detect reflected 
 
 So how are we doing? Out of 48,009 sites that are using this header, 91% are configuring it to block the loading of their sites during XSS attacks. In fact the most common way of setting it is `1; mode=block`. However there are 1206 sites that set it to `` which effectively removes protection. Even more concerning are the 145 sites that set it to `0; mode=block` since the browser will not block the attack because of the 0 setting&#8230;
 
-<img src="/assets/wp-content/uploads/2018/03/xssprotection.jpg" alt="" width="1294" height="261" class="alignnone size-full wp-image-271" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/03/xssprotection.jpg" alt="" width="1294" height="261" class="alignnone size-full wp-image-271" /> 
 
 **X-Content-Type-Options**
 
@@ -87,7 +91,7 @@ The Referrer-Policy HTTP header governs which referrer information, if any, shou
 
 Most browsers default to no-referrer-when-downgrade, which means that the referrer is included on HTTP requests when the protocol security stays the same (ie, an HTTPS->HTTPS). The table below summarizes how they are configured across other websites. These add up to 97%, as another 3% have incorrectly configured their Referrer-Policy headers.
 
-<img src="/assets/wp-content/uploads/2018/03/referrerpolicy.jpg" alt="" width="531" height="201" class="alignnone size-full wp-image-270" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/03/referrerpolicy.jpg" alt="" width="531" height="201" class="alignnone size-full wp-image-270" /> 
 
 **Conclusion**
 

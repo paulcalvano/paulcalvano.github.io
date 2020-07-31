@@ -3,12 +3,16 @@ title: Mobile Trends during the US Holiday Weekend
 date: 2018-12-03T16:14:57+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2018-04-26-using-googles-crux-to-compare-your-sites-rum-data-w-competitors.md
+  - _posts/2017-11-29-measuring-the-performance-of-firefox-quantum-with-rum.md
+  - _posts/2017-06-27-performance-debugging-leads-to-discovery-of-a-bizarre-browser-bug.md
 ---
 Over the past few years we’ve seen a tremendous growth in mobile traffic on the web. Because of this many of the most successful websites have invested in optimizing the experience of users on whatever device they use and however they connect to the internet. With mobile traffic now exceeding desktop, _serving a quality mobile experience is more important than ever_. During the recent holiday weekend, I was wondering how much retail traffic occurred via mobile or desktop devices. Was there a large shift towards mobile during peak times on Black Friday and Cyber Monday? Did mobile usage spike on specific days, or times of day? And when users are connecting from mobile, are they connecting over cellular networks or WiFi?
 
 During normal day-to-day traffic we see shifts in device usage on the weekends. For example, in [a recent study](https://www.slideshare.net/PaulCalvano/real-user-measurement-insights-london-webperf-2018nov06) I learned that percentage of mobile traffic globally is 43% during the week but increases to 53% over the weekend. Tablet usage also increases marginally over the weekend as well. In the graph below you can see this trend for October 2018.
 
-<img src="/assets/wp-content/uploads/2018/12/oct2018_dayofweek_device_distribution.jpg"  /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/12/oct2018_dayofweek_device_distribution.jpg"  /> 
 
 In previous [blog posts](https://paulcalvano.com/index.php/2017/11/29/measuring-the-performance-of-firefox-quantum-with-rum/) and [talks](1) I&#8217;ve shared some insights using data from [Akamai mPulse](https://www.akamai.com/us/en/products/web-performance/mpulse-real-user-monitoring.jsp). The data I&#8217;m using for this analysis is a subset of overall mPulse traffic &#8211; specifically the US traffic of more than 50 retail websites. To avoid skewing stats by some larger sites, I&#8217;ve also ensured that none of the sites in this dataset account for more than a few percentage points of the total data set. _(Note: non-US retail traffic during the US holiday weekend is a topic I may explore in a future analysis as well.)_
 
@@ -19,23 +23,23 @@ The graph below illustrates the distribution of pages from Desktop, Mobile and T
   * Sunday evening traffic spiked between 8pm and 10pm EST 
   * Cyber Monday traffic was as high as Black Friday for most of the day, and then bursted 30% higher than Black Friday’s peak during the evening
 
-<img src="/assets/wp-content/uploads/2018/12/2018holidaywe_device_distribiution.jpg"  /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/12/2018holidaywe_device_distribiution.jpg"  /> 
 
 The fluctuations in mobile traffic were particularly interesting to me, so I decided to graph this for each day on a 24 hour axis. The graph below shows the percentage of mobile traffic per hour for each day. There was upwards of 60% mobile traffic during the early mornings, leveling off at 53% during the day. The percentage of mobile traffic during the evening hours of Thanksgiving spiked to 58%. Meanwhile, on Cyber Monday desktop traffic dominated for most of the day. As device usage fluctuates by time of day, it’s important for retailers to _focus on providing an optimal experience to all users regardless of how they connect_.
 
-<img src="/assets/wp-content/uploads/2018/12/2018holidaywe_device_distribiution_time.jpg"  /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/12/2018holidaywe_device_distribiution_time.jpg"  /> 
 
 Now that we know what types of devices people are using, let’s explore how they accessed the web. The graph below illustrates the distribution of Desktop pages loaded over Cellular, Corporate and other Non-Mobile networks. The percentage of desktop traffic from corporate networks increased significantly during Cyber Monday and to a smaller extent on Black Friday. This indicates that a fair amount of online shopping was done by people while they were at work. We typically see spikes like this in other industries (such as streaming events), especially when major events are occuring during business hours.
 
-<img src="/assets/wp-content/uploads/2018/12/2018holidaywe_desktop_conn_distribiution.jpg" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/12/2018holidaywe_desktop_conn_distribiution.jpg" /> 
 
 When we look at the same data for Mobile devices, we can see an interesting pattern in connectivity. During each day mobile networks accounted for 40% of mobile traffic between the hours of 12pm and 2pm ET.
 
-<img src="/assets/wp-content/uploads/2018/12/2018holidaywe_mobile_conn_distribiution.jpg"  /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/12/2018holidaywe_mobile_conn_distribiution.jpg"  /> 
 
 The Cyber Monday traffic patterns were quite interesting, so I decided to look at them on a per minute level. The graph below shows the relative page views for Desktop, Mobile and Tablet traffic. As we saw earlier, Desktop traffic was strongest during the Cyber Monday business day and then started to decline after 5pm EST as the US east coast business day ended. Mobile traffic quickly took its place. In the evening we saw an increase from both Desktop and Mobile traffic, which resulted in the impressive Cyber Monday evening peak. The periodic drops in traffic are likely due to the struggles that some retailers faced.
 
-<img src="/assets/wp-content/uploads/2018/12/2018_cybermonday_device_distribution.jpg"  /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/12/2018_cybermonday_device_distribution.jpg"  /> 
 
 Many of these stats are similar to what I’ve seen in previous years, but this is the first time we’re able to see an aggregate view of the holiday traffic patterns like this. I’m interested to see how this changes next year.
 

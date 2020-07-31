@@ -3,15 +3,19 @@ title: "Analyzing Lighthouse Scores Across the Web"
 date: 2019-03-11T00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2018-04-26-using-googles-crux-to-compare-your-sites-rum-data-w-competitors.md
+  - _posts/2017-08-31-exploring-relationships-between-performance-metrics-in-http-archive-data.md
+  - _posts/2017-04-12-gauge-user-experience-with-time-to-interactive.md
 ---
 
 [Lighthouse ](https://developers.google.com/web/tools/lighthouse/)is an amazing tool that you can use to quickly audit a web page and learn how it stacks up on performance, accessibility, best practices, PWA support and more. You can run it from [ChromeDevTools](https://developers.google.com/web/tools/lighthouse/#devtools), run one [via WebPageTest](https://www.webpagetest.org/lighthouse) measurement or analyze them in bulk here! For every page measured in the HTTP Archive a lighthouse audit is run, and the results are stored in the `lighthouse` tables.
 
-![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/1.png)
+![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/1.png){:loading="lazy"}
 
 Recently while analyzing a poor performing website, I wondered how many sites in the HTTP Archive perform so poorly that they would get a single digit Performance score!
 
-![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/2.png)
+![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/2.png){:loading="lazy"}
 
 Fortunately, the results are fairly easy to query for. Since the Lighthouse report is stored as a JSON array, it's just a matter of extracting the JSON variables using the [JSON_EXTRACT ](https://cloud.google.com/bigquery/docs/reference/standard-sql/json_functions)function.:
 
@@ -39,7 +43,7 @@ FROM (
 ```
 There are 444,657 websites that have a Performance score less than 10%!
 
-![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/3.png)
+![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/3.png){:loading="lazy"}
 
 We can also UNION a bunch of queries together to add some of the other categories to the results. *The following query also uses 895GB.*
 
@@ -109,11 +113,11 @@ FROM (
 
 The results count the number of sites that have lighthouse scores < 10%, 10-25%, 25-50%, 50-75% and > 90%. 
 
-![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/4.png)
+![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/4.png){:loading="lazy"}
 
 If we look at these in terms of %s of total, we can see that the performance scores follow a normal distribution, with almost as many poorly performing sites as there are sites with excellent performance scores. The majority of sites pass the SEO audits. PWA support is relatively low across the web with only 3518 sites achieving a >90% score. But we can track their [adoption report](https://httparchive.org/reports/progressive-web-apps) and see that the scores are increasing each month!
 
-![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/5.png)
+![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/5.png){:loading="lazy"}
 
 How about giving the web a Lighthouse summary score? We can use the following query to calculate the median score across all 4 million websites *(note: 895GB query)*
 
@@ -128,6 +132,6 @@ FROM `httparchive.latest.lighthouse_mobile`
 
 Clearly we have much work to do on Performance, Accessibility and Best Practices!
 
-![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/6.png)
+![](/assets/img/blog/analyzing-lighthouse-scores-across-the-web/6.png){:loading="lazy"}
 
 _Originally published at <https://discuss.httparchive.org/t/analyzing-lighthouse-scores-across-the-web/1600>_

@@ -3,6 +3,11 @@ title: "Exploring usage of the Console API"
 date: 2019-05-22T00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2019-08-12-chrome-image-lazy-loading-sites-already-using-it-on-week-1.md
+  - _posts/2018-08-24-how-many-sites-are-still-using-appcache.md
+  - _posts/2017-07-27-how-is-server-timing-used-on-the-web.md
+
 ---
 
 The JavaScript [Console API](https://developer.mozilla.org/en-US/docs/Web/API/console) is an incredibly useful feature that provides access to the browsers debug console from a web page. It can be accessed from any global object, and it's common to call methods such as `console.log()` to print messages for debugging purposes. For  example:
@@ -56,11 +61,11 @@ FROM httparchive.scratchspace.response_bodies_console_api_usage_201904_desktop
 GROUP BY console
 ORDER BY consoleEvents DESC
 ```
-![444x422](/assets/img/blog/exploring-usage-of-the-console-api/1.jpg) 
+![444x422](/assets/img/blog/exploring-usage-of-the-console-api/1.jpg){:loading="lazy"}
 
 Out of the 3,946,357 sites in the April 2019 desktop dataset, 83% of sites included console.log(). Additionally, 68% of sites used console.warn() and 66% of sites used console.error().  The rest of the methods are used less frequently - although even low percentages account for a significant number of web sites. For example, console.clear() was used by 1% of sites - but that is still 27,844 web sites. Graphically, this data looks like:
 
-![690x414](/assets/img/blog/exploring-usage-of-the-console-api/2.jpg) 
+![690x414](/assets/img/blog/exploring-usage-of-the-console-api/2.jpg){:loading="lazy"}
 
 Another interesting observation is invalid references to console methods are on up to 2% of sites.  For example, thousands of websites contained the following instead of console.log()
 * console_log
@@ -86,7 +91,7 @@ ORDER BY consoleEvents DESC
 
 Graphically, we can see that the popular methods - log, error and warn are nearly split between 1st and 3rd party.  Some other methods that are more popular with third parties, such as console.table(), console.exceptions() and some of the possible typos mentioned above - console,log, console_error, and console-debug.
 
-![690x484](/assets/img/blog/exploring-usage-of-the-console-api/3.jpg) 
+![690x484](/assets/img/blog/exploring-usage-of-the-console-api/3.jpg){:loading="lazy"} 
 
 **console.clear()**
 
@@ -105,21 +110,21 @@ ORDER BY urlCount DESC
 ```
 
 The results show a few scripts that account for at least 24% of all console.clear() uses on the web.   
-![427x500](/assets/img/blog/exploring-usage-of-the-console-api/4.jpg) 
+![427x500](/assets/img/blog/exploring-usage-of-the-console-api/4.jpg){:loading="lazy"} 
 
 The largest source of console.clear() events comes from the tagdiv wordpress theme, although inspecting the source it seems that these are commented out - 
-  ![690x181](/assets/img/blog/exploring-usage-of-the-console-api/5.jpg) 
+  ![690x181](/assets/img/blog/exploring-usage-of-the-console-api/5.jpg){:loading="lazy"} 
 
 semantic.js seems to be overriding this function to avoid allowing other scripts to clear the console - 
-![690x80](/assets/img/blog/exploring-usage-of-the-console-api/6.png) 
+![690x80](/assets/img/blog/exploring-usage-of-the-console-api/6.png){:loading="lazy"} 
 
 It's usage on invoke.js appears to be a bit more dubious, as they are clearing the console when DevTools is open. There was some discussion about whether DevTools detection should be allowed back in [2017 in a chromium bug report](https://bugs.chromium.org/p/chromium/issues/detail?id=672625). 
 
-![690x204](/assets/img/blog/exploring-usage-of-the-console-api/7.jpg) 
+![690x204](/assets/img/blog/exploring-usage-of-the-console-api/7.jpg){:loading="lazy"} 
 
 However the vast majority of uses appear to be attempts at debugging that may have been left in place in production, or attempts at clearing out previous entries for readability. For example, the following script cleared the console on an ecommerce site as soon as an item is added to the cart!
 
-![690x115](/assets/img/blog/exploring-usage-of-the-console-api/8.png) 
+![690x115](/assets/img/blog/exploring-usage-of-the-console-api/8.png){:loading="lazy"} 
 
 **Conclusion**
 

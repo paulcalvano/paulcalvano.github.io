@@ -2,7 +2,12 @@
 layout: post
 title: "An Analysis of Cookie Sizes on the Web"
 date: 2020-07-13 00:00:00 -0500
-img: /assets/img/blog/first-vs-third-party-cookies-2020June.png
+related_posts:
+ 
+  - _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
+  - _posts/2018-07-02-impact-of-page-weight-on-load-time.md
+  - _posts/2017-08-16-tracking-page-weight-over-time.md
+
 ---
 [Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) are used on a lot of websites - 83.9% of the 5.7 million home pages tracked in the[ HTTP Archive](https://httparchive.org/) to be specific. They are essentially a name/value pair set by a server and stored in a client’s browser. Sites can store these cookies by using the `Set-Cookie` HTTP response header, or via JavaScript (`document.cookie`). On subsequent requests, these cookies are sent to the server in a `Cookie` HTTP request header. 
 
@@ -14,7 +19,7 @@ When a cookie is set by the domain you see in your address bar, it is considered
 
 Based on an analysis of over 109 million cookies, third parties account for 79% of all cookies.
 
-![First vs Third Party Cookies](/assets/img/blog/first-vs-third-party-cookies-2020June.png)
+![First vs Third Party Cookies](/assets/img/blog/first-vs-third-party-cookies-2020June.png){:loading="lazy"}
 
 _Note: I wrote another blog post exploring the use of the SameSite attribute in cookie files, and how third party cookies are affected. You can read it[ here](https://dev.to/httparchive/samesite-cookies-are-you-ready-5abd)._
 
@@ -73,7 +78,7 @@ So who is setting these large cookies?
 
 If we look at the entire distribution of cookie sizes, it gets even more interesting. 88% of the cookies being set are less than 100 bytes. The 99th percentile is 372 bytes. So really large individual cookies are not common.
 
-![Distribution of Set-Cookie sizes](/assets/img/blog/cookie-length-cdf-2020June.png)
+![Distribution of Set-Cookie sizes](/assets/img/blog/cookie-length-cdf-2020June.png){:loading="lazy"}
 
 **Cookies Sent to First Party Domain**
 
@@ -81,7 +86,7 @@ What about cookies that clients send back to servers? A client can send multiple
 
 The median size of cookies sent on the favicon request was 161 bytes and the 95th percentile was 681. The largest was 7,795 bytes, and you can see the distribution below.
 
-![Distribution of Request Cookie sizes](/assets/img/blog/request-cookies-cdf-2020June.png)
+![Distribution of Request Cookie sizes](/assets/img/blog/request-cookies-cdf-2020June.png){:loading="lazy"}
 
 It’s important to note that the cookies set by the time favicon was requested may under represent the size of the cookies users would send later in a browsing session. For example, when logging into an application, a few additional cookies might be set. Some third parties that use a first party subdomain (ie, if[ www.example.com](http://www.example.com) loaded a resource from metrics.example.com) also set a first party cookie.
 

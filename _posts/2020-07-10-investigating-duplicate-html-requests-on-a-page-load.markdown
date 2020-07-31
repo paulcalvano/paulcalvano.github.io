@@ -3,27 +3,34 @@ layout: post
 title: "Investigating Duplicate HTML Requests on a Page Load"
 date: 2020-07-10 00:00:00 -0500
 img: /assets/img/blog/body_background_url.jpg
+related_posts:
+
+  - _posts/2018-07-02-impact-of-page-weight-on-load-time.md  
+  - _posts/2017-08-31-exploring-relationships-between-performance-metrics-in-http-archive-data.md
+  - _posts/2017-08-16-tracking-page-weight-over-time.md
+
 ---
 _**Why it occurs, and what is the impact on web performance?**_
 
 **Overview**
+
 Ever see a web page load an embedded object that is really the same HTML as the main document? I’ve seen this show up on a handful of websites recently - including a few large ecommerce sites, a news site, a financial services site and a utility company’s website. Every time I've run into this, I've said I need to write a blog post about it. So, here's that post!
 
 Two of the most recent ones I’ve seen made the same mistake. Can you spot the error?
 
-![Incorrectly set background URL](/assets/img/blog/body_background_url.jpg)
+![Incorrectly set background URL](/assets/img/blog/body_background_url.jpg){:loading="lazy"}
 
 The body was styled with the CSS `background` property, which is shorthand for `background-color`, `background-url`, and others (this is explained better [here](https://css-tricks.com/almanac/properties/b/background/)). In this example, the developer probably wanted to use `background: none` to give a blank background color, but used an empty URL instead. The `url()` function attempts to load a background image, and it takes a string as an argument. Since an empty string is a valid string this doesn’t trigger an error in the console. It simply results in a relative request to the base URL.
 
 I created a simple test page to demonstrate this. In the WebPageTest waterfall below you can clearly see the extra page request.  
 
-![Duplicate HTML Example](/assets/img/blog/wpt_waterfall_duplicate_requests.png)
+![Duplicate HTML Example](/assets/img/blog/wpt_waterfall_duplicate_requests.png){:loading="lazy"}
 
 
 In Chrome DevTools, you would see the duplicate request show up with an initiator of the main document. In the console there is no indication or an error. This may not be a technical error, but it certainly is unintentional and comes with a performance penalty.
 
 
-![Using Chrome DevTools to find the initiator of duplicate HTML](/assets/img/blog/chrome_devtools_duplicate_requests.png)
+![Using Chrome DevTools to find the initiator of duplicate HTML](/assets/img/blog/chrome_devtools_duplicate_requests.png){:loading="lazy"}
 
 In this article we are going to explore why this is a performance issue, how duplicate requests for HTML can be inadvertently triggered, and how you can avoid them.
 
@@ -87,15 +94,17 @@ The table below lists the full summary of the tests I ran across Chrome, Safari 
 _* iFrames with src=”?” and “#” resulted in 3-4 HTML requests for the same page._
 
 **`Service worker Cache`**
+
 Creating a separate cache layer via a service worker is a great way to preload your browser cache for resources that it will need later.   However, what happens when you include an HTML page as one of those resources to fetch? 
 
 Here's an example of a site doing exactly that. Even worse, the HTML was not cacheable... 
 
-![Alt Text](/assets/img/blog/service_worker_duplicate_html.png)
+![Alt Text](/assets/img/blog/service_worker_duplicate_html.png){:loading="lazy"}
 
 If you are going to use a service worker to cache a resource, make sure that resource is cacheable!
 
 **`display:none`**
+
 While this example is not specifically about HTML, it occurs enough that it's worth mentioning.  As @dougsillars says "display:none does not mean download:none".   
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Your periodic reminder that using &quot;display:none&quot; in your CSS does not also mean &quot;download:none&quot; <a href="https://t.co/eZZNnrQ3OS">pic.twitter.com/eZZNnrQ3OS</a></p>&mdash; Doug Sillars 🇬🇧 (@dougsillars) <a href="https://twitter.com/dougsillars/status/1261888005364756480?ref_src=twsrc%5Etfw">May 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -105,18 +114,20 @@ In this example, the developer referenced video content that used a media query 
 Why do I bring this up in an article about duplicate HTML requests?  I've seen some cases of this technique used alongside `<img src="#" />` - resulting in duplicate HTML!
 
 **How to Detect?**
+
 There aren't any tools or audits I know of that look for this, as it does tend to be a bit of a niche error. 
 
 Probably the easiest way to spot this is by looking at the CPU processing overlay in WebPageTest. If you see JS execution for a request before the request is loaded, then it was likely a duplicate.
 
-![WebPageTest Example](/assets/img/blog/duplicate-html-finding-in-wpt.jpg)
+![WebPageTest Example](/assets/img/blog/duplicate-html-finding-in-wpt.jpg){:loading="lazy"}
 
 In DevTools, you can also filter by your domain name using `domain:www.example.com`. Filtering and sorting by name, makes these easier to spot. If you see the same URL with a type of both document and text/html, then you are loading a duplicate HTML page.
 
-![DevTools Example](/assets/img/blog/duplicate-html-finding-in-devtools.jpg)
+![DevTools Example](/assets/img/blog/duplicate-html-finding-in-devtools.jpg){:loading="lazy"}
 
 Clicking on the initiator can help find what caused the duplicate HTML to load.
 
 **Conclusion**
+
 If you are analyzing a page and see what looks like a duplicate request for the base HTML page, don’t ignore it!  This could be a serious performance and capacity issue. Instead use DevTools to attempt to locate what initiated that request. You may find that you have accidentally included a placeholder or set an incorrect CSS property or element src attribute. 
 

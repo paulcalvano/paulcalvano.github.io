@@ -3,6 +3,11 @@ title: 'Cache Control Immutable &#8211; A Year Later'
 date: 2018-01-07T15:25:03+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
+  - _posts/2018-08-24-how-many-sites-are-still-using-appcache.md
+  - _posts/2018-03-14-http-heuristic-caching-missing-cache-control-and-expires-headers-explained.md
+
 ---
 In January 2017, [Facebook wrote about a new Cache-Control directive](https://code.facebook.com/posts/557147474482256/this-browser-tweak-saved-60-of-requests-to-facebook) &#8211; immutable &#8211; which was designed to tell supported browsers not to attempt to revalidate an object on a normal reload during it&#8217;s freshness lifetime. [Firefox 49](https://hacks.mozilla.org/2017/01/using-immutable-caching-to-speed-up-the-web/) implemented it, while  [Chrome went ahead with a different approach](https://blog.chromium.org/2017/01/reload-reloaded-faster-and-leaner-page_26.html) by changing the behavior of the reload button. Additionally it seems that [WebKit has also implemented the immutable directive](https://bugs.webkit.org/show_bug.cgi?id=167497) since then.
 
@@ -21,7 +26,7 @@ To determine this, I ran a simple query that counts the number of pages and obje
     FROM `httparchive.runs.2017_12_15_requests`
     
 
-<img src="/assets/wp-content/uploads/2018/01/4e307ea2698549c952342260d6efd03cb593f59b.png" alt="" width="336" height="86" class="alignnone size-full wp-image-165" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/01/4e307ea2698549c952342260d6efd03cb593f59b.png" alt="" width="336" height="86" class="alignnone size-full wp-image-165" /> 
 
 **Which Domains are Using Cache-Control: Immutable**
 
@@ -38,7 +43,7 @@ I modified the above query to aggregate by the hostname of the request. I also i
     ORDER BY objects DESC
     
 
-<img src="/assets/wp-content/uploads/2018/01/e6363990092a1bfb33b6fa3bfd38815111e69e93_1_690x359.png" alt="" width="690" height="359" class="alignnone size-full wp-image-164" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/01/e6363990092a1bfb33b6fa3bfd38815111e69e93_1_690x359.png" alt="" width="690" height="359" class="alignnone size-full wp-image-164" /> 
 
 **What Type of Content is Immutable Being Used For?**
 
@@ -51,11 +56,11 @@ So now that we know where it&#8217;s being used, lets explore how it&#8217;s bei
     ORDER BY objects DESC
     
 
-<img src="/assets/wp-content/uploads/2018/01/f4e78456ff172314d2e53cce474ad89b99aaf592.png" alt="" width="264" height="347" class="alignnone size-full wp-image-163" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/01/f4e78456ff172314d2e53cce474ad89b99aaf592.png" alt="" width="264" height="347" class="alignnone size-full wp-image-163" /> 
 
 If we take the results from the above query, compare `All Requests` to the `Immutable Requests`, and then compare the distribution of mime types for each &#8211; we can see that JavaScript and HTML have a higher % of immutable responses compared to non-immutable responses.
 
-<img src="/assets/wp-content/uploads/2018/01/c47d3fc148afe73786e6ce76ea9847f021d76ea4_1_690x231.png" alt="" width="690" height="231" class="alignnone size-full wp-image-162" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/01/c47d3fc148afe73786e6ce76ea9847f021d76ea4_1_690x231.png" alt="" width="690" height="231" class="alignnone size-full wp-image-162" /> 
 
 **What Cache-Control TTLs and directives are used alongside the immutable directive?**
 
@@ -77,13 +82,13 @@ So now that we know where it&#8217;s being used, and how it&#8217;s being used, 
         ORDER BY objects DESC
     
 
-That returns 568 rows containing the following:<img src="/assets/wp-content/uploads/2018/01/be0216bec0d9efcbc863171e902630bf02f94971_1_690x318.png" alt="" width="690" height="318" class="alignnone size-full wp-image-161" /> 
+That returns 568 rows containing the following:<img loading="lazy" src="/assets/wp-content/uploads/2018/01/be0216bec0d9efcbc863171e902630bf02f94971_1_690x318.png" alt="" width="690" height="318" class="alignnone size-full wp-image-161" /> 
 
-Most of the immutable responses are loaded with a public directive, except for text/javascript which contains a fair amount of cache-control private responses. A small percentage of overall responses appear to be including must-revalidate directives as well, which tells the browser that it must revalidate the resource when it&#8217;s freshness expires.<img src="/assets/wp-content/uploads/2018/01/0de0728a05669fb31bc5f3804289534d26757cbd_1_690x219.png" alt="" width="690" height="219" class="alignnone size-full wp-image-160" /> 
+Most of the immutable responses are loaded with a public directive, except for text/javascript which contains a fair amount of cache-control private responses. A small percentage of overall responses appear to be including must-revalidate directives as well, which tells the browser that it must revalidate the resource when it&#8217;s freshness expires.<img loading="lazy" src="/assets/wp-content/uploads/2018/01/0de0728a05669fb31bc5f3804289534d26757cbd_1_690x219.png" alt="" width="690" height="219" class="alignnone size-full wp-image-160" /> 
 
 For a resource that should not be revalidated, one would expect that the max-age value should be a high one. The table below shows (on the left) that there are a large number of max-age directives in use, and that they tend to lean towards longer durations. The majority of immutable resources have a max-age value >= 365 days (31536000 seconds), except for some application/javascript responses that are set to 1 day (86400 seconds).
 
-<img src="/assets/wp-content/uploads/2018/01/5275057f4d963bc5115a56a4bd09be6818b2ee4e_1_690x470.png" alt="" width="690" height="470" class="alignnone size-full wp-image-159" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/01/5275057f4d963bc5115a56a4bd09be6818b2ee4e_1_690x470.png" alt="" width="690" height="470" class="alignnone size-full wp-image-159" /> 
 
 **Excluding Facebook and Google**
 
@@ -114,7 +119,7 @@ When doing this, I found that application/javascript accounted for 36.2% of immu
 
 &#8230; I was able to find that most sites appear to be doing a good job at keeping a max-age duration high for immutable responses (95% of responses have a max-age > 1 day). Additionally it seems that 1,136 domains (27%) are using must-revalidate alongside immutable, which tells browsers that as soon as the freshness time expires they must revalidate the resource.
 
-<img src="/assets/wp-content/uploads/2018/01/164a714c8bee0374ada27b8118ee47e13ce10cf3.png" alt="" width="667" height="189" class="alignnone size-full wp-image-158" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2018/01/164a714c8bee0374ada27b8118ee47e13ce10cf3.png" alt="" width="667" height="189" class="alignnone size-full wp-image-158" /> 
 
 **Conclusion**
 

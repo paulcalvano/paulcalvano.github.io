@@ -3,11 +3,16 @@ title: "Correlating Chrome’s 3rd Party Product Names to HTTP Archive Data"
 date: 2017-07-31T00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
+  - _posts/2018-05-15-analyzing-3rd-party-performance-via-http-archive-crux.md
+  - _posts/2017-09-17-which-3rd-party-content-loads-before-render-start.md
+
 ---
 
 One of the exciting new features in Chrome Dev Tools is the addition of 3rd party product names integrated into Dev Tools. I was interested in exploring how this works, and whether any of this data can be used to do further research via the HTTP Archive.
 
-![](/assets/img/blog/correlating-chromes-3rd-party-product-names-to-http-archive-data/1.png)
+![](/assets/img/blog/correlating-chromes-3rd-party-product-names-to-http-archive-data/1.png){:loading="lazy"}
 
 Looking at the [Chromium source for productRegistryData](https://cs.chromium.org/chromium/src/third_party/WebKit/Source/devtools/front_end/product_registry_impl/ProductRegistryData.js), this appears to be implemented with a JSON array containing a database of over 5289 hashes that associate a product ID with another JSON array containing product names. 
 
@@ -70,7 +75,7 @@ ORDER BY pages DESC
 ```
 This provides a summary of all 3rd party content identified by the Chromium productRegistryData.   Specifically I'm looking at the median response times, response size, and length of cookies sent with the http requests for these resources - 
 
-![](/assets/img/blog/correlating-chromes-3rd-party-product-names-to-http-archive-data/2.png)
+![](/assets/img/blog/correlating-chromes-3rd-party-product-names-to-http-archive-data/2.png){:loading="lazy"}
 
 Browsing through the list of 3rd parties, I've noticed that there are some gaps, so I'm hoping that this will be useful for both the community looking to understand 3rd party performance - as well as to Chromium for providing a way to correlate their data back to HTTP Archive and improve it's accuracy over time.
 
@@ -85,6 +90,6 @@ ON pages.pageid = r.pageid
 WHERE rank > 0 and rank < 10000
 ```
 
-![](/assets/img/blog/correlating-chromes-3rd-party-product-names-to-http-archive-data/3.png)
+![](/assets/img/blog/correlating-chromes-3rd-party-product-names-to-http-archive-data/3.png){:loading="lazy"}
 
 _Originally published at <https://discuss.httparchive.org/t/correlating-chromes-3rd-party-product-names-to-http-archive-data/1039>_

@@ -3,6 +3,11 @@ title: "Chrome Image Lazy Loading - Sites Already Using it on Week 1!"
 date: 2019-08-12T-00:00:00+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2019-01-11-correlating-performance-metrics-to-page-characteristics.md
+  - _posts/2018-07-02-impact-of-page-weight-on-load-time.md
+  - _posts/2017-08-16-tracking-page-weight-over-time.md
+
 ---
 
 Earlier this year the Chrome team announced plans to [support lazy loading natively](https://addyosmani.com/blog/lazy-loading/) in the browser. The plan was to add a loading attribute in both `<img>` and `<iframe>` elements. Chrome 75 included it behind a feature flag so that developers could test it out. Last week, with the release of [Chrome 76 this feature became generally available](https://twitter.com/hdjirdeh/status/1158984255214460928). I was surprised to see that it is already in use by more than 1000 sites. Lazy loading is an easy web performance win, so you may want to try this out on your sites.
@@ -21,21 +26,21 @@ However Chrome’s native lazy loading changes this by making it incredibly easy
 
 When I saw the announcement that it was shipped in Chrome 76, I was curious to see how many sites have Chrome’s lazy loading attribute in production. After querying the HTTP Archive response_bodies table, I was surprised to find that more than 1000 sites already implemented the image lazy loading feature. Since this was against the July 2019 dataset, that means that these sites enabled the feature before it was available in the browser. Additionally 52 sites have implemented iFrame lazy loading. Unsurprisingly, most of the usage is `loading=lazy`.
 
-![624x612](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/1.png)
+![624x612](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/1.png){:loading="lazy"}
 
 Let’s step back and take a look at some of the stats around image weight and lazy loading. From a web performance perspective there are a few usual suspects slowing sites down - including but not limited to page weight, third parties, and CPU bottlenecks. I doubt this is a surprise to anyone anymore, but according to the[ HTTP Archive](https://httparchive.org/reports/state-of-the-web?start=earliest&end=latest&view=list#bytesTotal) page weight has been increasing for years. We’ve known for a while that [heavier sites are more likely to be slower](https://paulcalvano.com/index.php/2018/07/02/impact-of-page-weight-on-load-time/) and images are the largest source of page weight. In fact the graphs below show that both desktop and mobile home pages contain more than 70% image bytes!
 
-![624x228](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/2.png)
+![624x228](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/2.png){:loading="lazy"}
 
 Pages containing a large amount of image bytes also tend to include a large number of image assets, rather than just a few large images. For example, at the 90th percentile pages with at least 3MB of images contained over 110 image resources, and that number increases with every added MB!
 
-![624x420](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/3.png)
+![624x420](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/3.png){:loading="lazy"}
 
 It’s likely that many of the images loaded on large image heavy sites are not displayed within the viewport of a user’s browser, and only appear when a user scrolls or interacts with a page. We can confirm this with the [Lighthouse](https://developers.google.com/web/tools/lighthouse/) audit for [off-screen images](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images). Since there is a cost to loading images, reducing their impact can help reduce bandwidth/data usage for clients as well as speed up the load times for web pages.
 
 The graphic below shows the relationship of image weight to offscreen images, as measured by Lighthouse. With each additional MB of images, we can see a consistent increase in the amount of off-screen images. In fact, 80-90% of pages with > 3MB images are loading more than 1MB of those bytes off screen. That’s a lot of wasted bytes!
 
-![624x163](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/4.png)
+![624x163](/assets/img/blog/chrome-image-lazy-loading-sites-already-using-it-on-week-1/4.png){:loading="lazy"}
 
 Chrome’s lazy loading feature was literally just released this week, and it's already in use by more than 1000 sites. That’s quite impressive, and it will be interesting to track the adoption of this feature by other websites and browsers in the future.
 

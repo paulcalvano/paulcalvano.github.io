@@ -3,6 +3,11 @@ title: Which 3rd Party Content Loads Before Render Start?
 date: 2017-09-17T14:46:52+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
+  - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
+  - _posts/2018-05-15-analyzing-3rd-party-performance-via-http-archive-crux.md
+
 ---
 Since the HTTP Archive is capturing the timing information on each request, I thought it would be interesting to correlate request timings (ie, when an object was loaded) with page timings. The idea is that we can categorize resources that were loaded before or after and event.
 
@@ -45,9 +50,9 @@ SUM(IF(req.startedDateTime < (pages.startedDateTime + (renderStart/1000) ),0,1))
 
 **So, What Content Types Load Before/After Render Start?** 
 
-I was a bit surprised to see that the most frequent 3rd party content type was images and not JavaScript.<img src="/assets/wp-content/uploads/2017/09/fdce5c823be98d9f15b9aee6bb54bed990491b55.png" alt="" width="543" height="293" class="alignnone size-full wp-image-199"  /> 
+I was a bit surprised to see that the most frequent 3rd party content type was images and not JavaScript.<img src="/assets/wp-content/uploads/2017/09/fdce5c823be98d9f15b9aee6bb54bed990491b55.png" alt="" width="543" height="293" class="alignnone size-full wp-image-199" loading="lazy" /> 
 
-As with all things HTTP Archive, when you find something unexpected &#8211; you keep digging deeper! I wound up tweaking the WHERE clause to look at different ranges of Alexa rankings, and found that in the top 100 sites, most 3rd party content was images. In the top 1000 sites,it was images, javascript and css. And then the top 10000+ sites fonts get added to that list. In the table below, the % columns indicate the percentage of requests for a specific content type that was loaded before RenderStart.<img src="/assets/wp-content/uploads/2017/09/6a28a7c092bc8adfbf9d73f55edf0640ea382635.png" alt="" width="642" height="421" class="alignnone size-full wp-image-195" /> 
+As with all things HTTP Archive, when you find something unexpected &#8211; you keep digging deeper! I wound up tweaking the WHERE clause to look at different ranges of Alexa rankings, and found that in the top 100 sites, most 3rd party content was images. In the top 1000 sites,it was images, javascript and css. And then the top 10000+ sites fonts get added to that list. In the table below, the % columns indicate the percentage of requests for a specific content type that was loaded before RenderStart.<img src="/assets/wp-content/uploads/2017/09/6a28a7c092bc8adfbf9d73f55edf0640ea382635.png" alt="" width="642" height="421" class="alignnone size-full wp-image-195" loading="lazy" /> 
 
 It’s interesting to note that many of the top ranked sites appear to be self hosting their own fonts, while the less popular sites are using fonts hosted by a 3rd party. Note &#8211; I wrote a blog post last month about custom web font performance implications here2. Bram Stein recently published an excellent book on this topic as well, which you can find here.
 
@@ -72,11 +77,11 @@ To dig a bit deeper, I modified the above query to include the third party domai
     ORDER BY BeforeRenderStart desc 
     
 
-<img src="/assets/wp-content/uploads/2017/09/e45f2891d78c89c28e9096ecccf32992ab42a80c_1_690x274.png" alt="" width="690" height="274" class="alignnone size-full wp-image-196" /> 
+<img src="/assets/wp-content/uploads/2017/09/e45f2891d78c89c28e9096ecccf32992ab42a80c_1_690x274.png" alt="" width="690" height="274" class="alignnone size-full wp-image-196" loading="lazy" /> 
 
-Google and Facebook content shows up prominently at the top of these results due to their frequent usage. However don’t be misled by assuming that this is anything other than the tip of the iceberg. Scrolling through the data there are many other 3rd parties represented here. Here’s a zoomed out view. The darker the cell, the higher the % of resources loading before RenderStart. And the list goes on much longer than this too…<img src="/assets/wp-content/uploads/2017/09/0965faacea5cd2eb3843f5e16a909f3a7f7a3c96_1_556x500.png" alt="" width="556" height="500" class="alignnone size-full wp-image-197" /> 
+Google and Facebook content shows up prominently at the top of these results due to their frequent usage. However don’t be misled by assuming that this is anything other than the tip of the iceberg. Scrolling through the data there are many other 3rd parties represented here. Here’s a zoomed out view. The darker the cell, the higher the % of resources loading before RenderStart. And the list goes on much longer than this too…<img src="/assets/wp-content/uploads/2017/09/0965faacea5cd2eb3843f5e16a909f3a7f7a3c96_1_556x500.png" alt="" width="556" height="500" class="alignnone size-full wp-image-197" loading="lazy" /> 
 
-Focusing on some of the third parties with a higher % of requests loaded prior to RenderStart, we can see some familiar names, and the content types being served from them &#8211;<img src="/assets/wp-content/uploads/2017/09/1d3af0a6d4ea02f906c472485de5d3112ac5d465_1_682x500.png" alt="" width="682" height="500" class="alignnone size-full wp-image-198" /> 
+Focusing on some of the third parties with a higher % of requests loaded prior to RenderStart, we can see some familiar names, and the content types being served from them &#8211;<img src="/assets/wp-content/uploads/2017/09/1d3af0a6d4ea02f906c472485de5d3112ac5d465_1_682x500.png" alt="" width="682" height="500" class="alignnone size-full wp-image-198" loading="lazy" /> 
 
 While it’s interesting to explore the data like this, another practical use case for this type of analysis would be to research how to optimize for a specific 3rd party.For example, you can modify some of the queries above to output a list of websites that utilize a specific 3rd party, and whether it is loading before/after RenderStart. If you see something interests you, then dig in deeper and possibly learn a new optimization trick! The thing I like about this approach is it crosses industries &#8211; so an ecommerce site might be able to learn something from analyzing an airline site, a media site, a news site, etc!
 

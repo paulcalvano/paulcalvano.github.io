@@ -3,6 +3,10 @@ title: "San Certificates: How Many Alt-Names Are Too Many?"
 date: 2020-02-17T18:59:25+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2020-07-07-samesite-cookies-are-you-ready.markdown
+  - _posts/2018-03-05-adoption-of-http-security-headers-on-the-web.md
+
 ---
 
 According to the HTTP Archive, 84% of HTTPS certificates are using the Subject Alternate Name (SAN) extension, which allows multiple hostnames to be protected by a single certificate. The largest certificate I found in the HTTP Archive contained a whopping 1275 alt-names! During this post we’ll explore why this is a web performance problem, and how you can determine what a reasonable limit would be for your certificates.
@@ -17,7 +21,7 @@ However these stated limits don’t always match what we can measure in the wild
 
 The majority of certificates have just 2 alt-names. This is usually because they contain both a top level domain (ie, example.com) and either a wildcard (*.example.com) or a fully qualified domain (www.example.com). However, 408,433 domains have at least 20 alt-names, and there are 47,171 domains with over 100 alt-names! That’s a lot of alt-names!
 
-![](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/1.jpg) 
+![](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/1.jpg){:loading="lazy"}
 
 **Do Clients Limit Certificate Sizes?**
 
@@ -25,7 +29,7 @@ The appropriately named website, [badssl.com](https://badssl.com/), contains lin
 
 Attempting to load their 10k SAN cert in Chrome fails with an SSL Protocol Error, likely due to the excessive size.
 
-![438x200](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/2.png)
+![438x200](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/2.png){:loading="lazy"}
 
 When attempting to load the same certificate from curl, we can see that the request fails due to the message size. The [certificate with 1000 alt-names](https://1000-sans.badssl.com/) is able to load successfully though. So what is the hard limit?
 
@@ -42,7 +46,7 @@ To understand why certificate size can be a performance concern, let's revisit w
 
 After a TCP connection is established, the client sends a ClientHello packet to initiate the TLS connection. The server then responds with a ServerHello, sends the certificate and the list of alt-names. If the certificate is too large, then you have to span multiple packets. The exact amount will vary based on the congestion window size, but in general new connections start with the initial congestion window. @igrigorik explains this in detail in the [High Performance Browser Networking chapter on TLS](https://hpbn.co/transport-layer-security-tls/):
 
-![624x460](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/3.png)
+![624x460](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/3.png){:loading="lazy"}
 
 A large certificate can be problematic for a few reasons:
 
@@ -54,17 +58,17 @@ Optimizing your alt-name list is just one of many things you can do to tweak TLS
 
 The graph below was taken from a WebPageTest measurement for a site that contained 1000 alt-names. In this example, the TLS time actually took longer than the download time for the entire base HTML.
 
-![624x239](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/4.png)
+![624x239](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/4.png){:loading="lazy"}
 
 To get a better idea of what is going on behind the scenes, let's examine a Wireshark capture for this measurement. Packets 13, 17 and 19 show the 114ms TCP connection. Packets 20 - 68 is the TLS negotiation, with the ServerHello taking up the largest amount of it. We’re still limited by a 16KB TLS record size, so there are 2 TLS records that need to be assembled to complete the TLS negotiation. A total of 11 packets!
 
-![624x268](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/5.jpg )
+![624x268](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/5.jpg){:loading="lazy"}
 
 **Examining Certificate Sizes**
 
 In Chrome DevTools you can examine the certificate details in the Security tab. For example, we can see that ugos.ugm.ac.id contains 1342 alt-names. There were 1275 hostnames during the last HTTP Archive run, so 67 alt-names were added since then!
 
-![624x452](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/6.png)
+![624x452](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/6.png){:loading="lazy"}
 
 You can use the openssl command to request a certificate and count the number of bytes in the certificate chain. In the example below, you can see that 46KB of data was transferred just to establish a secure connection!
 
@@ -97,15 +101,15 @@ In the [2019 Web Almanac](https://almanac.httparchive.org/en/2019/), certificate
 
 I found the earlier example particularly intriguing since 1342 alt-names is much larger than what DigiCert’s website lists as their maximum. The graph below illustrates the maximum alt-name sizes observed for the top 15 certificate authorities. Sectigo and cPanel certificates are signed by Comodo, which explains the 1000 maximum. However Digicert appears to serve the largest of the large certificates.
 
-![624x309](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/7.png)
+![624x309](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/7.png){:loading="lazy"}
 
 The average certificate sizes are significantly smaller, which is in line with the earlier observation that the majority of certificates have 2 alt-names.
 
-![624x304](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/8.png)
+![624x304](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/8.png){:loading="lazy"}
 
 If we examine the distribution of certificate sizes, it seems that the certificate authorities used for the larger alt-name lists tend to be GTS, Comodo and DigiCert.
 
-![624x324](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/9.png)
+![624x324](/assets/img/blog/san-certificates-how-many-alt-names-are-too-many/9.png){:loading="lazy"}
 
 **So, What Is a Reasonable Alt-Name Size?**
 

@@ -3,6 +3,11 @@ title: 'Tutorial: Using BigQuery to Analyze Chrome User Experience Report Data'
 date: 2018-05-06T03:25:24+00:00
 author: Paul Calvano
 layout: post
+related_posts:
+  - _posts/2019-01-11-correlating-performance-metrics-to-page-characteristics.md
+  - _posts/2018-05-15-analyzing-3rd-party-performance-via-http-archive-crux.md
+  - _posts/2018-04-26-using-googles-crux-to-compare-your-sites-rum-data-w-competitors.md
+
 ---
 Last week I wrote a [blog post](https://paulcalvano.com/index.php/2018/04/26/using-googles-crux-to-compare-your-sites-rum-data-w-competitors/) showing some examples of how you can use the Chrome User Experience report to compare your site&#8217;s RUM data to competitors. In this post I&#8217;d like to share some brief videos to help you quickly get started exploring the data via Google BigQuery.
 
