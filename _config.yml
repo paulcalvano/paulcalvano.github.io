@@ -318,7 +318,6 @@ plugins:
   - jekyll-include-cache
   - jekyll-last-modified-at
 
-
 # SEO Tag
 # ---------------------------------------------------------------------------------------
 
@@ -405,3 +404,6 @@ jekyll_compose:
       links:
         - title: Project Link
           url: https://example.com
+
+
+      

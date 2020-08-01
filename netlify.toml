@@ -5,3 +5,10 @@
 [build.environment]
   JEKYLL_ENV = "production"
   RUBY_VERSION = "2.7.1"
+  
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+
+  [headers.values]
+    X-TEST = "I hope this works"
