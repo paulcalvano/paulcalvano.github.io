@@ -59,7 +59,7 @@ And the debug log indicated that the error was because the connection was closed
 
 **Analyzing a Packet Capture**  
 Next I decided to analyze the TCP packet capture from a test run where the issue occurred. On the WebPageTest instance where I was able to reproduce the issue, I ran a test with the advanced setting: “capture network packet trace”. Once the test was run, I downloaded the tcpdump capture.  
-<img loading="lazy" src="/assets/wp-content/uploads/2017/06/packetcapture.png" alt="" width="487" height="227" class="alignnone size-full wp-image-189" srcset="http://paulcalvano.com/wp-content/uploads/2017/06/packetcapture.png 487w, http://paulcalvano.com/wp-content/uploads/2017/06/packetcapture-300x140.png 300w" sizes="(max-width: 487px) 100vw, 487px" /> 
+<img loading="lazy" src="/assets/wp-content/uploads/2017/06/packetcapture.png" alt="" width="487" height="227" class="alignnone size-full wp-image-189" /> 
 
 The packet capture clearly shows that the site negotiated a H2 connection via ALPN…  
 <img loading="lazy" src="/assets/wp-content/uploads/2017/06/alpn.png" alt="" width="1071" height="526" class="alignnone size-full wp-image-190"  /> 
