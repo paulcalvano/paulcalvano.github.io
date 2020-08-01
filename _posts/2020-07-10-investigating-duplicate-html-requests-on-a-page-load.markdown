@@ -107,7 +107,7 @@ If you are going to use a service worker to cache a resource, make sure that res
 
 While this example is not specifically about HTML, it occurs enough that it's worth mentioning.  As @dougsillars says "display:none does not mean download:none".   
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Your periodic reminder that using &quot;display:none&quot; in your CSS does not also mean &quot;download:none&quot; <a href="https://t.co/eZZNnrQ3OS">pic.twitter.com/eZZNnrQ3OS</a></p>&mdash; Doug Sillars 🇬🇧 (@dougsillars) <a href="https://twitter.com/dougsillars/status/1261888005364756480?ref_src=twsrc%5Etfw">May 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Your periodic reminder that using &quot;display:none&quot; in your CSS does not also mean &quot;download:none&quot; <a href="https://t.co/eZZNnrQ3OS">pic.twitter.com/eZZNnrQ3OS</a></p>&mdash; Doug Sillars 🇬🇧 (@dougsillars) <a href="https://twitter.com/dougsillars/status/1261888005364756480?ref_src=twsrc%5Etfw">May 17, 2020</a></blockquote> <script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 In this example, the developer referenced video content that used a media query to hide the video for certain screen sizes. The end result was downloading both the desktop and mobile videos, while hiding one of them. That's a lot of wasted bytes!
 
