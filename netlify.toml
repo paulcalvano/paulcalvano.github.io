@@ -11,4 +11,5 @@
   for = "/*"
 
   [headers.values]
-    X-TEST = "I hope this works"
+    Cache-Control = "max-age=2592000"
+    Server = ""
