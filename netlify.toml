@@ -12,4 +12,10 @@
 
   [headers.values]
     Cache-Control = "max-age=2592000"
-    Server = ""
+    
+[[redirects]]
+  from = "/index.php/2017/04/12/gauge-user-experience-with-time-to-interactive/"
+  to = "/2017-04-12-gauge-user-experience-with-time-to-interactive/"
+  status = 301
+  
+ 
