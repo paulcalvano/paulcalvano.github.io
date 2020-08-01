@@ -24,7 +24,7 @@ Performance optimization is a cyclical process. We are constantly learning new w
 
 During this session I provided a brief overview of the HTTP Archive and then dove into some insights into the adoption of common web performance techniques and some of their measurable impacts.
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/i3sEaeA2xHdglT" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+<iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/i3sEaeA2xHdglT" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
 
 Presented at:
@@ -35,7 +35,7 @@ Presented at:
 
 Have you ever wondered how often some web performance best practices are implemented on the web? How much faster are sites that implement them, and what are some key things to avoid? During this session, well review data from the HTTP Archive, CrUX and mPulse to help answer some of these questions.
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/E1j066R2PLETks" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+<iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/E1j066R2PLETks" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
 
 Presented at:
@@ -49,7 +49,7 @@ Have you ever thought about how your sites performance compares to the web as a
 
 Paul Calvano explores how the HTTP Archive works, how people are using this dataset, and some ways that Akamai has leveraged data within the HTTP Archive to help its customers.
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/BGEWAgPmUBd9a8" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+<iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/BGEWAgPmUBd9a8" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
 Presented at:
 
@@ -80,7 +80,7 @@ Presented at:
 
 Many websites use real user measurement (RUM) data to analyze their performance, as well as to validate the impact of optimizations. During this session, well discuss how RUM is used and then explore some of the fascinating insights into the web that we can learn from it.
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/z0iKvoNIZh08Sl" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+<iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/z0iKvoNIZh08Sl" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 
 Presented at:
@@ -93,7 +93,7 @@ Presented at:
 In this episode of The State of the Web, Rick speaks with Paul Calvano, a Senior Web Performance Architect at Akamai Technologies, a company that delivers 20-30% of the worlds web traffic. 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hqTtkdNwYwk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/hqTtkdNwYwk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 **3 Tips to Increasing Mobile App Performance**
@@ -105,7 +105,7 @@ This session covers these 3 important areas:
 - Analyzing Mobile Applications for performance issues
 - Advanced Offload/Optimization Techniques for Mobile Applications
 
-[![](/assets/img/blog/speaking/mobile-app-perf.jpg)](http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4)
+[![](/assets/img/blog/speaking/mobile-app-perf.jpg){:loading="lazy"}](http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4)
 
 Presented at:
 - 2016-July: [Akamai Edge Conference](http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4) (Las Vegas, NV)
@@ -116,7 +116,7 @@ The caching ecosystem has evolved over the years  what, where, and how long y
 
 Using live demos, we will dive into some advance caching concepts that will enable you to squeeze the most benefits from this caching ecosystem.
 <p></p>
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/9jRfREH8SF8h3r" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+<iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/9jRfREH8SF8h3r" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 Presented at: 
 - 2015-October: [Velocity Conference](https://www.slideshare.net/RakeshChaudhary4/advanced-caching-concepts-velocity-ny-2015) (New York, NY)
