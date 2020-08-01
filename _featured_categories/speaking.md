@@ -105,10 +105,10 @@ This session covers these 3 important areas:
 - Analyzing Mobile Applications for performance issues
 - Advanced Offload/Optimization Techniques for Mobile Applications
 
-<iframe src="https://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+[![](/assets/img/blog/speaking/mobile-app-perf.jpg)](http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4)
 
 Presented at:
-- 2016-July: [Akamai Edge Conference](https://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4) (Las Vegas, NV)
+- 2016-July: [Akamai Edge Conference](http://videop-community.akamai.com/video/5c325d1b5d00e_11727282.mp4) (Las Vegas, NV)
 
 **Advanced Caching Concepts**
 
