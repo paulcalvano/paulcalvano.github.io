@@ -17,5 +17,83 @@
   from = "/index.php/2017/04/12/gauge-user-experience-with-time-to-interactive/"
   to = "/2017-04-12-gauge-user-experience-with-time-to-interactive/"
   status = 301
-  
- 
+
+[[redirects]]  
+  from = "/index.php/2017/06/27/performance-debugging-leads-to-discovery-of-a-bizarre-browser-bug/"
+  to = "/2017-06-27-performance-debugging-leads-to-discovery-of-a-bizarre-browser-bug/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2017/07/25/performance-and-usage-implications-of-custom-fonts/"
+  to = "/2017-07-25-performance-and-usage-implications-of-custom-fonts/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2017/08/16/tracking-page-weight-over-time/"
+  to = "/2017-08-16-tracking-page-weight-over-time/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2017/08/31/exploring-relationships-between-performance-metrics-in-http-archive-data/"
+  to = "/2017-08-31-exploring-relationships-between-performance-metrics-in-http-archive-data/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2017/09/17/which-3rd-party-content-loads-before-render-start/"
+  to = "/2017-09-17-which-3rd-party-content-loads-before-render-start/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2017/11/29/measuring-the-performance-of-firefox-quantum-with-rum/"
+  to = "/2017-11-29-measuring-the-performance-of-firefox-quantum-with-rum/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/01/07/cache-control-immutable-a-year-later/"
+  to = "/2018-01-07-cache-control-immutable-a-year-later/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/03/05/adoption-of-http-security-headers-on-the-web/"
+  to = "/2018-03-05-adoption-of-http-security-headers-on-the-web/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/03/14/http-heuristic-caching-missing-cache-control-and-expires-headers-explained/"
+  to = "/2018-03-14-http-heuristic-caching-missing-cache-control-and-expires-headers-explained/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/04/26/using-googles-crux-to-compare-your-sites-rum-data-w-competitors/"
+  to = "/2018-04-26-using-googles-crux-to-compare-your-sites-rum-data-w-competitors/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/05/06/tutorial-using-bigquery-to-analyze-chrome-user-experience-report-data/"
+  to = "/2018-05-06-tutorial-using-bigquery-to-analyze-chrome-user-experience-report-data/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/07/02/impact-of-page-weight-on-load-time/"
+  to = "/2018-07-02-impact-of-page-weight-on-load-time/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/07/25/brotli-compression-how-much-will-it-reduce-your-content/"
+  to = "/2018-07-25-brotli-compression-how-much-will-it-reduce-your-content/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/08/27/on-becoming-a-contributor-to-the-http-archive/"
+  to = "/2018-08-27-on-becoming-a-contributor-to-the-http-archive/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2018/12/03/mobile-trends-during-the-us-holiday-weekend/"
+  to = "/2018-12-03-mobile-trends-during-the-us-holiday-weekend/"
+  status = 301  
+
+[[redirects]]
+  from = "/index.php/2019/01/11/correlating-performance-metrics-to-page-characteristics/"
+  to = "/2019-01-11-correlating-performance-metrics-to-page-characteristics/"
+  status = 301  
