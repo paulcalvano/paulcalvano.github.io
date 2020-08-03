@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Browser Back/Forward Caches and their Benefit to Web Performance"
-date: 2020-08-03 14:30:00 -0500
+date: 2020-08-03 14:30:00 -0400
 related_posts:
  
   - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
