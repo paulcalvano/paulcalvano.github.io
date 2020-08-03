@@ -128,7 +128,7 @@ Some observations:
 
 **Is this a Blind Spot for Synthetic?**
 
-When measuring the performance of a synthetic transaction, you are usually starting a new session - which means that the page loads will be navigations.  Since most synthetic services identify themselves in their User-Agent, we’re able to compare navigation types across popular synthetic solutions using mPulse data. In the graph below you can see that the vast majority of requests from synthetic services are navigation events. There are a small percentage of reloads, likely due to multi-step scripts that repeat a page view. The only synthetic measurement service that I was able to see back/forward navigations from was PingdomBot.
+When measuring the performance of a synthetic transaction, you are usually starting a new session - which means that the page loads will be navigations.  Since most synthetic services identify themselves in their User-Agent, we’re able to compare navigation types across popular synthetic solutions using mPulse data. In the graph below you can see that the vast majority of requests from synthetic services are navigation events. There are a small percentage of reloads, likely due to multi-step scripts that repeat a page view. 
 
 
 ![Navigation Types by Desktop Synthetic](/assets/img/blog/browser-backforward-caches-and-their-benefit-to-web-performance/image5.jpg){:loading="lazy"}
