@@ -16,7 +16,8 @@ description: >
 ---
 
 
-Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes adjust tailor some stats to the locale I'm presenting in.
+Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes add some stats specific to the locale I'm presenting in.
+
 
 **Measuring the Adoption of Web Performance Techniques**
 
