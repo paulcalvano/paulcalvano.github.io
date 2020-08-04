@@ -71,7 +71,7 @@ The general idea behind a back/forward cache is to preserve the state of the pag
 
 The Chrome team has announced its intention to enable the back/forward cache feature for Chrome Mobile users[ starting with Chrome 86 (October 2020)](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/S9qRFx4ozXk/DNT8tiR3BAAJ). In this post we will examine how frequently back/forward navigations are used across different devices and browsers. We’ll also look at the performance opportunities that the back/forward cache implementation may be able to solve.
 
-_Note: Because of how back/forward caches work, we do not have real user measurements for back/forward cache hits. In this analysis we’ll explore the opportunity presented by back/forward caches, and not the performance gained by any specific browser’s implementation. _
+_Note: Because of how back/forward caches work, we do not have real user measurements for back/forward cache hits. In this analysis we’ll explore the opportunity presented by back/forward caches, and not the performance gained by any specific browser’s implementation._
 
 **Summary of Navigation Types**
 
@@ -92,7 +92,7 @@ There are a few interesting observations we can make from this graph:
 
 The most popular desktop browsers are Chrome, Safari, Edge and Firefox.   In fact, combined they account for 91.4% of all Desktop pages!
 
-_Note: When looking at this data it’s also important to note that in Firefox and Safari we only have the back/forward navigation events for navigations that did not result in a back/forward cache hit. _ 
+_Note: When looking at this data it’s also important to note that in Firefox and Safari we only have the back/forward navigation events for navigations that did not result in a back/forward cache hit._ 
 
 When we look at this by desktop browser, we can see that
 
