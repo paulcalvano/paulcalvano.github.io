@@ -77,7 +77,7 @@ Is there something about the mobile experience (such as social media links, emai
 
 Or could it be growth in regions where mobile is more dominant? 
 
-**How Has this Varied by Country?**
+**How Has this Varied by Region?**
 
 At the start of 2020, most regions of the world saw an increase in the domain of sites. The exception to this was western Asia. The regions that had the most substantial increase at the start of the year were Northern Europe, North America and South America.
 
@@ -190,3 +190,6 @@ If we look at the month to month growth trends for these TLDs, we can make a few
 **Conclusion**
 
 The web is constantly growing and evolving, and clearly it’s rate of growth can vary quite a bit. During this analysis we explored a public dataset that Google provides to show how the web has grown during 2020, and which regions are growing the most.  While this doesn’t speak to the traffic levels experienced in these locations, the number of websites can be used as a proxy for understanding usage of the web. As this analysis shows, 2020 has been a year of substantial global growth for the web.
+
+If you are interested in seeing some of the SQL queries and raw data used in this analysis, I’ve created a post with all the details in the [HTTP Archive discussion forums](https://discuss.httparchive.org/t/growth-of-the-web-in-2020/2029). You can also see all the data used for these graphs in this [Google Sheet](https://docs.google.com/spreadsheets/d/1eGfT0dBslpSl8Xl6ey7a_fNT0Cj5tTfJzX6gpwpXDBE/edit?usp=sharing.
+
