@@ -189,4 +189,4 @@ If we look at the month to month growth trends for these TLDs, we can make a few
 
 **Conclusion**
 
-The web is constantly growing and evolving, and clearly it’s rate of growth can vary quite a bit. During this analysis we explored a public dataset that Google provides to show how the web has grown during 2020, and which regions are growing the most.  While this doesn’t speak to the traffic levels experienced in these locations, the number of websites can be used as a proxy for understanding usage of the web. As this analysis shows, 2020 has been a year of growth for the web across almost every geography.
+The web is constantly growing and evolving, and clearly it’s rate of growth can vary quite a bit. During this analysis we explored a public dataset that Google provides to show how the web has grown during 2020, and which regions are growing the most.  While this doesn’t speak to the traffic levels experienced in these locations, the number of websites can be used as a proxy for understanding usage of the web. As this analysis shows, 2020 has been a year of substantial global growth for the web.
