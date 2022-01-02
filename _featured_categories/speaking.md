@@ -18,7 +18,15 @@ description: >
 
 Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes add some stats specific to the locale I'm presenting in.
 
+**WebP + AVIF + more: Image format adoption stats for 2021**
 
+2020 was the year AVIF went stable in Chrome and WebP secured footing in all major browsers. Did this have any impact on adoption of these formats across the web?  During this session, I presented an HTTP Archive analysis on how these image formats are being used in 2021    
+
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/tz5bpAQY43k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Presented at:
+- 2021-September: [Toronto WebPerf Meetup - ImageReady 2.0](https://www.meetup.com/Toronto-Web-Performance-Group/events/280848011/) (Virtual)    [Slides](https://docs.google.com/presentation/d/1VS5QjNR6lh2y9jL5xaeainQ2cTAWyy7QiEjDMh4hNQA/)
+    
 **Measuring the Adoption of Web Performance Techniques**
 
 Performance optimization is a cyclical process. We are constantly learning new ways to optimize, while simultaneously adopting new technologies and techniques that negatively impact performance. The HTTP Archive provides a great historical record of the technical side of the web, with almost 10 years of history and an ever growing dataset of sites.
