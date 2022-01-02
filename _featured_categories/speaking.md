@@ -22,7 +22,7 @@ Here's a few of the talks that I've given over the past few years. I've included
 
 2020 was the year AVIF went stable in Chrome and WebP secured footing in all major browsers. Did this have any impact on adoption of these formats across the web?  During this session, I presented an HTTP Archive analysis on how these image formats are being used in 2021    
 
-<iframe loading="lazy" width="1280" height="720" src="https://www.youtube.com/embed/tz5bpAQY43k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/tz5bpAQY43k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     
 - Slides: https://docs.google.com/presentation/d/1VS5QjNR6lh2y9jL5xaeainQ2cTAWyy7QiEjDMh4hNQA/
     
