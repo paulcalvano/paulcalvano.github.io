@@ -24,7 +24,10 @@ Here's a few of the talks that I've given over the past few years. I've included
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/tz5bpAQY43k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     
-- Slides: https://docs.google.com/presentation/d/1VS5QjNR6lh2y9jL5xaeainQ2cTAWyy7QiEjDMh4hNQA/
+Slides: https://docs.google.com/presentation/d/1VS5QjNR6lh2y9jL5xaeainQ2cTAWyy7QiEjDMh4hNQA/
+
+    Presented at:
+- 2021-September: [Toronot WebPerf Meetup - ImageReady 2.0](https://www.meetup.com/Toronto-Web-Performance-Group/events/280848011/) (Virtual)    
     
 **Measuring the Adoption of Web Performance Techniques**
 
