@@ -18,6 +18,18 @@ description: >
 
 Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes add some stats specific to the locale I'm presenting in.
 
+**Performance Mistakes - an HTTP Arhive Deep Dive**
+
+Web performance is a complicated topic, but over the years it’s become easier to articulate thanks to incredible advancements in performance features, their adoption in the browser ecosystem and tools that test and give insight into which techniques might speed up your site.
+
+However, all too often a feature is implemented incorrectly, resulting in a lost opportunity for performance improvement. During this talk I explored a few common web performance techniques - some that you are likely already familiar with. Looking at the HTTP Archive we found some examples of sites that are using them incorrectly, as well as the impact and potential benefits of fixing them.
+
+<iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/key/udVefOIzNvOst3?startSlide=1" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px;max-width: 100%;" allowfullscreen></iframe>
+
+Presented at: 
+- 2022-June: [Lazy Load Conference](https://webdirections.org/lazyload/speakers/paul-calvano.php) (Virtual) [Slides](https://www.slideshare.net/PaulCalvano/lazy-load-22-performance-mistakes-an-http-archive-deep-dive)
+- 2022-Sept: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/286338923/) (New York, NY) [Slides](https://www.slideshare.net/PaulCalvano/ny-webperf-sept-22-performance-mistakes-an-http-archive-deep-dive)
+
 **WebP + AVIF + more: Image format adoption stats for 2021**
 
 2020 was the year AVIF went stable in Chrome and WebP secured footing in all major browsers. Did this have any impact on adoption of these formats across the web?  During this session, I presented an HTTP Archive analysis on how these image formats are being used in 2021    
