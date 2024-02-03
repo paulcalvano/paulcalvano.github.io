@@ -15,7 +15,7 @@ description: >
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
 ---
-  Hi! I'm Paul Calvano.  I work as a Performance Architect at [Etsy](https://www.etsy.com/), where I help optimize the performance of their online marketplace. I've actually been doing web performance work since 2000, which I guess makes me old :).  Previously, I worked at [Akamai Technologies](https://www.akamai.com/), and Keynote (which was later aquired by [Dynatrace](https://www.dynatrace.com/)).
+  Hi! I'm Paul Calvano. I work as a Performance Architect at [Etsy](https://www.etsy.com/), where I help optimize the performance of their online marketplace. I've actually been doing web performance work since 2000, which I guess makes me old :). Previously, I worked at [Akamai Technologies](https://www.akamai.com/), and Keynote (which was later aquired by [Dynatrace](https://www.dynatrace.com/)).
   
   I'm also a co-maintainer of the [HTTP Archive](https://httparchive.org), a really cool open source project that has been tracking the evolution of the web since 2010! I had the privilege of writing 2 chapters of the [2019 Web Almanac](https://almanac.httparchive.org/en/2019/) ([Caching](https://almanac.httparchive.org/en/2019/caching) and [Compression](https://almanac.httparchive.org/en/2019/compression)) as well as contributing to the 2020, 2021 and 2022 almanac!
 
