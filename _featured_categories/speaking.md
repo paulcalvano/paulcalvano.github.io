@@ -28,7 +28,7 @@ However, all too often a feature is implemented incorrectly, resulting in a lost
 
 Presented at: 
 - 2022-June: [Lazy Load Conference](https://webdirections.org/lazyload/speakers/paul-calvano.php) (Virtual) [Slides](https://www.slideshare.net/PaulCalvano/lazy-load-22-performance-mistakes-an-http-archive-deep-dive)
-- 2022-Sept: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/286338923/) (Virtual) [Slides](https://www.slideshare.net/PaulCalvano/ny-webperf-sept-22-performance-mistakes-an-http-archive-deep-dive)
+- 2022-Sept: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/286338923/) (New York, NY) [Slides](https://www.slideshare.net/PaulCalvano/ny-webperf-sept-22-performance-mistakes-an-http-archive-deep-dive)
 
 **WebP + AVIF + more: Image format adoption stats for 2021**
 
