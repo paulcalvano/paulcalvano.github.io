@@ -28,7 +28,7 @@ title:                 Paul Calvano
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  Paul Calvano is a Web Performance Architect at Akamai Technologies, where he helps businesses improve the performance of their websites.
+  Paul Calvano is a Performance Architect at Etsy, where he helps optimize the performance of their online marketplace.
 
 # A shorter description for the sidebar.
 tagline:               Hi! I'm a web performance architect, and have been making websites load faster for over 20 years!
@@ -62,7 +62,7 @@ menu:
 
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © 2022 Paul Calvano. All rights reserved.
+copyright:             © 2024 Paul Calvano. All rights reserved.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
