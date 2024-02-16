@@ -24,7 +24,7 @@ The Web Font Analyzer tool will take a WebPageTest measurement that you provide 
 
 [![Web Font Analyzer](/assets/img/blog/identifying-font-subsetting-opportunities/web-font-analyzer.jpg)](https://tools.paulcalvano.com/wpt-font-analysis/)
 
-You can find this tool[here](https://tools.paulcalvano.com/wpt-font-analysis/).
+You can find this tool [here](https://tools.paulcalvano.com/wpt-font-analysis/).
 
 **WebPageTest Cookies Script**
 
