@@ -361,7 +361,7 @@ FROM (
 
 <details>
   <summary><b>Font glyphs vs rendered HTML</b></summary>
-  This query provides a list of the top 10K web sites, individual font URLs, the number of glyphs in the font, and the number of visible glyphs in the rendered HTML.  It also provides a link to the WebPageTest results from the HTTP Archive run for further analysis. This query processes almost 4 TB of data. I stored the results of the query in a scratchspace table in the HTTP Archive `httparchive.scratchspace.`
+  This query provides a list of the top 10K web sites, individual font URLs, the number of glyphs in the font, and the number of visible glyphs in the rendered HTML.  It also provides a link to the WebPageTest results from the HTTP Archive run for further analysis. This query processes almost 4 TB of data. I stored the results of the query in a scratchspace table in the HTTP Archive `httparchive.scratchspace.2024_01_01_font_glyphs_top100k`
   <pre><code>
 CREATE TEMPORARY FUNCTION  CountVisibleGlyphs(html STRING)
 RETURNS INT64
