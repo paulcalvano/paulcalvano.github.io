@@ -8,7 +8,7 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Paul Calvano is a Web Performance Architect at Akamai Technologies, where he helps businesses improve the performance of their websites.
+    Paul Calvano is a Performance Architect at Etsy, where he helps optimize the performance of their online marketplace.
     
 
   # This photo will be used in the about section
