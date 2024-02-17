@@ -16,7 +16,15 @@ description: >
 # no_groups: true
 ---
 
+**Web Font Analyzer** 
 
+Do you know how many web fonts are loaded on your site? How about their size and the number of glyphs contained in them? There are quite a few sites that load large font files - some containing hundreds or thousands of glyphs. This can be problematic for web performance, since fonts have a high loading priority. I wrote a blog post about this [here](/2024-02-16-identifying-font-subsetting-opportunities).
+
+The Web Font Analyzer tool will take a WebPageTest measurement that you provide and show you some information related to the fonts.  When are they loading? How many glyphs do they contain?  How many visible glyphs are on the page. This data might prove helpful when deciding on whether to subset your fonts.
+
+[![Web Font Analyzer](/assets/img/blog/identifying-font-subsetting-opportunities/web-font-analyzer.jpg)](https://tools.paulcalvano.com/wpt-font-analysis/)
+
+You can find this tool [here](https://tools.paulcalvano.com/wpt-font-analysis/).
 
 **WebPageTest Cookies Script**
 
@@ -31,7 +39,7 @@ You can find the tool [here](http://htmlpreview.github.io/?https://github.com/pa
 
 **Gzip/Brotli Compression Estimator** 
 
-Ever wonder how effective your web server or CDN is at compressing your text based assets?  While it's easy to confirm that a response was compressed (by looking at 	`Content-Encoding` headers, the compression level that was used is not indicated anywhere in the response. This tool attempts to download both gzip and brotli compressed resources from your server, and estimates their compression levels.  It also compresses the file at each level of gzip and brotli compression so that you can see what the potential savings are. I wrote a blog post about this [here](http://127.0.0.1:4000/2018-07-25-brotli-compression-how-much-will-it-reduce-your-content/)
+Ever wonder how effective your web server or CDN is at compressing your text based assets?  While it's easy to confirm that a response was compressed (by looking at 	`Content-Encoding` headers, the compression level that was used is not indicated anywhere in the response. This tool attempts to download both gzip and brotli compressed resources from your server, and estimates their compression levels.  It also compresses the file at each level of gzip and brotli compression so that you can see what the potential savings are. I wrote a blog post about this [here](/2018-07-25-brotli-compression-how-much-will-it-reduce-your-content/)
 [![](/assets/wp-content/uploads/2018/07/compression_estimator_jquery.jpg)](https://tools.paulcalvano.com/compression.php)
 
 You can find this tool [here](https://tools.paulcalvano.com/compression.php).
