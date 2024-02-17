@@ -51,7 +51,7 @@ The most popular Google font is [Open Sans](https://fonts.gstatic.com/s/opensans
 
 So how does that compare with the rendered HTML of a page? Using the HTTP Archive, I was able to write a query that extracts and summarizes the visible glyphs in rendered HTML pages for the top 10K sites. We can then compare this to the minimum and maximum number of glyphs in a page’s custom web fonts. The results might surprise you!.
 
-* The median popular site contains 3 fonts, totalling 95 KB. The rendered HTML has 101 glyphs, while the smallest font has 251 glyphs.
+* The median popular site contains 3 fonts, totalling 95 KB. The rendered HTML has 101 glyphs, while the smallest font has 248 glyphs.
 * At every percentile, the number of glyphs in the smallest font has 2-3x the number of glyphs compared to the rendered HTML. 
 
 <table>
