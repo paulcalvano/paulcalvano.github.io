@@ -16,6 +16,15 @@ description: >
 # no_groups: true
 ---
 
+**Compression Tester**
+
+Most web servers and CDNs deliver gzip compressed payloads by default, but many also support Brotli as well. And as of March 2023 Chrome now supports zStandard compression. This tool helps you understand how each of these compression methods can compress your content. It works by downloading compressed payloads from your server, and then attempting to compress it at multiple gzip, brotli and zStandard compression levels.  THe results include both the payload size as well as the time it took to compress at each compression level
+
+[![Compression Tester](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/sandals_homepage_compression.jpg)](https://tools.paulcalvano.com/compression-tester/)
+
+You can find this tool [here](https://tools.paulcalvano.com/compression-tester/).
+
+
 **Web Font Analyzer** 
 
 Do you know how many web fonts are loaded on your site? How about their size and the number of glyphs contained in them? There are quite a few sites that load large font files - some containing hundreds or thousands of glyphs. This can be problematic for web performance, since fonts have a high loading priority. I wrote a blog post about this [here](/2024-02-16-identifying-font-subsetting-opportunities).
