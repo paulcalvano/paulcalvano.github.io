@@ -79,7 +79,7 @@ While the highest compression levels might be ideal for static content, you’ll
 
 **zStandard**
 
-[zStandard](https://facebook.github.io/zstd/) is a newer compression method developed by Facebook. It was designed to compress at ratios similar to gzip compression, but with faster compression and decompression speeds. Historically its usage has been mostly filesystem related, however Chrome is the first browser to support it as of March 2023. While most CDNs do not have support for zStandard yet, many could feasibly vary the cache key for origin compressed responses similar to the way they support Brotli. 
+[zStandard](https://facebook.github.io/zstd/) is a newer compression method developed by Facebook. It was designed to compress at ratios similar to gzip compression, but with faster compression and decompression speeds. Historically its usage has been mostly filesystem related, however Chrome is the first browser to support it as of March 2024. While most CDNs do not have support for zStandard yet, many could feasibly vary the cache key for origin compressed responses similar to the way they support Brotli. 
 
 When examining the top 10k sites in the HTTP Archive, zStandard compression usage appears to be mostly confined to sites owned by Meta such as `www.facebook.com`, `www.instagram.com`, `www.instagram.com`, `www.whatsapp.com`, etc) and Netflix. The Meta sites are delivering zStandard encoded content to Chrome browsers. Netflix's appears to default to gzip compression, possibly implementing zStandard as a test.
 
