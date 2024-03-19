@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Choosing Between gzip, Brotli and zStandard Compression"
-date: 2024-03-17 10:00:00 -0400
+date: 2024-03-19 00:00:00 -0400
 related_posts:
  
   - _posts/2018-07-25-brotli-compression-how-much-will-it-reduce-your-content.md
