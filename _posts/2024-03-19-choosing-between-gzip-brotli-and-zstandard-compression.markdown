@@ -23,7 +23,7 @@ Beyond this, there’s also [shared dictionaries](https://developer.chrome.com/b
 
 While it may take some time for browsers, web servers and CDNs to catch up, it’s worth pondering which compression method is right for your content. A few years ago I wrote a [blog post about Brotli compression](https://paulcalvano.com/2018-07-25-brotli-compression-how-much-will-it-reduce-your-content/) as well as a tool to help you determine how Brotli could compress your content relative to gzip. I’ve updated this tool to include zStandard compression as well as show the relative latency incurred at each compression level. You can find the new/updated tool at [https://tools.paulcalvano.com/compression-tester/](https://tools.paulcalvano.com/compression-tester/)
 
-[![Compression Tester](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/compression_tester.jpg)](https://tools.paulcalvano.com/compression-tester/)
+[![Compression Tester](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/compression_tester.jpg)](https://tools.paulcalvano.com/compression-tester/){:loading="lazy"}
 
 **How HTTP Compression Works**
 
@@ -101,24 +101,24 @@ Let's dive deeper into a few examples:
 
 When browsing Facebook, the largest JavaScript resource I saw was 2.37 MB uncompressed. It was delivered to my browser as a 514 KB zStandard compressed response. When testing this file via the Compression Tester tool, it was served a 645 KB gzip and 526 KB Brotli response. 
 
-![Facebook Script Example](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/fb_script_example.jpg)
+![Facebook Script Example](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/fb_script_example.jpg){:loading="lazy"}
 
 Comparing the compression test results to the delivered responses, we can see that the server likely compressed in the middle range. For example it delivered a 526 KB Brotli payload (presumably level 5), but it could have delivered Brotli level 11 . This would come at a higher computational cost though - which may have been a factor in their selection. zStandard also appears to be delivering a smaller file, but based on this test the computational overhead is more than double what gzip level 6 costs. 
 
 For this response, Brotli level 9 would provide the best compression ratio with a CPU overhead similar to zStandard 12.  If it’s possible to precompress payloads, then the highest compression levels would reduce the payloads further. However Brotli appears to outperform zStandard in both compression ratio and compression time up until level 9 for this response.
 
-![Facebook Example](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/fb_script_example2.jpg)
+![Facebook Example](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/fb_script_example2.jpg){:loading="lazy"}
 
 The base HTML page for Facebook, it is 62 KB uncompressed. They support gzip, Brotli and zStandard - and it seems to be compressed at the lowest compression levels. While compression level 1 is often undesired, in this case there doesn’t appear to be much of an advantage of applying higher levels of compression due to limited byte savings. Additionally for Facebook’s HTML all 3 compression algorithms produce a similar size payload - but Brotli and zStandard both compress their HTML faster than gzip.
 
-![Facebook HTML Compression Results](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/facebook_html_example.jpg)
+![Facebook HTML Compression Results](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/facebook_html_example.jpg){:loading="lazy"}
 
 
 **Sandals.com Homepage**
 
 Out of the top 10 thousand websites, Sandals has the largest HTML payload - clocking in at almost 7.9MB (delivered as a 804 KB gzip compressed payload). Additionally they have a 9.4MB script bundle (gzip compressed to 2.5 MB). In the waterfall graph below you can see the impact that these large payloads are having on the experience. Reducing them solves only part of the problem, as that’s still a huge amount of content for the browser to parse, evaluate, and execute. But let’s see how these compression algorithms do.
 
-![Sandals WPT Example](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/sandals_wpt_example.png)
+![Sandals WPT Example](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/sandals_wpt_example.png){:loading="lazy"}
 
 Sandals appears to be gzip compressing at the highest possible compression level. If we assume that this page is dynamically generated and try to stay within the relative compression times:
 
@@ -128,7 +128,7 @@ Sandals appears to be gzip compressing at the highest possible compression level
 
 Sandal’s is also using Cloudflare’s CDN which [supports Brotli compression](https://developers.cloudflare.com/speed/optimization/content/brotli/), so enabling this could be a quick performance win for them.
 
-![Sandals Homepage compression](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/sandals_homepage_compression.jpg)
+![Sandals Homepage compression](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/sandals_homepage_compression.jpg){:loading="lazy"}
 
 
 **Compression Levels vs Compression Times**
@@ -137,7 +137,7 @@ When considering a compression level, it’s important to balance the time it ta
 
 I tested the base HTML of the top 10 thousand websites' HTML pages and their largest first party request. The results below show that the majority of gzip compression seems to fall within the estimated range of 4-6 (likely 6 since that is a common default). However ~30% of sites are utilizing gzip level 1, which often provides inadequate compression. The majority of Brotli compression appears to be level 4. However there’s ~25% of sites delivering Brotli level 1. And finally the majority of Brotli level 11 usage seems to be for static content.
 
-![gzip and Brotli compression levels](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/gzip_br_compression_levels.jpg)
+![gzip and Brotli compression levels](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/gzip_br_compression_levels.jpg){:loading="lazy"}
 
 The table below details a few sites that are serving their HTML using either gzip or Brotli level 1. Using such a low compression level will likely result in larger payload. In many of these examples, the Brotli compressed payload is actually larger than gzip. Fortunately some of these sites are leveraging services that will automatically deliver gzip because of the byte discrepancy - but they could still benefit from increasing the compression level.
 
