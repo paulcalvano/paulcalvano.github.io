@@ -18,7 +18,7 @@ description: >
 
 Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes add some stats specific to the locale I'm presenting in.
 
-**Performance Mistakes - an HTTP Arhive Deep Dive**
+**Performance Mistakes - an HTTP Archive Deep Dive**
 
 Web performance is a complicated topic, but over the years it’s become easier to articulate thanks to incredible advancements in performance features, their adoption in the browser ecosystem and tools that test and give insight into which techniques might speed up your site.
 
