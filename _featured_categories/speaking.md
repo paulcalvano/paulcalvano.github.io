@@ -18,6 +18,17 @@ description: >
 
 Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes add some stats specific to the locale I'm presenting in.
 
+**Font Performance**
+
+Only 10 years ago, custom web fonts were a niche feature, but today they are used by 83% of websites. While it’s easy to add and use web fonts, there are many ways that they can negatively impact web performance and user experience.
+
+During this talk Paul will provide an overview of custom web fonts and some web performance techniques you can use to optimize them. We’ll look at examples from the HTTP Archive and explore some free tools that can be used to analyze and optimize fonts on your site.
+
+<iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/key/c9l7x8cWKAfiCE" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+
+Presented at: 
+- 2024-April: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/299395150/) (New York, NY) [Slides](https://www.slideshare.net/slideshow/font-performance-nyc-webperf-meetup-april-24-1abf/267363735)
+
 **Performance Mistakes - an HTTP Archive Deep Dive**
 
 Web performance is a complicated topic, but over the years it’s become easier to articulate thanks to incredible advancements in performance features, their adoption in the browser ecosystem and tools that test and give insight into which techniques might speed up your site.
