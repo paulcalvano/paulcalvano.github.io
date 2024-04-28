@@ -18,7 +18,7 @@ description: >
 
 **Compression Tester**
 
-Most web servers and CDNs deliver gzip compressed payloads by default, but many also support Brotli as well. And as of March 2023 Chrome now supports zStandard compression. This tool helps you understand how each of these compression methods can compress your content. It works by downloading compressed payloads from your server, and then attempting to compress it at multiple gzip, brotli and zStandard compression levels.  THe results include both the payload size as well as the time it took to compress at each compression level
+Most web servers and CDNs deliver gzip compressed payloads by default, but many also support Brotli as well. And as of March 2024 Chrome now supports zStandard compression. This tool helps you understand how each of these compression methods can compress your content. It works by downloading compressed payloads from your server, and then attempting to compress it at multiple gzip, brotli and zStandard compression levels.  THe results include both the payload size as well as the time it took to compress at each compression level
 
 [![Compression Tester](/assets/img/blog/choosing-between-gzip-brotli-and-zstandard-compression/sandals_homepage_compression.jpg)](https://tools.paulcalvano.com/compression-tester/)
 
