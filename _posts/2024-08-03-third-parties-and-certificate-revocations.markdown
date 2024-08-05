@@ -9,17 +9,13 @@ related_posts:
 
 ---
 
-On Monday June 29th, DigiCert [announced](https://www.digicert.com/support/certificate-revocation-incident) the need to revoke a large number of certificates due to a mistake in domain validation. The CA/B Forum [requirements](https://cabforum.org/working-groups/server/baseline-requirements/documents/) to revoke certificates within 24 hours are pretty strict, and suffice to say Monday night and Tuesday were pretty busy days for a lot of folks. What remained a mystery was how many sites and third parties would be affected, how many would be prepared in time and what the impact of a mass revocation might look like across the web. In this blog post we’ll use the [HTTP Archive](https://httparchive.org/) to explore the impact.
+On Monday July 29th, DigiCert [announced](https://www.digicert.com/support/certificate-revocation-incident) the need to revoke a large number of certificates due to a bug in domain validation. The CA/B Forum's [strict requirements](https://cabforum.org/working-groups/server/baseline-requirements/documents/) to revoke these certificates within 24 hours resulted in a pretty busy Monday and Tuesday for a lot of folks. For some others, the deadline was moved to Aug 3rd due to exceptional circumstances. What remained a mystery was how many sites and third parties would be affected, how many would be prepared in time and what the impact of a mass revocation might look like across the web. In this blog post we’ll use the [HTTP Archive](https://httparchive.org/) to explore the impact.
 
 **Which hostnames were affected?**
 
-In a [bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1910322) post, DigiCert shared a list of 86k serial numbers for certificates that were affected and needed to be revoked.  The list didn’t include hostnames, so it wasn’t easy to see which domains would be affected from the files alone. The [HTTP Archive](https://httparchive.org/) contains details for every certificate it encounters, so I was able write a query to correlate the list of serial numbers with certificate used across 16 million websites.  <i>If you are interested in the queries used to do this analysis, you'll find them at the end of this post.</i>
+In a [bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1910322) post, DigiCert shared a list of 86k serial numbers for certificates that were affected and needed to be revoked.  The list didn’t include hostnames, so it wasn’t easy to see which domains would be affected from the files alone. The [HTTP Archive](https://httparchive.org/) contains details for every certificate it encounters, so I was able write some queries to correlate the list of serial numbers with certificate used across 16 million websites. <i>If you are interested in the queries used to do this analysis, you'll find them at the end of this post.</i>
 
-I found 13,823 of the certificate serial numbers on publicly available web pages from last month's HTTP Archive crawl. Many of these were first party resources, but a few hundred belonged to popular third parties. Overall I found that 1,241,943 websites would have been affected by this revocation in some way, meaning they either made a first or third party request for a resource that used at least one of the affected certificates! 
-
-The original deadline for the certificate revocations came and passed, but DigiCert was granted an extension due to extenuating circumstances. Given the amount of websites serving content on the affected certificates, that 24 hour notice and subsequent extension likely saved the web from a significant amount of disruption! 
-
-Here’s a list of some of the more popular domains that were affected. The list contains an apex domain, the number of sites requesting resources from it, and the number of subdomains domains that contained certificates needing to be revoked.
+I found 13,823 of the certificate serial numbers on publicly available web pages from last month's HTTP Archive crawl. Many of these were first party resources, but a few hundred belonged to popular third parties. Overall I found that 1,241,943 websites would have been impacted by this revocation in some way, meaning they either made a first or third party request for a resource that used at least one of the affected certificates! Here’s a list of some of the more popular domains that were affected. The list contains an apex domain, the number of sites requesting resources from it, and the number of subdomains domains that contained certificates needing to be revoked.
 
 <table>
   <tr>
@@ -216,7 +212,7 @@ Looking at a few of the popular third party domains, you can see that many of th
 </table>
 
 <p>&nbsp;</p>
-After the final deadline of August 3rd, 2024 19:30 UTC had passed, I ran an test against a list of the 13,823 publicly availble certificates. I found that 78.5% of them were updated prior to the initial deadline or switched to a using a different certificate. Another 5.3% of the certificates were updated during the extension. However 9.3% of certificates - 1,291 - had failed to get reissued and were revoked.
+After the final deadline of August 3rd, 2024 19:30 UTC had passed, I ran an test against a list of the 13,823 publicly availble certificates. I found that 78.51% of them were updated prior to the initial deadline or switched to a using a different certificate. Another 5.3% of the certificates were updated during the extension. However 9.3% of certificates - 1,291 - had failed to get reissued and were revoked on Aug 3rd.  Since the revocations another 156 of the certificates were reissued - but there are still 8.21% of hostnames delivering a revoked certificate.
 
 <table>
   <tr>
@@ -229,54 +225,59 @@ After the final deadline of August 3rd, 2024 19:30 UTC had passed, I ran an test
   </tr>
   <tr>
    <td><p style="text-align: right">Jul 29 2024</p></td>
-   <td><p style="text-align: right">120</p></td>
-   <td><p style="text-align: right">0.87%</p></td>
+   <td><p style="text-align: right">121</p></td>
+   <td><p style="text-align: right">0.88%</p></td>
   </tr>
   <tr>
    <td><p style="text-align: right">Jul 30 2024</p></td>
-   <td><p style="text-align: right">9,670</p></td>
-   <td><p style="text-align: right">70.17%</p></td>
+   <td><p style="text-align: right">9,680</p></td>
+   <td><p style="text-align: right">70.03%</p></td>
   </tr>
   <tr>
    <td><p style="text-align: right">Jul 31 2024</p></td>
-   <td><p style="text-align: right">978</p></td>
-   <td><p style="text-align: right">7.10%</p></td>
+   <td><p style="text-align: right">977</p></td>
+   <td><p style="text-align: right">7.07%</p></td>
   </tr>
   <tr>
    <td><p style="text-align: right">Aug 1 2024</p></td>
    <td><p style="text-align: right">426</p></td>
-   <td><p style="text-align: right">3.09%</p></td>
+   <td><p style="text-align: right">3.08%</p></td>
   </tr>
   <tr>
    <td><p style="text-align: right">Aug 2 2024</p></td>
-   <td><p style="text-align: right">254</p></td>
-   <td><p style="text-align: right">1.84%</p></td>
+   <td><p style="text-align: right">267</p></td>
+   <td><p style="text-align: right">1.93%</p></td>
   </tr>
   <tr>
    <td><p style="text-align: right">Aug 3 2024</p></td>
-   <td><p style="text-align: right">50</p></td>
-   <td><p style="text-align: right">0.36%</p></td>
+   <td><p style="text-align: right">75</p></td>
+   <td><p style="text-align: right">0.54%</p></td>
   </tr>
   <tr>
+   <td><p style="text-align: right">Aug 4 2024</p></td>
+   <td><p style="text-align: right">90</p></td>
+   <td><p style="text-align: right">0.65%</p></td>
+  </tr>  
+  <tr>
    <td><p style="text-align: right">Using Different Cert</p></td>
-   <td><p style="text-align: right">1,034</p></td>
-   <td><p style="text-align: right">7.50%</p></td>
+   <td><p style="text-align: right">1,052</p></td>
+   <td><p style="text-align: right">7.61%</p></td>
   </tr>
   <tr>
    <td><p style="text-align: right">Not Updated</p></td>
-   <td><p style="text-align: right">1,291</p></td>
-   <td><p style="text-align: right">9.37%</p></td>
+   <td><p style="text-align: right">1,135</p></td>
+   <td><p style="text-align: right">8.21%</p></td>
   </tr>
 </table>
 <p>&nbsp;</p>
 
- A few of these certificates are used by third parties on some popular websites. For example one security service, used across approximately 14k websites, was impacted. I attempted to give them a heads up when I noticed this, but was unsuccessful. Another chat service used on a few popular ecommerce sites was impacted. Fortunately none of these appear to be impacting the loading of these sites - but they may impact some of their functionality once browsers pick up the updated CRL. 
+When the certificates were revoked, there were only 2 major third parties that were affected. One was a security service used by approximately 14k sites. Another was a live chat system that was used by a ~200 sites. Fortunately the failure of those third parties did not impact functionality of the sites, and they have since reissued their certificates. 
 
 **Monitoring for third party failures**
 
 One of the reasons I went down the path of looking for third parties that might be impacted is because the timing of the event was known. Often we don’t have the liberty of advance notice of impending failures - such as the recent Crowdstrike outages, CDN failures, and other major internet platform incidents. In this case, we had at least 24 hours notice that a massive certificate revocation event would occur (and then a few additional days after the extension).
 
-Using the HTTP Archive data I could see that none of the third parties used at my employer were impacted. However to be absolutely certain I configured a Catchpoint dashboard to monitor for third party availability issues. This dashboard displays the % availability for each third party host, the number of failures for each third party, and some load time metrics. The idea was that if a particular third party we use experienced an issue, we’d be able to identify it quickly.
+Using the HTTP Archive data I could see that none of the third parties used by my employer were impacted. However to be absolutely certain I configured a Catchpoint dashboard to monitor for third party availability issues. This dashboard displays the % availability for each third party host, the number of failures for each third party, and some load time metrics. The idea was that if a particular third party we use experienced an issue, we’d be able to identify it quickly.
 
 The dashboard was created by using a line chart broken down by host. Enabling “host data” allowed me to chart some host metrics such as availability and number of failures, as well as exclude first party content. You can see some more details on how to do this in this [blog post from Catchpoint](https://www.catchpoint.com/blog/how-to-filter-out-the-noise-with-zones-and-hosts-a-catchpoint-differentiator). 
 
@@ -291,9 +292,9 @@ You may ask why not use real user monitoring (RUM) data for this? RUM can give y
 
 **Preparing for Third Party Failures**
 
-When a popular third party fails or degrades, sometimes you'll read about it in the news. Far too often organizations handle third party performance or failure risks reactively as well. There’s a few things you can do to prepare ahead of time though.
+When a popular third party fails or degrades, sometimes you'll read about it in the news, especially if it breaks functionality on a large number of websites. Far too often organizations handle third party performance/failure risks reactively as well. There’s a few things you can do to prepare though.
 
-* Identify third party SPOFs.
+* Identify third party single poin of failures (SPOFs).
     * [WebPageTest’s SPOF feature](https://product.webpagetest.org/tutorials/how-to-simulate-a-single-point-of-failure-spof-using-webpagetest) is great for this!
 * Identify third party performance risks. 
     * Test to see what happens when you block or remove their resources. ([WebPageTest](https://andydavies.me/blog/2018/02/19/using-webpagetest-to-measure-the-impact-of-3rd-party-tags/) or [Chrome](https://developer.chrome.com/docs/devtools/network-request-blocking))
@@ -302,15 +303,7 @@ When a popular third party fails or degrades, sometimes you'll read about it in 
 * Monitor third party performance and availability.
     * A combination of RUM for performance and Synthetic measurements for availability can be helpful here.
 
-I’ve been working on a tool that will help identify potential third parties that are worth investigating for performance or single point of failure risks. Hoping to share that with you all very soon!
-
-**Mistakes happen, and we can all learn from them**
-
-On the CA/B [bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1910322) post, DigiCert’s CISO was very communicative about the issues and some of the exceptional circumstances their customers were dealing with. In my opinion it really showed how much the company was doing behind the scenes to balance urgency with risk to the rest of the web. They recently provided a root cause analysis in the comments of the bugzilla thread. It was very informative, but I was disappointed to read that their CISO chose to resign over this incident. 
-
-Incidents are a tremendous opportunity for learning and growth. Resigning over an incident (whether forced or an individual’s decision) sends a very clear message about accountability, blame and punishment. In my opinion, it’s the wrong message to send to the employees of DigiCert and the community at large. When a massive failure or mistake happens within a complex system, it shouldn’t fall on an individual to take responsibility. The fault lies within a system that could have prevented it - and learning from those mistakes is key to not repeating them.
-
-I first learned about the concept of blameless post mortems back in 2011 at a Velocity conference, when Etsy’s former CTO [John Allspaw gave a talk](https://www.oreilly.com/library/view/velocity-conference-2011/9781449311773/oreillyvideos851513.html) about it. He also wrote a fantastic [blog post](https://www.etsy.com/codeascraft/blameless-postmortems) about it on Etsy’s codeascraft blog. A few years later Etsy became one of my clients. And one unfortunate Friday afternoon a change that I was responsible for broke their website. I felt terrible. Etsy's response was to invite me to come present at one of their post mortems - after which I learned that I was the first vendor to ever present at one in person. It was such a fantastic experience, we all learned a lot, it enhanced our working relationship and I wound up continuing to support them for many years. Eventually I decided to join Etsy in 2022. Suffice to say, that post mortem experience had a lasting impact and was a factor in my decision to join the company.
+I’ve also been working on a tool that will help identify potential third parties that are worth investigating for performance or single point of failure risks. Hoping to share that with you all very soon!
 
 **Conclusion**
 
