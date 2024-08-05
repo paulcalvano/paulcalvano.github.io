@@ -9,7 +9,7 @@ related_posts:
 
 ---
 
-On Monday July 29th, DigiCert [announced](https://www.digicert.com/support/certificate-revocation-incident) the need to revoke a large number of certificates due to a bug in domain validation. The CA/B Forum's [strict requirements](https://cabforum.org/working-groups/server/baseline-requirements/documents/) to revoke these certificates within 24 hours resulted in a pretty busy Monday and Tuesday for a lot of folks. For some others, the deadline was moved to Aug 3rd due to exceptional circumstances. What remained a mystery was how many sites and third parties would be affected, how many would be prepared in time and what the impact of a mass revocation might look like across the web. In this blog post we’ll use the [HTTP Archive](https://httparchive.org/) to explore the impact.
+On Monday July 29th, DigiCert [announced](https://www.digicert.com/support/certificate-revocation-incident) the need to revoke a large number of certificates due to a bug in domain validation. The CA/B Forum's [strict requirements](https://cabforum.org/working-groups/server/baseline-requirements/documents/) to revoke these certificates within 24 hours resulted in a pretty busy Monday and Tuesday for a lot of folks. For some others, the deadline was moved to August 3rd due to exceptional circumstances. What remained a mystery was how many sites and third parties would be affected, how many would be prepared in time and what the impact of a mass revocation might look like across the web. In this blog post we’ll use the [HTTP Archive](https://httparchive.org/) to explore the impact.
 
 **Which hostnames were affected?**
 
