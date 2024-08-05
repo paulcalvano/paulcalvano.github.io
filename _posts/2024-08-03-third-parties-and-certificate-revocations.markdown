@@ -307,7 +307,7 @@ I’ve also been working on a tool that will help identify potential third parti
 
 **Conclusion**
 
-While 86k certificates may not sound like a huge amount compared to the scale of the web, the way those certificates were used across some very popular third parties could have impacted over a million websites. There’s been a lot of negativity about DigiCert regarding this, but I have a lot of empathy for what they've been dealing with this past week. It was no doubt frustrating for folks to frantically update certificates. This could have been incredibly disruptive to a large part of the web due to third party failures, but it wasn't. Well done DigiCert team!
+While 86k certificates may not sound like a huge amount compared to the scale of the web, the way those certificates were used across some very popular third parties could have impacted over a million websites. There’s been a lot of negativity about DigiCert regarding this, but I have a lot of empathy for what they've been dealing with this past week. It was no doubt frustrating for folks to frantically update certificates. This could have been incredibly disruptive to a large part of the web due to third party failures, but it wasn't.
 
 **HTTP Archive queries**
 
