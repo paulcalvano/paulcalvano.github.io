@@ -13,9 +13,9 @@ On Monday July 29th, DigiCert [announced](https://www.digicert.com/support/certi
 
 **Which hostnames were affected?**
 
-In a [bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1910322) post, DigiCert shared a list of 86k serial numbers for certificates that were affected and needed to be revoked.  The list didn’t include hostnames, so it wasn’t easy to see which domains would be affected from the files alone. The [HTTP Archive](https://httparchive.org/) contains details for every certificate it encounters, so I was able write some queries to correlate the list of serial numbers with certificate used across 16 million websites. <i>If you are interested in the queries used to do this analysis, you'll find them at the end of this post.</i>
+In a [bugzilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1910322) post, DigiCert shared a list of 86k serial numbers for certificates that were impacted and needed to be revoked. The list did not include hostnames, so it wasn’t easy to see which domains would be affected from the files alone. The [HTTP Archive](https://httparchive.org/) contains details for every certificate it encounters, so I was able write some queries to correlate the list of serial numbers with certificate used across 16 million websites. <i>If you are interested in the queries used to do this analysis, you'll find them at the end of this post.</i>
 
-I found 13,823 of the certificate serial numbers on publicly available web pages from last month's HTTP Archive crawl. Many of these were first party resources, but a few hundred belonged to popular third parties. Overall I found that 1,241,943 websites would have been impacted by this revocation in some way, meaning they either made a first or third party request for a resource that used at least one of the affected certificates! Here’s a list of some of the more popular domains that were affected. The list contains an apex domain, the number of sites requesting resources from it, and the number of subdomains domains that contained certificates needing to be revoked.
+In my analysis, I found 13,823 of the certificate serial numbers on publicly available web pages during last month's HTTP Archive crawl. Many of these were first party resources, but a few hundred hostnames belonged to popular third parties. Overall I found that <b>1,241,943 websites would have been impacted by this revocation in some way</b>, meaning they either made a first or third party request for a resource that used at least one of the affected certificates! Here’s a list of some of the more popular domains that were affected. The list contains an apex domain, the number of sites requesting resources from it, and the number of impacted subdomains (containing certificates needing to be revoked).
 
 <table>
   <tr>
@@ -103,7 +103,7 @@ I found 13,823 of the certificate serial numbers on publicly available web pages
   </tr>
 </table>
 <p>&nbsp;</p>
-Looking at a few of the popular third party domains, you can see that many of them updated their certificates on July 30th.  The initial deadline to reissue certificates was July 30th 19:30 UTC. 
+Looking the most popular third party domains impacted by this revocation, you can see that many of them reissued their certificates on July 30th based on the validity dates.  The initial deadline to reissue certificates was July 30th 19:30 UTC. 
 
 <table>
   <tr>
@@ -212,7 +212,7 @@ Looking at a few of the popular third party domains, you can see that many of th
 </table>
 
 <p>&nbsp;</p>
-After the final deadline of August 3rd, 2024 19:30 UTC had passed, I ran an test against a list of the 13,823 publicly availble certificates. I found that 78.51% of them were updated prior to the initial deadline or switched to a using a different certificate. Another 5.3% of the certificates were updated during the extension. However 9.3% of certificates - 1,291 - had failed to get reissued and were revoked on Aug 3rd.  Since the revocations another 156 of the certificates were reissued - but there are still 8.21% of hostnames delivering a revoked certificate.
+After the final deadline of August 3rd, 2024 19:30 UTC had passed, I ran an test against a list of the 13,823 hostames I discovered. I found that 78.51% of them had reissued their certificates prior to the initial deadline or switched to a using certificates not subject to revocation. Another 5.3% of the hostnames reissued their certificates during the extension. However 9.3% of hostnames - 1,291 - had failed to get their certificates reissued and were revoked on Aug 3rd.  Since then, 156 hostnames reissued - but there are still 1,135 (8.21%) hostnames delivering a revoked certificate!
 
 <table>
   <tr>
@@ -275,7 +275,7 @@ When the certificates were revoked, there were only 2 major third parties that w
 
 **Monitoring for third party failures**
 
-One of the reasons I went down the path of looking for third parties that might be impacted is because the timing of the event was known. Often we don’t have the liberty of advance notice of impending failures - such as the recent Crowdstrike outages, CDN failures, and other major internet platform incidents. In this case, we had at least 24 hours notice that a massive certificate revocation event would occur (and then a few additional days after the extension).
+Often we don’t have the liberty of advance notice of impending failures - such as the recent Crowdstrike outages, CDN failures, and other major internet platform incidents. In this case, we had at least 24 hours notice that a massive certificate revocation event would occur (and then a few additional days after the extension). 
 
 Using the HTTP Archive data I could see that none of the third parties used by my employer were impacted. However to be absolutely certain I configured a Catchpoint dashboard to monitor for third party availability issues. This dashboard displays the % availability for each third party host, the number of failures for each third party, and some load time metrics. The idea was that if a particular third party we use experienced an issue, we’d be able to identify it quickly.
 
@@ -292,7 +292,7 @@ You may ask why not use real user monitoring (RUM) data for this? RUM can give y
 
 **Preparing for Third Party Failures**
 
-When a popular third party fails or degrades, sometimes you'll read about it in the news, especially if it breaks functionality on a large number of websites. Far too often organizations handle third party performance/failure risks reactively as well. There’s a few things you can do to prepare though.
+When a popular third party fails or degrades, sometimes you'll read about it in the news, especially if it breaks functionality on a large number of websites. Far too often organizations handle third party performance/failure risks reactively. There’s a few things you can do to prepare though.
 
 * Identify third party single poin of failures (SPOFs).
     * [WebPageTest’s SPOF feature](https://product.webpagetest.org/tutorials/how-to-simulate-a-single-point-of-failure-spof-using-webpagetest) is great for this!
@@ -307,8 +307,7 @@ I’ve also been working on a tool that will help identify potential third parti
 
 **Conclusion**
 
-While 86k certificates may not sound like a huge amount compared to the scale of the web, the way those certificates were used could have caused a significant amount of disruption to the web. There's no doubt it was frustrating for those that had to rush to update certificates on short notice, but it could have been much worse. There's been a lot of negativity about how DigiCert handled this, but I have a huge amount of empathy for what they have been dealing with. This could have been incredibly disruptive to the web, but it wasn't. Nicely done DigiCert team!
-Lastly, I really hope that their post mortems follow a blameless model. Mistakes happen. We can all learn from them and do better.
+While 86k certificates may not sound like a huge amount compared to the scale of the web, the way those certificates were used across some very popular third parties could have impacted over a million websites. There’s been a lot of negativity about DigiCert regarding this, but I have a lot of empathy for what they've been dealing with this past week. It was no doubt frustrating for folks to frantically update certificates. This could have been incredibly disruptive to a large part of the web due to third party failures, but it wasn't. Well done DigiCert team!
 
 **HTTP Archive queries**
 
