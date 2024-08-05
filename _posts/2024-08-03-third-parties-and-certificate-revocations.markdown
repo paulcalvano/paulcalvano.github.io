@@ -317,7 +317,7 @@ This section provides some details on how this analysis was performed, including
   <summary><b>Extract certificate serial numbers from HTTP Archive</b></summary>
    The list of affected certificates that DigiCert provided included the serial numbers, but not a hostname.  In order to identify the hostnames, this query was written to collect serial numbers from all DigiCert certificates found in the HTTP Archive requests table. The approach involved base64 decoding the certificate, converting it to bytes and extracting the substring where the serial number exists. This is a bit of a hack, but it worked!
    <p>&nbsp;</p>
-   <b>Warning</b>: this query processes 13 TB of data, which is much higher than the  1 TB free tier.  The results for it have been saving in another BigQuery table for analysis: httparchive.scratchspace.2024_07_01_cert_serials.
+   <b>Warning</b>: this query processes 13 TB of data, which is much higher than the  1 TB free tier.  The results for it have been saved in another BigQuery table for analysis: `httparchive.scratchspace.2024_07_01_cert_serials`.
   <pre><code>
 
 CREATE TEMPORARY FUNCTION extractCertHex(cert_block STRING)
@@ -377,7 +377,7 @@ WHERE
 
 <details>
   <summary><b>Identify hostnames subject to revocation</b></summary>
-   In order to identify the hostnames subject to revocation, I uploaded a copy of the revocation serial numbers to a table: httparchive.scratchspace.digicert_revocation_20240730.  Then I performed a simple INNER JOIN on the output from the previous query to identify hostnames that had a serial number in the revocation list.
+   In order to identify the hostnames subject to revocation, I uploaded a copy of the revocation serial numbers to a table: `httparchive.scratchspace.digicert_revocation_20240730`.  Then I performed a simple `INNER JOIN` on the output from the previous query to identify hostnames that had a serial number in the revocation list.
   <pre><code>
 SELECT DISTINCT 
    host, 
@@ -394,7 +394,7 @@ WHERE
 
 <details>
   <summary><b>Summarize popular third party domains that had hostnames impacted by the revocation</b></summary>
-   This query summarized domain names from the requests table by the number of sites loading a resource from it, and the number of hostnames that appeared in DigiCert's list of revoked hostnames.  The previous query is used in the IN() clause of this query.
+   This query summarized domain names from the requests table by the number of sites loading a resource from it, and the number of hostnames that appeared in DigiCert's list of revoked hostnames.  The previous query is used in the `IN()` clause of this query.
   <pre><code>
 SELECT 
    NET.REG_DOMAIN(url) domain, 
