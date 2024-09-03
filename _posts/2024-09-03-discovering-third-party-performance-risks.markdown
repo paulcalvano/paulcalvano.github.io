@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Discovering Third Party Performance Risks"
-date: 2024-08-24 00:00:00 -0400
+date: 2024-09-03 00:00:00 -0400
 related_posts: 
   - _posts/2019-03-25-what-percentage-of-third-party-content-is-cacheable.md
   - _posts/2018-05-15-analyzing-3rd-party-performance-via-http-archive-crux.md
