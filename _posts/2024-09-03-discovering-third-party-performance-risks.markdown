@@ -78,7 +78,7 @@ For example, sorting through these results, I can see that:
 * The domain cdn.pdst.fm is loading 22KB of JavaScript, which is not compressed.
 * The domain js.adsrvr.org is render blocking, but loads towards the end of the HTML body. 
 
-While it seems like we’re in pretty good shape, there’s still a few things that we could improve on here. When I started building this tool there were a few more third parties in this list - some with significant performance issues such as large inadequate compression levels, large JavaScript payloads that were not cached on their CDN, and using S3 instead of a CDN. Fortunately the third parties acted on feedback I shared with them and addressed the issues. I’ve started using this tool to proactively assess the performance impact of third parties prior to integration.
+While it seems like we’re in pretty good shape, there’s still a few things that we could improve on here. When I started building this tool there were a few more third parties in this list - some with significant performance issues such as inadequate compression levels, large JavaScript payloads that were not cached on a CDN, and cacheable content delivered via S3 instead of a CDN. Fortunately the third parties acted on feedback I shared with them and addressed the issues. I’ve started using this tool to proactively assess the performance impact of third parties prior to integration.
 
 **What are Perf Risks and SPOF Risks?**
 
