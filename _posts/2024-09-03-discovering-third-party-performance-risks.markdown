@@ -10,7 +10,7 @@ related_posts:
 
 It likely comes as no surprise that third party content can be a significant contributor to slow loading websites and poor user experience. As performance engineers, we often need to find ways to balance requirements for their features with the strain that they can put on user experience. Unfortunately, for many sites this becomes a reaction to slowdowns and failures detected in production.
 
-I thought it might be interesting to attempt to identify third parties that could pose a performance risk, so that they could be proactively analyzed. That led to building a tool called [Third Party Explorer](https://tools.paulcalvano.com/wpt-third-party-analysis/), which leverages [WebpageTest](https://www.webpagetest.org) data to help analyze a third party's impact on a page load. The idea behind this tool is that some of the insights already collected during a WebPageTest measurement may enable you to prioritize a list of domains for you to evaluate proactively.
+I thought it might be interesting to attempt to identify third parties that could pose a performance risk, so that they could be proactively analyzed. That led to building a tool called [Third Party Explorer](https://tools.paulcalvano.com/wpt-third-party-analysis/), which leverages [WebpageTest](https://www.webpagetest.org) data to help analyze a third party's impact on a page load. The idea behind this tool is that some of the insights already collected during a WebPageTest measurement may enable you to prioritize a list of domains to evaluate proactively.
 
 [![Third Party Explorer](/assets/img/blog/discovering-third-party-performance-risks/third-party-explorer.jpg)](https://tools.paulcalvano.com/wpt-third-party-analysis/){:loading="lazy"}
 
@@ -22,21 +22,21 @@ When I think about how or whether a third party's content may impact performance
 
 * When is the third party loaded?
     * Is it render blocking?
-    * Is it loaded before important rendering metrics, such as First Contentful Paint or Largest Contentful Paint? 
+    * Does it load before important rendering metrics, such as First Contentful Paint or Largest Contentful Paint? 
     * Are there gaps in loading first party content that correlate to the third party?
     * Are there gaps in loading other third party content that correlate to the third party?
 * How is it delivered?
-    * How much content does it serve to the client?	
-    * What type of content does it serve to the client?
+    * How much content is served to the client?	
+    * What type of content is served to the client?
     * Is it using a Content Delivery Network to deliver resources?
-    * Is it allowing the browser to cache its static resources?
+    * Is it allowing the browser to cache static resources?
     * Are its resources compressed adequately?
 * What is it doing?
     * How much CPU time is used?
     * Does it result in excessive long tasks?
     * Does it result in excessive requests?
 
-If you go down that list and answer these questions for a particular domain, you are likely to start forming an opinion of whether a particular third party could be a performance risk. It’s important to note that your analysis does not stop here, but rather it’s just beginning. If you suspect that a particular domain is a performance risk, testing, validating and ongoing monitoring should come after discovery.
+If you go down that list and answer these questions for a particular domain, you are likely to start forming an opinion of whether that third party could be a performance risk. It’s important to note that your analysis does not stop here, but rather it’s just beginning. If you suspect that a particular third party is a performance risk, testing, validating and ongoing monitoring should come after discovery.
 
 **Analyzing Third Party Performance in WebPageTest**
 
@@ -65,7 +65,7 @@ Scroll down a little further, and you’ll see a list of domains. For each domai
 * Number of requests and total bytes transferred
 * Render blocking content
 * A summary of third party requests or bytes between specific time ranges, such as before FCP, between FCP and LCP, etc. 
-* A summary of requests that have not been gzip or brotli compressed
+* A summary of requests that have not been compressed
 * Requests grouped by cache TTLs
 * Requests grouped by CPU overhead
 
@@ -90,7 +90,7 @@ You’ll find Perf risk checked if:
 * Overall
     * A domain has at least one render blocking request
     * If a domain has more than 10KB of text based content that is not compressed with gzip, brotli or zstd
-    * If a domain is not using a CDN for at more than 20KB requests (excluding XHRs)
+    * If a domain is delivering at more than 20KB requests (excluding XHRs) without a CDN
 * Before LCP
     * A domain loads more than 30KB of content
     * A domain loads any requests (excluding XHRs) that are not cacheable, have no cache policy or have a TTL of 0s
@@ -113,11 +113,11 @@ At the bottom of the Third Party Explorer tool you will find sections for “SPO
 
 ![WebPageTest Example](/assets/img/blog/discovering-third-party-performance-risks/evaluation.jpg){:loading="lazy"}
 
-If you subscribe to WebPageTest Pro, check out the list of “Opportunities & Experiments” and try to see what optimizing a particular third party might do. From there you can experiment with blocking third parties, running them as first party content, 
+If you subscribe to WebPageTest Pro, check out the list of “Opportunities & Experiments” and try to see what optimizing a particular third party might do. From there you can experiment with blocking third parties, running them as first party content, etc.
 
 **Conclusion**
 
 Third party performance is no doubt a significant cause of poor user experience on the web. While it can be challenging to identify poorly performing third parties proactively, attempting to do so during the evaluation stage of implementing one can prove to be mutually beneficial for both you and the third party.
 
-There’s no shortage of great tools out there that will help you identify when a third party is slowing down your site. The goal of this article was to help you proactively assess whether a third party meets a criteria that merits some further review and analysis. Once you identify a potential performance risk, it’s important to test that hypothesis before you start optimizing it. And then test again once you optimize! 
+There’s no shortage of great tools out there that will help you identify when a third party is slowing down your site. The goal of this article was to help you proactively assess whether a third party meets a criteria that merits some further review and analysis.  
 
