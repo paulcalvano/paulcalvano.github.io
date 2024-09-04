@@ -29,8 +29,8 @@ When I think about how or whether a third party's content may impact performance
     * How much content does it serve to the client?	
     * What type of content does it serve to the client?
     * Is it using a Content Delivery Network to deliver resources?
-    * Is it allowing the browser to cache it's static resources?
-    * Are it's resources compressed adequately?
+    * Is it allowing the browser to cache its static resources?
+    * Are its resources compressed adequately?
 * What is it doing?
     * How much CPU time is used?
     * Does it result in excessive long tasks?
