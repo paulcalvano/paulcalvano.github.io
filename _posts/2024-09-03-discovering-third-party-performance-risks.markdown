@@ -21,7 +21,7 @@ According to the [Web Almanac](https://almanac.httparchive.org), [94% of website
 When I think about how or whether a third party's content may impact performance, I usually consider the following:
 
 * When is the third party loaded?
-  * Is it render blocking?
+    * Is it render blocking?
     * Is it loaded before important rendering metrics, such as First Contentful Paint or Largest Contentful Paint? 
     * Are there gaps in loading first party content that correlate to the third party?
     * Are there gaps in loading other third party content that correlate to the third party?
