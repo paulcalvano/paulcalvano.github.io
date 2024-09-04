@@ -16,12 +16,12 @@ I thought it might be interesting to attempt to identify third parties that coul
 
 **Why Are Third Parties Slow?**
 
-According to the [Web Almanac](https://almanac.httparchive.org), [94% of websites](https://almanac.httparchive.org/en/2022/third-parties#fig-1) utilize at least one third party domain, and the median popular site uses 43 third parties. Not all third parties impact performance in the same way, but all it takes is one poorly configured third party. Often when someone discovers third party issues, it’s due to availability, loading performance, and interactivity delays caused by them. 
+According to the [Web Almanac](https://almanac.httparchive.org), [94% of websites](https://almanac.httparchive.org/en/2022/third-parties#fig-1) utilize at least one third party domain, and the median popular site uses 43 third parties. Not all third parties impact performance in the same way, but all takes is one poorly configured third party. Often when someone discovers third party issues, it’s due to availability, loading performance, and interactivity delays caused by them. 
 
 When I think about how or whether a third party's content may impact performance, I usually consider the following:
 
 * When is the third party loaded?
-    * Is it render blocking?
+  * Is it render blocking?
     * Is it loaded before important rendering metrics, such as First Contentful Paint or Largest Contentful Paint? 
     * Are there gaps in loading first party content that correlate to the third party?
     * Are there gaps in loading other third party content that correlate to the third party?
@@ -29,8 +29,8 @@ When I think about how or whether a third party's content may impact performance
     * How much content does it serve to the client?	
     * What type of content does it serve to the client?
     * Is it using a Content Delivery Network to deliver resources?
-    * Is it allowing the browser to cache it's static resources?
-    * Are it's resources compressed adequately?
+    * Is it allowing the browser to cache its static resources?
+    * Are its resources compressed adequately?
 * What is it doing?
     * How much CPU time is used?
     * Does it result in excessive long tasks?
