@@ -18,6 +18,17 @@ description: >
 
 Here's a few of the talks that I've given over the past few years. I've included the slides for each presentation since I often update the stats before each event, and sometimes add some stats specific to the locale I'm presenting in.
 
+**Performance Mistakes (2024) - Performance Now Conference**
+
+Web performance is a complicated topic, but over the years it’s become easier to articulate thanks to incredible advancements in performance features, browser adoption and tooling. 
+
+However, all too often a feature is implemented incorrectly, resulting in a lost opportunity for performance improvement. During this talk I’ll explore a few commonly implemented web performance techniques - some that you may be familiar with and use already. We’ll look at HTTP Archive data to show how prevalent some of these mistakes are and explore the potential benefits of fixing them.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j5E_U_hu7g0?si=nvzGsu67iE9CV80Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Presented at: 
+- 2024-November: [Performance Now Conference](https://perfnow.nl/2024/#paul) (Amsterdam, Netherlands) [Slides](https://www.slideshare.net/slideshow/performance-now-24-performance-mistakes-final-pdf/273431101)
+
 **Font Performance**
 
 Only 10 years ago, custom web fonts were a niche feature, but today they are used by 83% of websites. While it’s easy to add and use web fonts, there are many ways that they can negatively impact web performance and user experience.
@@ -29,7 +40,7 @@ During this talk Paul will provide an overview of custom web fonts and some web 
 Presented at: 
 - 2024-April: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/299395150/) (New York, NY) [Slides](https://www.slideshare.net/slideshow/font-performance-nyc-webperf-meetup-april-24-1abf/267363735)
 
-**Performance Mistakes - an HTTP Archive Deep Dive**
+**Performance Mistakes (2022) - an HTTP Archive Deep Dive**
 
 Web performance is a complicated topic, but over the years it’s become easier to articulate thanks to incredible advancements in performance features, their adoption in the browser ecosystem and tools that test and give insight into which techniques might speed up your site.
 
