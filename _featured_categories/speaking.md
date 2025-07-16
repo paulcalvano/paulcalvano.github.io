@@ -27,7 +27,7 @@ However, all too often a feature is implemented incorrectly, resulting in a lost
 <iframe width="560" height="315" src="https://www.youtube.com/embed/j5E_U_hu7g0?si=nvzGsu67iE9CV80Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Presented at: 
-- 2024-November: [Performance Now Conference](https://perfnow.nl/2024/#paul) (Amsterdam) [Slides](https://www.slideshare.net/slideshow/performance-now-24-performance-mistakes-final-pdf/273431101)
+- 2024-November: [Performance Now Conference](https://perfnow.nl/2024/#paul) (Amsterdam, Netherlands) [Slides](https://www.slideshare.net/slideshow/performance-now-24-performance-mistakes-final-pdf/273431101)
 
 **Font Performance**
 
