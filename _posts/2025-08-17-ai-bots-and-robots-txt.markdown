@@ -4,7 +4,7 @@ title: "AI Bots and Robots.txt"
 date: 2025-08-18 00:00:00 -0400
 ---
 
-There’s been a lot of discussion lately around AI crawlers and bots, which are used to train LLMs and/or fetch content on behalf of their users. In the past few weeks I’ve seen blog posts about the amount of traffic from these crawlers, techniques and products to gatekeep content from them, reports of misbehaving crawlers and more. Ironically, there's even AI based services to mitigate AI Crawler Bots! Given how much interest there is, I thought I’d try and explore some [HTTP Archive](https://httparchive.org/){:target="_blank"} data to see how sites are using robot.txt to state their preferences on AI bot crawling.
+There’s been a lot of discussion lately around AI crawlers and bots, which are used to train LLMs and/or fetch content on behalf of their users. In the past few weeks I’ve seen blog posts about the amount of traffic from these crawlers, techniques and products to gatekeep content from them, reports of misbehaving crawlers and more. Ironically, there's even AI based services to mitigate AI Crawler Bots! Given how much interest there is, I thought I’d try and explore some [HTTP Archive](https://httparchive.org/){:target="_blank"} data to see how sites are using robots.txt to state their preferences on AI bot crawling.
 
 **Robots.txt**
 
