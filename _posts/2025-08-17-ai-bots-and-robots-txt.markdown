@@ -59,7 +59,7 @@ The most popular User-Agent referenced in robots.txt files is simply a wildcard 
 
 Over the past few years, User-Agents for AI Bots have been showing up in a large number of robots.txt files. As of July 2025, AI Bots top the list of User Agents referenced across popular sites. In fact almost 21% of the top 1000 websites have rules for ChatGPT’s “GPTBot” in their robots.txt file. There’s an interesting pattern shift around site popularity, with a greater percentage of popular sites adding AI bot directives vs a large percentage of SEO bot directives appearing in less popular sites. 
 
-The table below breaks this out by site popularity (using Googles CrUX rank). In the darker shaded areas of this table, you can see many references to bots operated by popular AI services - ChatGPT, Claude, Google, Perplexity, Anthropic, etc. 
+The table below breaks this out by site popularity (using Google's [CrUX rank](https://developer.chrome.com/docs/crux/methodology/metrics#popularity-metric){:target="_blank"}). In the darker shaded areas of this table, you can see many references to bots operated by popular AI services - ChatGPT, Claude, Google, Perplexity, Anthropic, etc. 
 
 ![Percent of Sites Referencing Specific User-Agents in robots.txt files](/assets/img/blog/ai-bots-and-robots-txt/pct-sites-user-agents-in-robotstxt.jpg){:loading="lazy"}
 
@@ -120,7 +120,7 @@ You can explore this data more in [this interactive visualization](https://publi
 
 ## To Allow or Not to Allow… 
 
-So far we’ve looked at how many websites are including directives for various User-Agents, and we’ve observed substantial growth in the references to AI Crawlers and Bots. But we’ve also observed a difference in how sites are using them based on popularity.  Now let’s look at the types of rules are being applied to them? 
+So far we’ve looked at how many websites are including directives for various User-Agents, and we’ve observed substantial growth in the references to AI Crawlers and Bots. But we’ve also observed a difference in how sites are using them based on popularity.  Now let’s look at the types of rules being applied to them.
 
 It’s not uncommon for rules to exist both allowing a bot and disallowing certain paths.   So the presence of both could indicate that site owners want to allow those bots to access portions of their sites.    For example on Vimeo’s robots.txt file, you can find 
 
@@ -158,7 +158,7 @@ User-agent: ClaudeBot
 Disallow: /
 ```
 
-This graph below shows AI Crawler directives for popular websites. From this data we can see that it’s very common for popular websites to attempt to restrict access to AI bots.  However, they are not uniform in the bots that they choose to disallow - most of the times only including directives for the most popular AI services. 
+This graph below shows AI Crawler directives for popular websites. From this data we can see that it’s very common for popular websites to attempt to restrict access to AI bots.  However, they are not uniform in the bots that they choose to disallow - most of the time only including directives for the most popular AI services. 
 
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-popularsites.jpg){:loading="lazy"}
@@ -198,7 +198,7 @@ This graph below shows AI Crawler directives for popular websites. From this dat
 -->
 
 
-If we look at this across all sites a new pattern emerges.   We can see a lot more sites have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file.  For example, Squarespace and Cloudflare both have solutions that appear to add these files for their customers. 
+If we look at this across all sites a new pattern emerges.   We can see a lot more sites that have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file.  For example, Squarespace and Cloudflare both have solutions that appear to add these files for their customers. 
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-allsites.jpg){:loading="lazy"}
 [interactive visualization](https://public.tableau.com/views/AICrawlerrobots_txtfileDirectivesforAllSites/Sheet12?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link){:target="_blank"}
@@ -213,7 +213,7 @@ However, there isn't uniformity in how AI Bots are being treated across the web 
 
 **HTTP Archive queries**
 
-This section provides some details on how this analysis was performed, including SQL queries.  Please be warned that some of the SQL queries process a signicant amount of bytes - which can be very expensive to run.
+This section provides some details on how this analysis was performed, including SQL queries.  Please be warned that some of the SQL queries process a significant amount of bytes - which can be very expensive to run.
 
 <details>
   <summary><b>Number of sites containing robots.txt files</b></summary>
