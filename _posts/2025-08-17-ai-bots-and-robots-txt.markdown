@@ -17,12 +17,12 @@ User-Agent: GPTBot
 Disallow: /
 ```
 
-It’s important to note that a robots.txt does not restrict access to bots, as adherence to it is voluntary. But analyzing the rules that sites set for User-Agents can provide some insight into the sentiment towards AI bots. 
+It’s important to note that a robots.txt does not restrict access to bots by itself, as adherence to it is voluntary. But analyzing the rules that sites set for User-Agents can provide some insight into the sentiment towards AI bots. 
 
 
-## How Many Sites use Robots.txt Files
+## How Many Sites use Robots.txt Files?
 
-The HTTP Archive collects page details from millions of websites each month, and one of the custom metrics fetches the robots.txt file from each site. The data from July 2025 shows that 94% of 12 million websites have a robots.txt file with at least 1 directive. The HTTP Archive’s [Web Almanac](https://almanac.httparchive.org/){:target="_blank"} has an entire [chapter on SEO](https://almanac.httparchive.org/en/2024/seo){:target="_blank"}, containing more details around the contents of robots.txt. It’s definitely worth reading if you are interested in learning more about how various directives are used across the web.
+The HTTP Archive collects page details from millions of websites each month, and contains a custom metric that fetches the robots.txt file from each site. The data from July 2025 shows that 94% of 12 million websites have a robots.txt file with at least 1 directive. The HTTP Archive’s [Web Almanac](https://almanac.httparchive.org/){:target="_blank"} has an entire [chapter on SEO](https://almanac.httparchive.org/en/2024/seo){:target="_blank"}, containing more details around the contents of robots.txt. It’s definitely worth reading if you are interested in learning more about how various directives are used across the web.
 
 <table>
   <tr>
@@ -42,15 +42,15 @@ The HTTP Archive collects page details from millions of websites each month, and
   </tr>
 </table>
 
-Some bots choose to identify themselves within the User-Agent string of an HTTP request. Others attempt to hide what they are doing, which is one of the reasons why many sites utilize services to block unwanted traffic. For this research we’ll focus on robots.txt files, which we can use to evaluate whether site owners are attempting to restrict the AI bots. 
+Some bots choose to identify themselves within the User-Agent string of an HTTP request. Others attempt to hide what they are doing, which is one of the reasons why many sites utilize services to block unwanted traffic. For this research we’ll focus on robots.txt files, which we can use to evaluate whether site owners are attempting to restrict the AI bots based on their advertised User-Agent strings.
 
-Many AI bots publish their User-Agent strings, and provide guidance on how they adhere to the robots.txt directives. For example
+Many AI bots publish their User-Agent strings for this purpose, and also provide guidance on how they adhere to the robots.txt directives. For example
 
 * [ChatGPT](https://platform.openai.com/docs/bots){:target="_blank"} advertises themselves as `ChatGPT-User`, `GPTBot`, and `OAI-SearchBot` 
 * [Anthropic](https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler){:target="_blank"} advertises themselves as `ClaudeBot`, `Claude-User`, and  `Claude-SearchBot` 
 * [Apple](https://support.apple.com/en-us/119829){:target="_blank"} advertises themselves as `Applebot-Extended`
 
-There are many more AI agents, with more showing up all the time - and not all of them respect the robots.txt files. For this research, I’ve used a list of AI Bots generated from the [AI Robots.txt Github repository](https://github.com/ai-robots-txt/ai.robots.txt){:target="_blank"} to determine which robots.txt entries are targeted towards AI services.. 
+There are many more AI agents, with more showing up all the time - and not all of them respect the robots.txt files. For this research, I’ve used a list of AI Bots generated from the [AI Robots.txt Github repository](https://github.com/ai-robots-txt/ai.robots.txt){:target="_blank"} to determine which robots.txt entries are targeted towards AI services.
 
 
 ## User-Agents Referenced in Robots.txt
@@ -166,7 +166,7 @@ This graph below shows AI Crawler directives for popular websites. From this dat
 
 
 <!--
-// Embed JS for Tableau is slow.   Adding links to data visualization to open in new window instead. 
+// Embed JS for Tableau is slow. Adding links to data visualization to open in new window instead. 
 <div class='tableauPlaceholder' id='viz1755599749927' style='position: relative'> 
     <object class='tableauViz' style='display:none;'> 
     <param name='host_url' value='http://public.tableau.com/' /> 
@@ -198,7 +198,7 @@ This graph below shows AI Crawler directives for popular websites. From this dat
 -->
 
 
-If we look at this across all sites a new pattern emerges.   We can see a lot more sites that have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file.  For example, Squarespace and Cloudflare both have solutions that appear to add these files for their customers. 
+If we look at this across all sites a new pattern emerges. We can see a lot more sites that have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file. For example, Squarespace and Cloudflare both have solutions that appear to add these files for their customers. 
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-allsites.jpg){:loading="lazy"}
 [interactive visualization](https://public.tableau.com/views/AICrawlerrobots_txtfileDirectivesforAllSites/Sheet12?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link){:target="_blank"}
@@ -206,18 +206,18 @@ If we look at this across all sites a new pattern emerges.   We can see a lot mo
 
 **Conclusion**
 
-AI Crawler Bots have become a significant source of traffic for many sites, and awareness has been growing over the last few months.  More and more bots are being introduced which makes it a challenge for site owners to keep up.  It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
+AI Crawler Bots have become a significant source of traffic for many sites, and awareness has been growing over the last few months. More and more bots are being introduced which makes it a challenge for site owners to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
 
 However, there isn't uniformity in how AI Bots are being treated across the web - especially when compared to SEO and Search agents. The most popular AI services bots appear in more robots.txt files, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage these bots is clear, the effectiveness might be limited to each site's ability to manage them. 
 
 
 **HTTP Archive queries**
 
-This section provides some details on how this analysis was performed, including SQL queries.  Please be warned that some of the SQL queries process a significant amount of bytes - which can be very expensive to run.
+This section provides some details on how this analysis was performed, including SQL queries. Please be warned that some of the SQL queries process a significant amount of bytes - which can be very expensive to run.
 
 <details>
   <summary><b>Number of sites containing robots.txt files</b></summary>
-   This query counts the number of websites that contain a robots.txt file. In order to ensure that we are counting an actual robots.txt file and not error pages, this query counts a robots.txt file if it returns an HTTP 200 status code and has at least one rule containing one of the following directives:  allow, disallow, crawl_delay, noindex, sitemap or user_agent. 
+   This query counts the number of websites that contain a robots.txt file. In order to ensure that we are counting an actual robots.txt file and not error pages, this query counts a robots.txt file if it returns an HTTP 200 status code and has at least one rule containing one of the following directives: allow, disallow, crawl_delay, noindex, sitemap or user_agent. 
   <pre><code>
 SELECT
  sites,
