@@ -67,7 +67,7 @@ The table below breaks this out by site popularity (using Google's [CrUX rank](h
 
 ## When Did Sites Start Adding AI Crawlers to robots.txt
 
-In August 2023, ChatGPT added [documentation](https://platform.openai.com/docs/bots){:target="_blank"} about its crawler, including instructions on how site owners can block them. Shortly afterwards, articles with [instructions](https://www.theverge.com/2023/8/7/23823046/openai-data-scrape-block-ai){:target="_blank"} on how to block ChatGPT started appearing, it was discussed in [Hacker News](https://news.ycombinator.com/item?id=37030568){:target="_blank"} and there were also claims that some sites were [scrambling to block](https://arstechnica.com/information-technology/2023/08/openai-details-how-to-keep-chatgpt-from-gobbling-up-website-data/){:target="_blank"} AI agents.  While the claims may have sounded sensational, the same month the number of sites that included rules for GPTBot in robots.txt files went from 0 to almost 125k sites! A month later it was 299k sites. By November it was referenced on 578k websites! That’s a massive adoption rate in a short period of time.
+In August 2023, ChatGPT added [documentation](https://platform.openai.com/docs/bots){:target="_blank"} about its crawler, including instructions on how site owners can block them. Shortly afterwards, articles with [instructions](https://www.theverge.com/2023/8/7/23823046/openai-data-scrape-block-ai){:target="_blank"} on how to block ChatGPT started appearing, it was discussed in [Hacker News](https://news.ycombinator.com/item?id=37030568){:target="_blank"} and there were also claims that some sites were [scrambling to block](https://arstechnica.com/information-technology/2023/08/openai-details-how-to-keep-chatgpt-from-gobbling-up-website-data/){:target="_blank"} AI agents.  While the claims may have sounded sensational, the numbers supported it.  In August 2023 the number of sites that included rules for GPTBot in robots.txt files went from 0 to almost 125k sites! A month later it was 299k sites. By November GPTBot was referenced on 578k websites! That’s a massive increase in a short period of time.
 
 In the tables below you can see the number of websites referencing specific User-Agents in their robots.txt files month to month. Claudebot first appeared in December 2023 on just 2,382 sites (increasing to 30k within 4 months) and PerplexityBot appeared in January 2024 with just 157 sites (increasing to 31k in April 2024). These were not picked up as quickly as GPTBot, which may have been due to limited public awareness of the rise of these models.
 
@@ -86,7 +86,7 @@ You can explore this data more in [this interactive visualization](https://publi
 
 ## To Allow or Not to Allow… 
 
-So far we’ve looked at how many websites are including directives for various User-Agents, and we’ve observed substantial growth in the references to AI Crawlers and Bots. But we’ve also observed a difference in how sites are using them based on popularity.  Now let’s look at the types of rules being applied to them.
+So far we’ve looked at how many websites are including directives for various User-Agents, and we’ve observed substantial growth in the references to AI crawlers and bots. But we’ve also observed a difference in how sites are using them based on popularity. Now let’s look at the types of rules being applied to them.
 
 It’s not uncommon for rules to exist both allowing a bot and disallowing certain paths.   So the presence of both could indicate that site owners want to allow those bots to access portions of their sites.    For example on Vimeo’s robots.txt file, you can find 
 
@@ -128,53 +128,22 @@ This graph below shows AI Crawler directives for popular websites. From this dat
 
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-popularsites.jpg){:loading="lazy"}
-[interactive visualization](https://public.tableau.com/app/profile/paul.calvano8666/viz/AICrawlerrobots_txtfileDirectivesforPopularSites/Sheet1?publish=yes){:target="_blank"}
-
-
-<!--
-// Embed JS for Tableau is slow. Adding links to data visualization to open in new window instead. 
-<div class='tableauPlaceholder' id='viz1755599749927' style='position: relative'> 
-    <object class='tableauViz' style='display:none;'> 
-    <param name='host_url' value='http://public.tableau.com/' /> 
-    <param name='embed_code_version' value='3' /> 
-    <param name='site_root' value='' /> 
-    <param name='name' value='AICrawlerrobots_txtfileDirectivesforPopularSites/Sheet1' /> 
-    <param name='tabs' value='no' /> <param name='toolbar'
-    value='yes' /> 
-    <param name='static_image'
-    value='https://public.tableau.com/static/images/AI/AICrawlerrobots_txtfileDirectivesforPopularSites/Sheet1/1.png' /> 
-    <param name='animate_transition' value='yes' /> 
-    <param name='display_static_image' value='yes' /> 
-    <param name='display_spinner' value='yes' /> 
-    <param name='display_overlay' value='yes' /> 
-    <param name='display_count' value='yes' /> 
-    <param name='language' value='en-US' /> 
-    </object>
-</div> 
-
-<script type='text/javascript' >
-    var divElement = document.getElementById('viz1755599749927');
-    var vizElement = divElement.getElementsByTagName('object')[0];
-    vizElement.style.width = '100%';
-    vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
-    var scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement); 
-</script>
--->
-
 
 If we look at this across all sites a new pattern emerges. We can see a lot more sites that have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file. For example, Squarespace and Cloudflare both have solutions that appear to add these files for their customers. 
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-allsites.jpg){:loading="lazy"}
-[interactive visualization](https://public.tableau.com/views/AICrawlerrobots_txtfileDirectivesforAllSites/Sheet12?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link){:target="_blank"}
+
+
+You can explore this data more in these interacitive visualizations: 
+* [Popular Sites](https://public.tableau.com/app/profile/paul.calvano8666/viz/AICrawlerrobots_txtfileDirectivesforPopularSites/Sheet1?publish=yes){:target="_blank"}
+* [All Sites](https://public.tableau.com/views/AICrawlerrobots_txtfileDirectivesforAllSites/Sheet12?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link){:target="_blank"}
 
 
 **Conclusion**
 
-AI Crawler Bots have become a significant source of traffic for many sites, and awareness has been growing over the last few months. More and more bots are being introduced which makes it a challenge for site owners to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
+AI Crawler Bots have become a significant source of traffic for many sites, and awareness has been growing over the last few years. More and more bots are being introduced which makes it a challenge for site owners to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
 
-However, there isn't uniformity in how AI Bots are being treated across the web - especially when compared to SEO and Search agents. The most popular AI services bots appear in more robots.txt files, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage these bots is clear, the effectiveness might be limited to each site's ability to manage them. 
+However, there isn't uniformity in how AI bots are being treated across the web - especially when compared to month to month consistency of the SEO and Search agents. The most popular AI services bots appear in more robots.txt files, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage these bots is clear, the effectiveness might be limited to each site's ability to manage them. 
 
 
 **HTTP Archive queries**
@@ -211,7 +180,7 @@ FROM (
 
 <details>
   <summary><b>Percent of Sites with User-Agents Appearing in robots.txt Files, by popularity rank</b></summary>
-   The HTTP Archive stores robots.txt information in a custom metrics object.   In this SQL script, we’re UNNESTing each user-agentand then searching for it’s stats within the custom metric.
+   The HTTP Archive stores robots.txt information in a custom metrics object.   In this SQL script, we’re UNNESTing each user-agent and then searching for it’s stats within the custom metric.
   <pre><code>
 CREATE TEMP FUNCTION GetByAgent(json STRING, agent STRING)
 RETURNS STRING
@@ -333,7 +302,7 @@ ORDER BY 1,3 DESC
 
 <details>
   <summary><b>AI Bot Directives</b></summary>
-   This is a test
+    This query uses the [AI Robots.txt Github repository](https://github.com/ai-robots-txt/ai.robots.txt){:target="_blank"} to classify User-Agents by AI service.   Is then counts the number of sites that include different directives and combinations of directives in their robots.txt files
   <pre><code>
 CREATE TEMP FUNCTION GetByAgent(json STRING, agent STRING)
 RETURNS STRING
