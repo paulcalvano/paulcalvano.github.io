@@ -2,13 +2,14 @@
 layout: post
 title: "AI Bots and Robots.txt"
 date: 2025-08-18 00:00:00 -0400
+
 ---
 
-There’s been a lot of discussion lately around AI crawlers and bots, which are used to train LLMs and/or fetch content on behalf of their users. In the past few weeks I’ve seen blog posts about the amount of traffic from these crawlers, techniques and products to gatekeep content from them, reports of misbehaving crawlers and more. Ironically, there's even AI based services to mitigate AI Crawler Bots! Given how much interest there is, I thought I’d try and explore some [HTTP Archive](https://httparchive.org/){:target="_blank"} data to see how sites are using robots.txt to state their preferences on AI bot crawling.
+There’s been a lot of discussion lately around AI crawlers and bots, which are used to train LLMs and/or fetch content on behalf of their users. In the past few weeks I’ve seen blog posts about the amount of traffic from these crawlers, techniques and products to control how and what they can crawl, reports of misbehaving crawlers and more. Ironically, there's even AI based services to mitigate AI crawler bots! Given how much interest there is, I thought I’d try and explore some [HTTP Archive](https://httparchive.org/){:target="_blank"} data to see how sites are using robots.txt to state their preferences on AI crawling.
 
 **Robots.txt**
 
-A robots.txt file is a static text file located at the root of an origin, and provides instructions for how bots should interact with a website. This practice began in 1994 and quickly became a [de facto standard](https://www.robotstxt.org/robotstxt.html){:target="_blank"}. Years later, Google introduced the [Robots Exclusion Protocol](https://datatracker.ietf.org/doc/html/rfc9309){:target="_blank"}, which was standardized in 2022. 
+A robots.txt file is located at the root of an origin, and provides instructions for how bots should interact with a website. This practice began in 1994 and quickly became a [de facto standard](https://www.robotstxt.org/robotstxt.html){:target="_blank"}. Years later, Google introduced the [Robots Exclusion Protocol](https://datatracker.ietf.org/doc/html/rfc9309){:target="_blank"}, which was standardized in 2022. 
 
 A simple example of a robots.txt directive is below. This directive tells a User-Agent with the string `GPTBot` that it is not permitted to crawl the site.
 
@@ -17,12 +18,12 @@ User-Agent: GPTBot
 Disallow: /
 ```
 
-It’s important to note that a robots.txt does not restrict access to bots by itself, as adherence to it is voluntary. But analyzing the rules that sites set for User-Agents can provide some insight into the sentiment towards AI bots. 
+It’s important to note that robots.txt does not restrict access to bots by itself, as adherence to it is voluntary. But analyzing the content of these files can provide some insight on the overall sentiment towards AI bots. 
 
 
 ## How Many Sites use Robots.txt Files?
 
-The HTTP Archive collects page details from millions of websites each month, and contains a custom metric that fetches the robots.txt file from each site. The data from July 2025 shows that 94% of 12 million websites have a robots.txt file with at least 1 directive. The HTTP Archive’s [Web Almanac](https://almanac.httparchive.org/){:target="_blank"} has an entire [chapter on SEO](https://almanac.httparchive.org/en/2024/seo){:target="_blank"}, containing more details around the contents of robots.txt. It’s definitely worth reading if you are interested in learning more about how various directives are used across the web.
+The HTTP Archive collects page details from millions of websites each month, and uses a custom metric to fetch a robots.txt file from each site. The data from July 2025 shows that 94% of 12 million websites have a robots.txt file containing at least 1 directive. The HTTP Archive’s [Web Almanac](https://almanac.httparchive.org/){:target="_blank"} has an entire [chapter on SEO](https://almanac.httparchive.org/en/2024/seo){:target="_blank"}, containing more details around the contents of robots.txt - and is definitely worth a read.
 
 <table>
   <tr>
@@ -42,22 +43,23 @@ The HTTP Archive collects page details from millions of websites each month, and
   </tr>
 </table>
 
-Some bots choose to identify themselves within the User-Agent string of an HTTP request. Others attempt to hide what they are doing, which is one of the reasons why many sites utilize services to block unwanted traffic. For this research we’ll focus on robots.txt files, which we can use to evaluate whether site owners are attempting to restrict the AI bots based on their advertised User-Agent strings.
+Some bots choose to identify themselves in the User-Agent string of an HTTP request. Others attempt to hide what they are doing, which is one of the reasons why many sites utilize services to block unwanted traffic. This research will focus on robots.txt files, which tell us whether site owners would like to restrict AI bots based on their advertised User-Agent strings.
 
-Many AI bots publish their User-Agent strings for this purpose, and also provide guidance on how they adhere to the robots.txt directives. For example
+Many AI services publish the User-Agent strings for this purpose, and also provide guidance on how they adhere to robots.txt directives. Additionally it's commone for a service to advertise multiple User-Agents since they can be used for different purposes (crawling, responding to user input, etc). 
 
+For example
 * [ChatGPT](https://platform.openai.com/docs/bots){:target="_blank"} advertises themselves as `ChatGPT-User`, `GPTBot`, and `OAI-SearchBot` 
 * [Anthropic](https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler){:target="_blank"} advertises themselves as `ClaudeBot`, `Claude-User`, and  `Claude-SearchBot` 
 * [Apple](https://support.apple.com/en-us/119829){:target="_blank"} advertises themselves as `Applebot-Extended`
 
-There are many more AI agents, with more showing up all the time - and not all of them respect the robots.txt files. For this research, I’ve used a list of AI Bots generated from the [AI Robots.txt Github repository](https://github.com/ai-robots-txt/ai.robots.txt){:target="_blank"} to determine which robots.txt entries are targeted towards AI services.
+There are many more AI agents, with more showing up all the time - and unfortunately not all of them respect the robots.txt directives. For this research, I’ve used a list of AI Bots from the [AI Robots.txt Github repository](https://github.com/ai-robots-txt/ai.robots.txt){:target="_blank"} to determine which robots.txt entries are targeted towards the various AI services.
 
 
 ## User-Agents Referenced in Robots.txt
 
-The most popular User-Agent referenced in robots.txt files is simply a wildcard ``*``. In fact 97.4% of robots.txt files have at least 1 directive using this wildcard, to allow and/or disallow bots to part or all of their site’s content. Typically search bots (googlebot, bingbot, etc) and SEO bots (mj12bot, ahrefsbot, semrushbot, etc) appear in many sites’ robots.txt files as well.
+The most popular User-Agent referenced in robots.txt files is simply a wildcard `*`. In fact 97.4% of robots.txt files have at least 1 directive using this wildcard, often to allow and/or disallow bots to part or all of their site’s content to all bots. Typically the next most frequent group of User-Agents are for search bots (googlebot, bingbot, etc) and SEO bots (mj12bot, ahrefsbot, semrushbot, etc).
 
-Over the past few years, User-Agents for AI Bots have been showing up in a large number of robots.txt files. As of July 2025, AI Bots top the list of User Agents referenced across popular sites. In fact almost 21% of the top 1000 websites have rules for ChatGPT’s “GPTBot” in their robots.txt file. There’s an interesting pattern shift around site popularity, with a greater percentage of popular sites adding AI bot directives vs a large percentage of SEO bot directives appearing in less popular sites. 
+Over the past few years, User-Agents for AI Bots have been added to many sites' robots.txt files. As of July 2025, AI Bots top the list of User Agents referenced across popular sites. In fact almost 21% of the top 1000 websites have rules for ChatGPT’s “GPTBot” in their robots.txt file. There’s an interesting pattern shift around site popularity, with a greater percentage of popular sites having AI bot directives vs a large percentage of SEO bot directives on less popular sites. 
 
 The table below breaks this out by site popularity (using Google's [CrUX rank](https://developer.chrome.com/docs/crux/methodology/metrics#popularity-metric){:target="_blank"}). In the darker shaded areas of this table, you can see many references to bots operated by popular AI services - ChatGPT, Claude, Google, Perplexity, Anthropic, etc. 
 
@@ -65,53 +67,17 @@ The table below breaks this out by site popularity (using Google's [CrUX rank](h
 
 ## When Did Sites Start Adding AI Crawlers to robots.txt
 
-In August 2023, ChatGPT added [documentation](https://platform.openai.com/docs/bots){:target="_blank"} about its crawler, including instructions on how site owners can block them. Within the same month, the number of mentions for GPTBot in robots.txt files went from 0 sites to almost 125k! A month later it was 299k and by November it was referenced on 578k websites! That’s a massive adoption rate in a short period of time.
+In August 2023, ChatGPT added [documentation](https://platform.openai.com/docs/bots){:target="_blank"} about its crawler, including instructions on how site owners can block them. Shortly afterwards, articles with [instructions](https://www.theverge.com/2023/8/7/23823046/openai-data-scrape-block-ai){:target="_blank"} on how to block ChatGPT started appearing, it was discussed in [Hacker News](https://news.ycombinator.com/item?id=37030568){:target="_blank"} and there were also claims that some sites were [scrambling to block](https://arstechnica.com/information-technology/2023/08/openai-details-how-to-keep-chatgpt-from-gobbling-up-website-data/){:target="_blank"} AI agents.  While the claims may have sounded sensational, the same month the number of sites that included rules for GPTBot in robots.txt files went from 0 to almost 125k sites! A month later it was 299k sites. By November it was referenced on 578k websites! That’s a massive adoption rate in a short period of time.
 
-In the table below you can see the number of websites referencing specific User-Agents in their robots.txt files month to month. Claudebot first appeared in December 2023 on just 2,382 sites (increasing to 30k within 4 months) and PerplexityBot appeared in January 2024 with just 157 sites (increasing to 31k in April 2024). These were not picked up as quickly as GPTBot, which may have been due to limited public awareness of the rise of these models.
-
-<!--
- // Embed JS for Tableau is slow.   Adding links to data visualization to open in new window instead. 
-<div class='tableauPlaceholder' id='viz1755564615538' style='position: relative'> 
-    <object class='tableauViz' style='display:none;'> 
-    <param name='host_url' value='http://public.tableau.com/' /> 
-    <param name='embed_code_version' value='3' /> 
-    <param name='site_root' value='' /> 
-    <param name='name' value='UserAgentsAppearinginRobots_txtFiles-HTTPArchiveJanuary2023-July2025/Sheet1' /> 
-    <param name='tabs' value='no' /> <param name='toolbar'
-    value='yes' /> 
-    <param name='static_image'
-    value='https://public.tableau.com/static/images/Us/UserAgentsAppearinginRobots_txtFiles-HTTPArchiveJanuary2023-July2025/Sheet1/1.png' /> 
-    <param name='animate_transition' value='yes' /> 
-    <param name='display_static_image' value='yes' /> 
-    <param name='display_spinner' value='yes' /> 
-    <param name='display_overlay' value='yes' /> 
-    <param name='display_count' value='yes' /> 
-    <param name='language' value='en-US' /> 
-    </object>
-</div> 
-
-<script type='text/javascript' >
-    var divElement = document.getElementById('viz1755564615538');
-    var vizElement = divElement.getElementsByTagName('object')[0];
-    vizElement.style.width = '100%';
-    vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
-    var scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement); 
-</script>
--->
+In the tables below you can see the number of websites referencing specific User-Agents in their robots.txt files month to month. Claudebot first appeared in December 2023 on just 2,382 sites (increasing to 30k within 4 months) and PerplexityBot appeared in January 2024 with just 157 sites (increasing to 31k in April 2024). These were not picked up as quickly as GPTBot, which may have been due to limited public awareness of the rise of these models.
 
 ![User Agents Referenced in robots.txt files - 2023](/assets/img/blog/ai-bots-and-robots-txt/user-agents-in-robotstxt-2023.jpg){:loading="lazy"}
 
-
-Throughout 2024 you can see that more and more sites include directives for the AI bots. Perplexity and Claude appeared on over 100k site’s robot.txt starting in May. And a handful of new ones appeared to gain popularity. 
-
+Throughout 2024 you can see that more and more sites include directives for the AI bots. Perplexity and Claude appeared in over 100k site’s robot.txt starting in May. And a handful of new ones started appearing as they gained popularity. 
 
 ![User Agents Referenced in robots.txt files - 2024](/assets/img/blog/ai-bots-and-robots-txt/user-agents-in-robotstxt-2024.jpg){:loading="lazy"}
 
-
-That brings us to 2025 where you can see that ChatGPT, Claude, Facebook and others appear in the robots.txt files for even more sites. This might be due to some services updating robots.txt files automatically, and it could also be due to more awareness because of frequent news articles about AI agents. 
-
+That brings us to 2025 where you can see that ChatGPT, Claude, Facebook and others appear in the robots.txt files for even more sites. This might be due to some services and platforms updating robots.txt files automatically, but it could also be due to more awareness as there have been frequent articles about AI crawlers and bots throughout 2025. 
 
 ![User Agents Referenced in robots.txt files - 2025](/assets/img/blog/ai-bots-and-robots-txt/user-agents-in-robotstxt-2025.jpg){:loading="lazy"}
 
@@ -217,7 +183,7 @@ This section provides some details on how this analysis was performed, including
 
 <details>
   <summary><b>Number of sites containing robots.txt files</b></summary>
-   This query counts the number of websites that contain a robots.txt file. In order to ensure that we are counting an actual robots.txt file and not error pages, this query counts a robots.txt file if it returns an HTTP 200 status code and has at least one rule containing one of the following directives: allow, disallow, crawl_delay, noindex, sitemap or user_agent. 
+   This query counts the number of websites that contain a robots.txt file. In order to ensure that we are counting an actual robots.txt file and not error pages, this query only counts robots.txt files that return an HTTP 200 status code and contains one of the following directives: allow, disallow, crawl_delay, noindex, sitemap or user_agent. 
   <pre><code>
 SELECT
  sites,
