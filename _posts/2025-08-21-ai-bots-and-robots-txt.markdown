@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Bots and Robots.txt"
-date: 2025-08-18 00:00:00 -0400
+date: 2025-08-21 00:00:00 -0400
 
 ---
 
