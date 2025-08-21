@@ -129,7 +129,7 @@ This graph below shows AI Crawler directives for popular websites. From this dat
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-popularsites.jpg){:loading="lazy"}
 
-If we look at this across all sites a new pattern emerges. We can see a lot more sites that have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file. For example, Squarespace and Cloudflare both have solutions that appear to add these files for their customers. 
+If we look at this across all sites a new pattern emerges. We can see a lot more sites that have both allow and disallow directives for AI agents. This may be due to large platforms automatically updating these agents in their customer's robots.txt file. For example, [Squarespace](https://support.squarespace.com/hc/en-us/articles/360022347072-Request-that-AI-models-exclude-your-site){:target="_blank"} and [Cloudflare](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/){:target="_blank"} both have solutions that appear to automatically add AI crawlers to a site's robots.txt file. 
 
 ![AI Crawler Directives for Popular Sites](/assets/img/blog/ai-bots-and-robots-txt/ai-crawler-directives-allsites.jpg){:loading="lazy"}
 
@@ -141,7 +141,7 @@ You can explore this data more in these interacitive visualizations:
 
 **Conclusion**
 
-AI Crawler Bots have become a significant source of traffic for many sites, and awareness has been growing over the last few years. More and more bots are being introduced which makes it a challenge for site owners to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
+AI crawlers and bots have become a significant source of bot traffic for many sites, and awareness has been growing over the last few years. More and more bots are being introduced which makes it a challenge for site owners to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
 
 However, there isn't uniformity in how AI bots are being treated across the web - especially when compared to month to month consistency of the SEO and Search agents. The most popular AI services bots appear in more robots.txt files, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage these bots is clear, the effectiveness might be limited to each site's ability to manage them. 
 
