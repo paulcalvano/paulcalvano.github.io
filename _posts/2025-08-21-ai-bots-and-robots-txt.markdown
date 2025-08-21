@@ -73,15 +73,15 @@ In the tables below you can see the number of websites referencing specific User
 
 ![User Agents Referenced in robots.txt files - 2023](/assets/img/blog/ai-bots-and-robots-txt/user-agents-in-robotstxt-2023.jpg){:loading="lazy"}
 
-Throughout 2024 you can see that more and more sites include directives for the AI bots. Perplexity and Claude appeared in over 100k site’s robot.txt starting in May. And a handful of new ones started appearing as they gained popularity. 
+Throughout 2024 you can see that more and more sites include directives for the AI bots. Apple's [crawler](https://support.apple.com/en-us/119829){:target="_blank"} was revealed in May 2024, and news reports about it started showing up in June.  By September there was almost 262k sites including it in their robots.txt files.   Perplexity and Claude also started appearing in over 100k site’s robot.txt in May 2024. And a handful of new ones started appearing as they gained popularity. 
 
 ![User Agents Referenced in robots.txt files - 2024](/assets/img/blog/ai-bots-and-robots-txt/user-agents-in-robotstxt-2024.jpg){:loading="lazy"}
 
-That brings us to 2025 where you can see that ChatGPT, Claude, Facebook and others appear in the robots.txt files for even more sites. This might be due to some services and platforms updating robots.txt files automatically, but it could also be due to more awareness as there have been frequent articles about AI crawlers and bots throughout 2025. 
+That brings us to 2025 where you can see that ChatGPT, Claude, Facebook and others appear in the robots.txt files of over 560k sites! A few newer bots started showing up as well - belonging to Meta, DuckDuckGo, and Quora. This might be due to some services and platforms updating robots.txt files automatically, but it could also be due to more awareness as there have been frequent articles about AI crawlers and bots throughout 2025. 
 
 ![User Agents Referenced in robots.txt files - 2025](/assets/img/blog/ai-bots-and-robots-txt/user-agents-in-robotstxt-2025.jpg){:loading="lazy"}
 
-You can explore this data more in [this interactive visualization](https://public.tableau.com/views/UserAgentsAppearinginRobots_txtFiles-HTTPArchiveJanuary2023-July2025/Sheet1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link){:target="_blank"}. 
+You can explore this data more in [this interactive visualization](https://public.tableau.com/views/UserAgentsAppearinginRobots_txtFiles-HTTPArchiveJanuary2023-July2025/Sheet1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link){:target="_blank"}. There are many more User-Agents than what I listed here, and if you scroll down you might spot some newer ones.
 
 
 ## To Allow or Not to Allow… 
@@ -141,9 +141,9 @@ You can explore this data more in these interacitive visualizations:
 
 **Conclusion**
 
-AI crawlers and bots have become a significant source of bot traffic for many sites, and awareness has been growing over the last few years. More and more bots are being introduced which makes it a challenge for site owners to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
+AI crawlers and bots have become a significant source of synthetic traffic for many sites, and awareness has been growing over the last few years. More and more bots are being introduced which makes it a challenge to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
 
-However, there isn't uniformity in how AI bots are being treated across the web - especially when compared to month to month consistency of the SEO and Search agents. The most popular AI services bots appear in more robots.txt files, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage these bots is clear, the effectiveness might be limited to each site's ability to manage them. 
+However, there isn't uniformity in how AI bots are being treated across the web - especially when compared to the month to month consistency of the SEO and Search agents. The most popular AI services bots appear in more robots.txt files because they have been noticed, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage how these bots crawl websites is clear, the effectiveness for an individual site is be limited to how well each site maintains the list of bots and crawlers. 
 
 
 **HTTP Archive queries**
