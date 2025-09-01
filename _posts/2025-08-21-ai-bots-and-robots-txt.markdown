@@ -143,7 +143,7 @@ You can explore this data more in these interacitive visualizations:
 
 AI crawlers and bots have become a significant source of synthetic traffic for many sites, and awareness has been growing over the last few years. More and more bots are being introduced which makes it a challenge to keep up. It’s interesting to see how trends in news cause major shifts in website strategy across the web. Often new technologies or features are adopted at a gradual rate. The appearance of the AI bot user agents in so many websites over a short period of time reflects the general sentiment that site owners have towards the scraping of their content for training models.
 
-However, there isn't uniformity in how AI bots are being treated across the web - especially when compared to the month to month consistency of the SEO and Search agents. The most popular AI services bots appear in more robots.txt files because they have been noticed, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage how these bots crawl websites is clear, the effectiveness for an individual site is be limited to how well each site maintains the list of bots and crawlers. 
+However, there isn't uniformity in how AI bots are being treated across the web - especially when compared to the month to month consistency of the SEO and Search agents. The most popular AI services bots appear in more robots.txt files because they have been noticed, and newer ones aren't picked up as quickly. One can interpret this to show that although the intent to manage how these bots crawl websites is clear, the effectiveness for an individual site is limited to how well each site maintains the list of bots and crawlers. 
 
 
 **HTTP Archive queries**
