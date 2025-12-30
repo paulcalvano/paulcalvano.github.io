@@ -406,3 +406,301 @@ Third Party Single Points of Failure have been talked about for 15 years now. Th
 Cloud provider and CDN outages happen, and it’s unfortunate for all involved when they do. However, someone else’s cloud provider outage shouldn’t take down your website. I highly recommend auditing your third party domains to ensure that a slowdown or failure will not result in a disruption of service on your websites. Beyond that, as a general preventive measure - try to self host as much of your render-blocking content as possible.
 
 This article represents my own views and opinions and not those of Etsy.
+
+_Originally published at https://calendar.perfplanet.com/2025/third-parties-and-single-points-of-failure/_
+
+
+**HTTP Archive queries**
+
+This section provides some details on how this analysis was performed, including SQL queries. Please be warned that some of the SQL queries process a significant amount of bytes - which can be very expensive to run.
+
+<details>
+  <summary><b>Number of sites containing render blocking third parties</b></summary>
+   This query counts the number of sites that contain a render blocking third party, and also whether they are using a different CDN (or no CDN)!
+  <pre><code>
+   SELECT
+    "Number of Sites" AS category,
+    COUNT(DISTINCT page) AS sites
+  FROM
+    `httparchive.crawl.pages` 
+  WHERE
+    date = "2025-12-01"
+    AND is_root_page = TRUE 
+    AND client = "mobile" 
+  
+
+UNION ALL
+
+ SELECT
+    "Sites with a Render Blocking Third Party" AS category,
+    COUNT(DISTINCT page) AS sites
+  FROM
+    `httparchive.crawl.requests`
+  WHERE
+    date = "2025-12-01"
+    AND is_root_page = TRUE 
+    AND client = "mobile" 
+    AND NET.REG_DOMAIN(page) != NET.REG_DOMAIN(url)
+    AND JSON_VALUE(payload._renderBlocking) = "blocking"
+
+UNION ALL
+
+
+ SELECT
+    "Sites with a Render Blocking Third Party on a different CDN" AS category,
+    COUNT(DISTINCT p.page) AS sites
+  FROM
+    `httparchive.crawl.requests` AS r
+    INNER JOIN `httparchive.crawl.pages`  AS p
+    ON r.page = p.page
+  WHERE
+    r.date = "2025-12-01" AND p.date = "2025-12-01"
+    AND r.is_root_page = TRUE AND p.is_root_page = TRUE
+    AND r.client = "mobile" AND p.client = "mobile"
+    AND JSON_VALUE(r.payload._renderBlocking) = "blocking"
+    AND NET.REG_DOMAIN(p.page) != NET.REG_DOMAIN(r.url)
+    AND JSON_VALUE(p.summary.cdn) != JSON_VALUE(r.payload._cdn_provider)
+
+UNION ALL
+
+SELECT
+    "Sites with a Render Blocking Third Party not using a CDN" AS category,
+    COUNT(DISTINCT p.page) AS sites
+  FROM
+    `httparchive.crawl.requests` AS r
+    INNER JOIN `httparchive.crawl.pages`  AS p
+    ON r.page = p.page
+  WHERE
+    r.date = "2025-12-01" AND p.date = "2025-12-01"
+    AND r.is_root_page = TRUE AND p.is_root_page = TRUE
+    AND r.client = "mobile" AND p.client = "mobile"
+    AND JSON_VALUE(r.payload._renderBlocking) = "blocking"
+    AND NET.REG_DOMAIN(p.page) != NET.REG_DOMAIN(r.url)
+    AND (
+        JSON_VALUE(r.payload._cdn_provider) IS NULL
+        OR JSON_VALUE(r.payload._cdn_provider) = "")
+
+  </code></pre>
+</details>
+
+<details>
+  <summary><b>Third Party Render Blocking Requests by Content Type</b></summary>
+  This summarizes the request types that are used for render blocking third party requests.
+  <pre><code>
+ SELECT
+    r.type AS requestType,
+    COUNT(DISTINCT p.page) AS sites,
+    COUNT(*) AS requests
+  FROM
+    `httparchive.crawl.requests` AS r
+    INNER JOIN `httparchive.crawl.pages`  AS p
+    ON r.page = p.page
+  WHERE
+    r.date = "2025-12-01" AND p.date = "2025-12-01"
+    AND r.is_root_page = TRUE AND p.is_root_page = TRUE
+    AND r.client = "mobile" AND p.client = "mobile"
+    AND JSON_VALUE(r.payload._renderBlocking) = "blocking"
+    AND NET.REG_DOMAIN(p.page) != NET.REG_DOMAIN(r.url)
+    AND JSON_VALUE(p.summary.cdn) != JSON_VALUE(r.payload._cdn_provider)
+    AND is_main_document = FALSE
+GROUP BY 1
+ORDER BY 2 DESC
+  </code></pre>
+</details>
+
+<details>
+  <summary><b>Third Party Hostnames w/ Render Blocking Content</b></summary>
+  This query breaks down popular third party hostnames that are being used for render blocking content, whith a focus on requests that use a different CDN from the primary website. 
+  <pre><code>
+
+ SELECT
+    NET.HOST(url) as hostname,
+    r.type AS requestType,
+    COUNT(DISTINCT p.page) AS sites,
+    COUNT(*) AS requests
+  FROM
+    `httparchive.crawl.requests` AS r
+    INNER JOIN `httparchive.crawl.pages`  AS p
+    ON r.page = p.page
+  WHERE
+    r.date = "2025-12-01" AND p.date = "2025-12-01"
+    -- root pages
+    AND r.is_root_page = TRUE AND p.is_root_page = TRUE
+    -- mobile
+    AND r.client = "mobile" AND p.client = "mobile"
+    -- render blocking requests
+    AND JSON_VALUE(r.payload._renderBlocking) = "blocking"
+    -- with a different domain name from the page
+    AND NET.REG_DOMAIN(p.page) != NET.REG_DOMAIN(r.url)
+    -- and a different CDN
+    AND JSON_VALUE(p.summary.cdn) != JSON_VALUE(r.payload._cdn_provider)
+GROUP BY 1,2
+ORDER BY 3 DESC 
+  </code></pre>
+</details>
+
+<details>
+  <summary><b>RawGit usage</b></summary>
+  <pre><code>
+ 
+ SELECT
+    COUNT(DISTINCT page)
+  FROM
+    `httparchive.crawl.requests` AS r    
+  WHERE
+    date = "2025-11-01"
+    AND is_root_page = TRUE
+    AND client = "mobile" 
+  AND NET.HOST(url) LIKE "%rawgit.com"
+
+  </code></pre>
+</details>
+
+<details>
+  <summary><b>Polyfill.io Usage</b></summary>
+  <pre><code>
+ 
+ SELECT
+    date,
+    COUNT(DISTINCT page)
+  FROM
+    `httparchive.crawl.requests` AS r
+    
+  WHERE
+    date BETWEEN "2024-01-01" AND "2025-01-01"
+    AND is_root_page = TRUE
+    AND client = "mobile" 
+  AND NET.HOST(url) LIKE "%polyfill.io"
+GROUP BY date
+ORDER BY date
+  </code></pre>
+</details>
+
+
+<details>
+  <summary><b>RUM Archive stats for Render Blocking Third Parties</b></summary>
+  <pre><code>
+ SELECT 
+  NET.HOST(url) AS hostname, 
+  SUM(fetches) AS freq,
+
+  -- DNS
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(DNSHISTOGRAM),
+    [0.75],
+    10,
+    false
+  )) / 1000 AS dns_p75,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(DNSHISTOGRAM),
+    [0.95],
+    10,
+    false
+  )) / 1000 AS dns_p95,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(DNSHISTOGRAM),
+    [0.99],
+    10,
+    false
+  )) / 1000 AS dns_p99,
+
+  -- TCP
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TCPHISTOGRAM),
+    [0.75],
+    10,
+    false
+  )) / 1000 AS tcp_p75,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TCPHISTOGRAM),
+    [0.95],
+    10,
+    false
+  )) / 1000 AS tcp_p95,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TCPHISTOGRAM),
+    [0.99],
+    10,
+    false
+  )) / 1000 AS tcp_p99,
+
+  -- TLS
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TLSHISTOGRAM),
+    [0.75],
+    10,
+    false
+  )) / 1000 AS tls_p75,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TLSHISTOGRAM),
+    [0.95],
+    10,
+    false
+  )) / 1000 AS tls_p95,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TLSHISTOGRAM),
+    [0.99],
+    10,
+    false
+  )) / 1000 AS tls_p99,
+
+  -- TTFB
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TTFBHISTOGRAM),
+    [0.75],
+    10,
+    false
+  )) / 1000 AS ttfb_p75,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TTFBHISTOGRAM),
+    [0.95],
+    10,
+    false
+  )) / 1000 AS ttfb_p95,
+
+  PARSE_NUMERIC(`akamai-mpulse-rumarchive.rumarchive.PERCENTILE_APPROX`(
+    ARRAY_AGG(TTFBHISTOGRAM),
+    [0.99],
+    10,
+    false
+  )) / 1000 AS ttfb_p99
+
+FROM `akamai-mpulse-rumarchive.rumarchive.rumarchive_resources` 
+WHERE date = "2025-12-20" 
+  AND NET.HOST(url) IN (
+    SELECT
+        NET.HOST(url) as hostname,
+      FROM
+        `httparchive.crawl.requests` AS r
+        INNER JOIN `httparchive.crawl.pages`  AS p
+        ON r.page = p.page
+      WHERE
+        r.date = "2025-12-01" AND p.date = "2025-12-01"
+        -- root pages
+        AND r.is_root_page = TRUE AND p.is_root_page = TRUE
+        -- mobile
+        AND r.client = "mobile" AND p.client = "mobile"
+        -- render blocking requests
+        AND JSON_VALUE(r.payload._renderBlocking) = "blocking"
+        -- with a different domain name from the page
+        AND NET.REG_DOMAIN(p.page) != NET.REG_DOMAIN(r.url)
+        -- and a different CDN
+        AND JSON_VALUE(p.summary.cdn) != JSON_VALUE(r.payload._cdn_provider)
+    GROUP BY 1
+    ORDER BY COUNT(DISTINCT p.page) DESC
+    )
+GROUP BY 1
+HAVING SUM(fetches) >= 1000000
+ORDER BY 2 DESC;
+
+  </code></pre>
+</details>
+
+
