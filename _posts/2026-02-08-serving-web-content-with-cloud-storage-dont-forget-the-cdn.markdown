@@ -269,7 +269,7 @@ It’s also worth evaluating how much delivering traffic directly from these clo
 
 **Conclusion**
 
-I was genuinely surprised to find that 5% of websites are delivering content from cloud storage services without a CDN. Discovering and fixing these could provide a quick performance boost and a reduction of egress cloud costs. When you audit your website’s performance, if you notice cloud storage hostnames then you should definitely investigate how they got there, and move that content behind your CDNs.
+It's incredible that 8.5% of websites that utilize a CDN are delivering content to users directly from cloud storage services. Discovering and fixing these could provide a quick performance boost. When you audit your website’s performance, if you notice cloud storage hostnames then you should definitely investigate how they got there, and move that content behind your CDNs.
 
 **HTTP Archive queries**
 
