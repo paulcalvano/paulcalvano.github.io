@@ -20,7 +20,7 @@ In numerous web performance audits over the years, I’ve found cloud storage ho
 I queried the HTTP Archive to see how common this still is and found a few surprising statistics - 
 
 * Overall 5.8% of websites serve content directly from cloud storage! 
-* 8.53% of websites serve content directly from cloud storage despite using a CDN to deliver their primary content!
+* 8.53% of websites which use a CDN for delivering their primary content, serve content directly from cloud storage!
 * The number of websites serving content directly from Amazon S3 is now 629K - which is an increase of 8.5% since November 2024! 
 
 ![Websites Delivering Assets via Cloud Storage](/assets/img/blog/serving-web-content-with-cloud-storage-dont-forget-the-cdn/websites-delivering-assets-via-cloud-storage.jpg){:loading="lazy"}
