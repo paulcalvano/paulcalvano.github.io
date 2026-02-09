@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Serving Web Content with Cloud Storage?  Don't Forget the CDN!"
+title: "Serving Static Content with Cloud Storage? Don't Forget the CDN!"
 date: 2026-02-08 00:00:00 -0400
 
 ---
