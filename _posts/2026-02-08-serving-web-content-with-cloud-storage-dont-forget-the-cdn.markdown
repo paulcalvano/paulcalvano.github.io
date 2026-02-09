@@ -9,7 +9,7 @@ Many websites use cloud storage as part of how they deliver static content to en
 
 **Background**
 
-Content Delivery Networks (CDNs) are an essential component of website delivery, especially when it comes to web performance. According to the [2025 Web Almanac](https://almanac.httparchive.org/en/2025/), approximately [70% of websites use them](https://almanac.httparchive.org/en/2025/cdn#fig-3). CDNs enable users to connect to servers that are geographically close to them (and at lower latencies), provide distributed caching to offload backend/origin servers and provide other services such as image optimization, edge compute and security. Some CDNs offer cloud storage services, but pretty much all of them can sit in front of another cloud provider’s storage when it is configured for web delivery.
+Content Delivery Networks (CDNs) are an essential component of website delivery, especially when it comes to web performance. According to the [2025 Web Almanac](https://almanac.httparchive.org/en/2025/), approximately [70% of popular websites use them](https://almanac.httparchive.org/en/2025/cdn#fig-3). CDNs enable users to connect to servers that are geographically close to them (and at lower latencies), provide distributed caching to offload backend/origin servers and provide other services such as image optimization, edge compute and security. Some CDNs offer cloud storage services, but pretty much all of them can sit in front of another cloud provider’s storage when it is configured for web delivery.
 
 ![WebAlmanac CDN Usage](/assets/img/blog/serving-web-content-with-cloud-storage-dont-forget-the-cdn/httparchive-cdn-usage.jpg){:loading="lazy"}
 
