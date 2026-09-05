@@ -3,6 +3,20 @@ Code for integrating CloudFlare's email protection with Hydejack's single page a
 -->
 
 <script>
+  function openExternalLinksInNewTab() {
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var url = new URL(link.href, window.location.origin);
+
+      if ((url.protocol === 'http:' || url.protocol === 'https:') && url.host !== window.location.host) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+    });
+  }
+
+  openExternalLinksInNewTab();
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', openExternalLinksInNewTab);
+
   document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
     function e(e){
       (console.error?console.error:console.log).call(console,e)
