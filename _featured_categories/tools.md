@@ -18,7 +18,7 @@ description: >
 
 **Stale Resource Checker**
 
-One often overlooked aspect of caching web content is the `Age` header, which can influence how long — or if at all — a cached response will be considered fresh. In August 2026 I found that 13.7% of websites experience a cache inefficiency due to content being served with an Age header that is greater than the max-age duration! This tool allows you to check for this on your site - using either a WebPageTest URL or a HAR file that can be outputted from your tool of choice.
+One often overlooked aspect of caching web content is the `Age` header, which can influence how long — or if at all — a cached response will be considered fresh. In an August 2026 [blog post](/2026-09-05-resource-age-and-its-impact-on-cacheability/) I found that 13.7% of websites experience a cache inefficiency due to content being served with an Age header that is greater than the max-age duration! This tool allows you to check for this on your site - using either a WebPageTest URL or a HAR file that can be outputted from your tool of choice.
 
 
 [![Stale Resrouce Checker](/assets/img/blog/resource-age-and-its-impact-on-cacheability/resource-age-checker-tool.jpg)](https://tools.paulcalvano.com/stale-resource-checker/)

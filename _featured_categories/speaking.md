@@ -38,6 +38,7 @@ During this talk Paul will provide an overview of custom web fonts and some web 
 <iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/key/c9l7x8cWKAfiCE" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
 Presented at: 
+- 2026-April: [Tech SEO Summit](https://tech-seo-summit.com/2026/) (Hamburg, DE) [Slides](https://www.slideshare.net/slideshow/font-performance-tech-seo-summit-april-2026/287223693)
 - 2024-April: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/299395150/) (New York, NY) [Slides](https://www.slideshare.net/slideshow/font-performance-nyc-webperf-meetup-april-24-1abf/267363735)
 
 **Performance Mistakes (2022) - an HTTP Archive Deep Dive**
