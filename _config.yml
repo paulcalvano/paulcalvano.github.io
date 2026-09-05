@@ -31,7 +31,7 @@ description:           >
   Paul Calvano is a Performance Architect at Etsy, where he helps optimize the performance of their online marketplace.
 
 # A shorter description for the sidebar.
-tagline:               Hi! I'm a web performance architect, and have been making websites load faster for over 20 years!
+tagline:               Hi! I'm a web performance architect, and have been making websites load faster for over 25 years!
 
 # A list of keywords for your blog
 keywords:              [web performance, webperf, optimization, html, javascript, http archive, bigquery]
@@ -265,13 +265,15 @@ hydejack:
   # seeing an old date. 
   hide_dates:          false
 
+  no_breadcrumbs:      true
+
   # Note that dark mode only works in the PRO version of Hydejack.
   dark_mode:
     # Set to `true` to always use the dark theme.
     always:            false
 
     # Set to `true` to use the dark theme based on visitors' preference (OS setting).
-    dynamic:           true
+    dynamic:           false
 
     # Set to `true` to allow visitors to switch between light and dark mode.
     icon:              true

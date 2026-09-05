@@ -9,6 +9,7 @@ source "https://rubygems.org"
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
 gem "jekyll", "~> 4.1"
+gem "listen", "~> 3.8"
 
 gem "jekyll-theme-hydejack", "~> 9.0"
 

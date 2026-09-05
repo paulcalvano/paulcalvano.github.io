@@ -38,6 +38,10 @@ twitter:
   name: Twitter
   icon: icon-twitter
   prepend: 'https://twitter.com/'
+bluesky:
+  name: BlueSky
+  icon: icon-bsky
+  prepend: 'https://bsky.app/profile/'  
 vine:
   name: Vine
   icon: icon-vine

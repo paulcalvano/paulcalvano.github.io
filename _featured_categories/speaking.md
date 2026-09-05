@@ -38,6 +38,7 @@ During this talk Paul will provide an overview of custom web fonts and some web 
 <iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/key/c9l7x8cWKAfiCE" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
 Presented at: 
+- 2026-April: [Tech SEO Summit](https://tech-seo-summit.com/2026/) (Hamburg, DE) [Slides](https://www.slideshare.net/slideshow/font-performance-tech-seo-summit-april-2026/287223693)
 - 2024-April: [NYC WebPerf Meetup](https://www.meetup.com/web-performance-ny/events/299395150/) (New York, NY) [Slides](https://www.slideshare.net/slideshow/font-performance-nyc-webperf-meetup-april-24-1abf/267363735)
 
 **Performance Mistakes (2022) - an HTTP Archive Deep Dive**
@@ -45,8 +46,10 @@ Presented at:
 Web performance is a complicated topic, but over the years it’s become easier to articulate thanks to incredible advancements in performance features, their adoption in the browser ecosystem and tools that test and give insight into which techniques might speed up your site.
 
 However, all too often a feature is implemented incorrectly, resulting in a lost opportunity for performance improvement. During this talk I explored a few common web performance techniques - some that you are likely already familiar with. Looking at the HTTP Archive we found some examples of sites that are using them incorrectly, as well as the impact and potential benefits of fixing them.
+<br>
 
-<iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/key/udVefOIzNvOst3?startSlide=1" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px;max-width: 100%;" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/key/eXlA3rylo9l6Ys" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px;max-width: 100%;" allowfullscreen></iframe>
+
 
 Presented at: 
 - 2022-June: [Lazy Load Conference](https://webdirections.org/lazyload/speakers/paul-calvano.php) (Virtual) [Slides](https://www.slideshare.net/PaulCalvano/lazy-load-22-performance-mistakes-an-http-archive-deep-dive)
