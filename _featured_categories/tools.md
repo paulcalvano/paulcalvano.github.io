@@ -16,6 +16,17 @@ description: >
 # no_groups: true
 ---
 
+**Stale Resource Checker**
+
+One often overlooked aspect of caching web content is the `Age` header, which can influence how long — or if at all — a cached response will be considered fresh. In August 2026 I found that 13.7% of websites experience a cache inefficiency due to content being served with an Age header that is greater than the max-age duration! This tool allows you to check for this on your site - using either a WebPageTest URL or a HAR file that can be outputted from your tool of choice.
+
+
+[![Stale Resrouce Checker](/assets/img/blog/resource-age-and-its-impact-on-cacheability/resource-age-checker-tool.jpg)](https://tools.paulcalvano.com/stale-resource-checker/)
+
+You can find this tool [here](https://tools.paulcalvano.com/stale-resource-checker/).
+
+
+
 **Third Party Explorer**
 
 WebPageTest provides a great deal of insight into third parties, but sometimes it can be challenging to get a sense of which third parties to focus on. I wanted to build on top of the Domain Breakdown feature by creating a dashboard view that enables you to dive deeper. Fortunately all of this data exists in WebPageTest measurement results, so no further instrumentation was needed. To use this tool, run a WebPageTest measurement and then paste the result URL into the text box. The results will contain a sortable, filterable, list of domains with a number of metrics associated with them.

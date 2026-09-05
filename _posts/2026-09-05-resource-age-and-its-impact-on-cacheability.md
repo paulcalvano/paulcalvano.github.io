@@ -220,7 +220,7 @@ When looking at these third parties, they have an average cache time that varies
 
 HTTP Caching gets complicated when weighing freshness and revalidation requirements for content. When strategizing on a caching strategy, it's important to consider how long you are willing to allow content to be served stale for and whether to serve that content stale at all. However in scenarios where multiple caches are in use, it's important to ensure that a caching strategy on a CDN does not undermine the caching strategy on the client browser. In all of the cases above, a `stale-while-revalidate` directive would have proven useful. Also the gap between `max-age` and `s-maxage` should be evaluated based on the content sensitivity. If you are serving a versioned asset or something that is generally long lived like a font or image, then it's often better to cache them longer.
 
-If you've determined that there are some issues here, you may want to evaluate whether your performance has improved after remediating them. If you've made changes to first party caching rules, then it's also worth monitoring your CDN usage, since eliminating redundant requests may also produce some cost savings.
+If you've determined that there are some issues to address on your site based on this, you may want to evaluate whether your performance has improved after remediating them. Likely this would manifest within the long tail of performance - so I would look at the p95 or p99 of the First Contentful Paint (FCP) or Largest Contentful Paint (LCP) metrics. If you've made changes to first party caching rules, then it's also worth monitoring your CDN usage, since eliminating redundant requests may also produce some cost savings.
 
 **HTTP Archive queries**
 
