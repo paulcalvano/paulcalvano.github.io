@@ -23,15 +23,15 @@ During last week's session, we analyzed a popular eCommerce website. In a few sh
 - A CDN image optimization silent failure that cached an unoptimized image
 - Lazy Loaded images that... weren't lazy loading.
 
-But one issue we discovered surprised me: A font fallback to an alternative format due to font decoding failures. This is uncommon, and unlikely to be an issue with your site, but I learned a lot while digging into it and figured I'd share with you all!
+But one issue we discovered surprised me: A font fallback to an alternative format due to font decoding failures. This is uncommon, and unlikely to be an issue with your site, but I learned a lot while digging into it and figured I'd write this post to share with you!
 
 ## FontAwesome x3
 
-While analyzing a waterfall graph, we noticed that the popular FontAwesome font was being loaded 3 times on this site's homepage. The graph below shows these 3 requests filtered out, and you can see that one font loads after the other. WOFF2, then WOFF, then TTF. The same behavior was evident on Chrome, Safari and Edge.
+While analyzing a waterfall graph for this site's homepage, we noticed that the popular FontAwesome font was being loaded 3 times. The graph below shows these 3 requests filtered, and you can see that one font loads after the other. WOFF2, then WOFF, then TTF. The same behavior was evident on Chrome, Safari and Edge.
 
 ![A filtered waterfall showing three sequential FontAwesome requests](/assets/img/blog/investigating-a-curious-case-of-font-format-fallbacks/fontawesome-three-font-requests-waterfall.jpg)
 
-The usual cause for seeing multiple font formats for the same font would be preloading multiple versions of the same font asset. However if that was happening, there wouldn't be a sequential pattern of requests. Nonetheless, I checked and there were no font preloads in their Early Hints, HTTP response headers or HTML response payload.
+The usual cause for seeing multiple formats for the same font would be accidental preloading. However if that was happening, there wouldn't be a sequential pattern of requests. Nonetheless, I checked and there were no font preloads in their Early Hints, HTTP response headers or HTML response payload.
 
 The only place the font was referenced was a single CSS file. And there is nothing wrong with the syntax of this font-face directive. The browser should have selected the best format based on its capabilities. For pretty much all modern browsers that would be WOFF2.
 
@@ -51,16 +51,16 @@ font-style: normal
 
 ## Font Conversion Errors?
 
-So what's going on here? In Chrome DevTools, the Console provided a clue. There were multiple errors output for each, likely because every time the font was used resulted in an attempt to decode the preferred format.  
-* First a "Failed to decode downloaded font" error.
-* Next a "Failed to convert WOFF 2.0 font to SFNT" error 
-* And finally an  "OTS parsing error: incorrect file size in WOFF header". 
+So what's going on here? In Chrome DevTools, the Console provided a clue. There were multiple errors output for each, likely because every time the font was used resulted in an attempt to decode the preferred format.
+* First a `Failed to decode downloaded font` error.
+* Next a `Failed to convert WOFF 2.0 font to SFNT` error 
+* And finally  `OTS parsing error: incorrect file size in WOFF header`. 
 
 *(I also checked Safari Web Inspector, but there were no errors logged to the console.)*
 
 ![Chrome DevTools Console filtered to font errors"](/assets/img/blog/investigating-a-curious-case-of-font-format-fallbacks/devtools-console-font-decode-errors.jpg)
 
-[SFNT](https://en.wikipedia.org/wiki/SFNT) is an acronym that I was unfamiliar with. It stands for "Spline Font" and it's a file format that can contain other fonts. Apparently this format dates all the way back to Apple's [QuickDraw software](https://web.archive.org/web/20131023054643/https://developer.apple.com/fonts/tools/tooldir/TrueEdit/Documentation/TE/TE1sfnt.html), which started using the format in [1991!](https://www.truetype-typography.com/tthist.htm) Well that was a history lesson!
+[SFNT](https://en.wikipedia.org/wiki/SFNT) is an acronym that I was unfamiliar with. It stands for "Spline Font" and it's a file format that can contain other fonts. Apparently this format dates all the way back to Apple's [QuickDraw software](https://web.archive.org/web/20131023054643/https://developer.apple.com/fonts/tools/tooldir/TrueEdit/Documentation/TE/TE1sfnt.html), which started using the format in [1991!](https://www.truetype-typography.com/tthist.htm) That was a history lesson!
 
 ## Digging Into Chromium Source
 
