@@ -12,7 +12,7 @@ Every month the [NY WebPerf Meetup](https://www.meetup.com/web-performance-ny/) 
 
 ![ Meetup listing for the in-person "Meet for SPEED" session](/assets/img/blog/investigating-a-curious-case-of-font-format-fallbacks/ny-webperf-meet4speed-meetup.jpg)
 
-The websites we analyze are picked from attendees. So we never know what we're going to optimize coming into these sessions. Sometimes attendees ask to analyze sites they work for or built and occasionally we're analyzing sites that no-one has a connection to.  We use publicly available tools like browser DevTools, WebPageTest, etc.  Hilariously a dance troupe once showed up because they thought "Web Performance" was a type of dance routine!
+The websites we analyze are picked from attendees. So we never know what we're going to optimize coming into these sessions. Sometimes attendees ask to analyze sites they work for or built and occasionally we're analyzing sites that no-one has a connection to. We use publicly available tools like browser DevTools, WebPageTest, etc. Hilariously a dance troupe once showed up because they thought "Web Performance" was a type of dance routine!
 
 During last week's session, we analyzed a popular eCommerce website. In a few short pizza consuming hours, we found:
 
@@ -23,7 +23,7 @@ During last week's session, we analyzed a popular eCommerce website. In a few sh
 - A CDN image optimization silent failure that cached an unoptimized image
 - Lazy Loaded images that... weren't lazy loading.
 
-But one issue that we discovered surprised me: A font fallback to an alternative format due to a font decoding failure.  This is uncommon, and unlikely to be an issue with your site, but I learned a lot while digging into it and figured I'd share with you all!
+But one issue we discovered surprised me: A font fallback to an alternative format due to font decoding failures. This is uncommon, and unlikely to be an issue with your site, but I learned a lot while digging into it and figured I'd share with you all!
 
 ## FontAwesome x3
 
