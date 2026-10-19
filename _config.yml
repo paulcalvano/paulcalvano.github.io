@@ -265,6 +265,10 @@ hydejack:
   # seeing an old date. 
   hide_dates:          false
 
+  # Set to `true` to hide the "last modified" date (clock icon) that
+  # jekyll-last-modified-at derives from each post's git commit time.
+  hide_last_modified:  true
+  
   no_breadcrumbs:      true
 
   # Note that dark mode only works in the PRO version of Hydejack.
